@@ -1,0 +1,859 @@
+Here's a comprehensive HTML analysis report based on the agricultural data provided:
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>万州区农业经济分析报告(2024-2025)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .header {
+            background-color: #2c8b57;
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+        .section-title {
+            border-left: 5px solid #2c8b57;
+            padding-left: 15px;
+            margin: 30px 0 20px;
+            color: #2c8b57;
+        }
+        .card {
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0.1);
+        }
+        .card-header {
+            background-color: #2c8b57;
+            color: white;
+        }
+        .highlight {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .table-responsive {
+            margin-bottom: 30px;
+        }
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-bottom: 30px;
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header text-center">
+        <h1>万州区农业经济分析报告</h1>
+        <p class="lead">2024年度数据及2025年1-2月趋势分析</p>
+    </div>
+
+    <div class="container">
+        <!-- Executive Summary -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="highlight">
+                    <h3>执行摘要</h3>
+                    <p>2024年万州区农业经济保持稳定发展态势，第一产业增加值123.06亿元，位居全市第2、渝东北第1。农村居民人均可支配收入23639元，同比增长5.7%。粮食生产稳中有增，粮食产量50.3万吨，增长0.66%。畜牧养殖规模稳定，生猪出栏110.22万头，肉类总产量10.8万吨。农产品加工企业产值增长显著，规上企业产值达46.23亿元，增长23.8%。</p>
+                    <p>2025年1-2月数据显示：生猪价格较上月有所下降但高于去年同期；蔬菜价格受集中上市影响普遍下跌；玫瑰香橙因品质提升价格同比上涨；农资储备充足，春耕备耕工作有序开展。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Metrics -->
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="section-title">核心指标概览</h2>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-header">
+                        <h5>第一产业增加值</h5>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title">123.06亿</h1>
+                        <p class="card-text">全市排名第2，渝东北第1</p>
+                        <p class="text-success">增速2.8%</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-header">
+                        <h5>农村居民收入</h5>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title">23,639元</h1>
+                        <p class="card-text">同比增长5.7%</p>
+                        <p class="text-success">渝东北排名第2</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-header">
+                        <h5>粮食产量</h5>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title">50.3万吨</h1>
+                        <p class="card-text">同比增长0.66%</p>
+                        <p class="text-success">播种面积150.6万亩</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Agricultural Production -->
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="section-title">农业生产分析</h2>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <canvas id="livestockChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <canvas id="meatProductionChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <canvas id="cropProductionChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <canvas id="processingIndustryChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>分析要点：</h4>
+                        <ul>
+                            <li>畜牧养殖结构稳定，生猪养殖仍占主导地位，占肉类总产量的84.4%</li>
+                            <li>水果投产面积54.46万亩，产量69.09万吨，经济效益显著</li>
+                            <li>农产品加工行业发展迅速，澳斯卡粮油产值增长120.4%，诗仙太白增长53.9%</li>
+                            <li>部分企业如树上鲜、禾益米业产值出现下降，需关注市场变化</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Supply and Demand Analysis -->
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="section-title">农产品供需分析</h2>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <canvas id="supplyDemandChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <canvas id="porkSalesChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>分析要点：</h4>
+                        <ul>
+                            <li>猪肉自给率达197%，供应充足，但需关注价格波动对养殖户的影响</li>
+                            <li>鸡蛋自给率75%，缺口部分主要从河北、河南、江苏等地调入</li>
+                            <li>蔬菜自给率仅40%，本地供应不足，需加强蔬菜基地建设</li>
+                            <li>不同销售渠道蔬菜采购来源差异明显，百安港批发市场本地采购比例最高(40%)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Price Trends -->
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="section-title">农产品价格行情</h2>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <canvas id="pigPriceChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <canvas id="feedPriceChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <canvas id="vegetablePriceChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <canvas id="fruitPriceChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>价格趋势分析：</h4>
+                        <ul>
+                            <li>2025年1月生猪价格17.82元/千克，较上月下降但高于去年同期，猪粮比7.49，养殖利润空间良好</li>
+                            <li>饲料价格总体稳定，育肥猪配合饲料3.19元/千克，肉鸡配合饲料3.21元/千克</li>
+                            <li>蔬菜价格同比下跌12.09%，环比下跌26.15%，主要因集中上市导致</li>
+                            <li>玫瑰香橙品质提升，甜度增加2-3度，收购价格上涨0.2-0.5元/斤</li>
+                            <li>古红桔外销均价2.4元/千克，东北、西北、华北、西南为主要外销地</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Market Price Comparison -->
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="section-title">农贸市场价格比较</h2>
+                
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>分类</th>
+                                <th>品名</th>
+                                <th>渝东批发市场</th>
+                                <th>富康源菜市场</th>
+                                <th>响水镇菜市场</th>
+                                <th>均价</th>
+                                <th>环比变化</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>肉类</td>
+                                <td>五花猪肉</td>
+                                <td>24</td>
+                                <td>26</td>
+                                <td>30</td>
+                                <td>26.67</td>
+                                <td>0%</td>
+                            </tr>
+                            <tr>
+                                <td>肉类</td>
+                                <td>猪肉排</td>
+                                <td>36</td>
+                                <td>34</td>
+                                <td>46</td>
+                                <td>38.67</td>
+                                <td>0%</td>
+                            </tr>
+                            <tr>
+                                <td>菜类</td>
+                                <td>土豆</td>
+                                <td>3</td>
+                                <td>4</td>
+                                <td>3</td>
+                                <td>3.33</td>
+                                <td class="text-success">↑4.06%</td>
+                            </tr>
+                            <tr>
+                                <td>菜类</td>
+                                <td>老姜</td>
+                                <td>14</td>
+                                <td>14</td>
+                                <td>8</td>
+                                <td>12</td>
+                                <td class="text-danger">↓16.26%</td>
+                            </tr>
+                            <tr>
+                                <td>果类</td>
+                                <td>富士苹果</td>
+                                <td>12</td>
+                                <td>13</td>
+                                <td>12</td>
+                                <td>12.33</td>
+                                <td>0%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>市场分析：</h4>
+                        <ul>
+                            <li>不同市场间价格差异明显，响水镇菜市场的猪肉排价格比渝东批发市场高27.8%</li>
+                            <li>蔬菜类价格波动较大，老姜价格环比下降16.26%，土豆上涨4.06%</li>
+                            <li>水果价格相对稳定，富士苹果均价12.33元/千克，环比持平</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Agricultural Conditions -->
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="section-title">农情监测与生产动态</h2>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>春耕备耕情况</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul>
+                                    <li>水稻备种28万公斤</li>
+                                    <li>玉米备种46万公斤</li>
+                                    <li>蔬菜种苗在圃800万株</li>
+                                    <li>化肥储备充足，库存3万余吨</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>病虫害监测</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul>
+                                    <li>油菜霜霉病轻度发生，发生面积0.63万亩</li>
+                                    <li>油菜蚜虫轻度发生，面积约0.5万亩</li>
+                                    <li>小麦病虫害暂未发现</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>动物疫病监测</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul>
+                                    <li>牛结节疹病、小反刍兽疫监测均为阴性</li>
+                                    <li>口蹄疫免疫抗体合格率88.28%</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>榨菜采收情况</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul>
+                                    <li>预计2025年青菜头收获面积24.9万亩</li>
+                                    <li>产量50.1万吨，产值约3亿元</li>
+                                    <li>产地价格稳定在0.6-0.7元/公斤</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Policy and Trends -->
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="section-title">政策动向与发展趋势</h2>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>政策动向</h5>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>重庆市农业科技创新重点领域(2025-2028)</strong>聚焦10个重点领域：</p>
+                                <ol>
+                                    <li>农业新品种培育</li>
+                                    <li>耕地质量提升</li>
+                                    <li>农机装备研制</li>
+                                    <li>农作物病虫害防控</li>
+                                    <li>高效种植养殖</li>
+                                    <li>畜禽渔业提质增效</li>
+                                    <li>食品及农产品加工</li>
+                                    <li>农产品质量安全</li>
+                                    <li>智慧农业</li>
+                                    <li>乡村发展</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>发展趋势</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul>
+                                    <li>农业数字化转型加速，"神农大模型2.0"等智能技术应用推广</li>
+                                    <li>特色农产品品牌建设加强，古红桔、玫瑰香橙等"三峡宝贝"受关注</li>
+                                    <li>订单农业模式成熟，榨菜产业"企业+村集体+农户"模式成效显著</li>
+                                    <li>农产品加工业持续发展，产业链延伸和价值提升</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recommendations -->
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="section-title">发展建议</h2>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h5>基于数据分析的农业发展建议</h5>
+                    </div>
+                    <div class="card-body">
+                        <ol>
+                            <li><strong>稳定生猪生产，优化养殖结构</strong>：当前猪粮比处于合理区间(7.49)，应保持适度养殖规模，同时发展牛羊等特色养殖，丰富肉类供应结构。</li>
+                            <li><strong>加强蔬菜基地建设</strong>：针对蔬菜自给率偏低(40%)的问题，扩大设施蔬菜种植面积，提高本地供应能力。</li>
+                            <li><strong>提升水果产业价值链</strong>：玫瑰香橙品质提升带来价格增长，应加强品牌建设，拓展电商等新型销售渠道。</li>
+                            <li><strong>支持农产品加工企业发展</strong>：对产值下降企业(如树上鲜、禾益米业)进行帮扶，分析原因，寻找新的增长点。</li>
+                            <li><strong>推进农业科技创新</strong>：落实重庆市农业科技创新重点领域工作，加强智慧农业技术应用。</li>
+                            <li><strong>完善农产品市场监测体系</strong>：加强价格波动预警，帮助农户合理安排生产计划。</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center">
+        <div class="container">
+            <p>万州区农业信息中心 &copy; 2025</p>
+            <p>数据截止日期：2025年2月21日</p>
+        </div>
+    </footer>
+
+    <script>
+        // Livestock Inventory Chart
+        const livestockCtx = document.getElementById('livestockChart').getContext('2d');
+        const livestockChart = new Chart(livestockCtx, {
+            type: 'bar',
+            data: {
+                labels: ['生猪', '家禽', '牛', '羊'],
+                datasets: [{
+                    label: '出栏量(万头/万只)',
+                    data: [110.22, 804.18, 1.55, 10.58],
+                    backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }, {
+                    label: '年末存栏(万头/万只)',
+                    data: [64.32, 401.98, 2.58, 7.66],
+                    backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '2024年畜禽出栏与存栏情况'
+                    },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Meat Production Chart
+        const meatCtx = document.getElementById('meatProductionChart').getContext('2d');
+        const meatChart = new Chart(meatCtx, {
+            type: 'pie',
+            data: {
+                labels: ['猪肉', '牛肉', '羊肉', '禽肉'],
+                datasets: [{
+                    data: [9.12, 0.22, 0.17, 1.32],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.7)',
+                        'rgba(255, 206, 86, 0.7)',
+                        'rgba(153, 102, 255, 0.7)',
+                        'rgba(75, 192, 192, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(75, 192, 192, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '2024年肉类产量结构(万吨)'
+                    },
+                }
+            }
+        });
+
+        // Crop Production Chart
+        const cropCtx = document.getElementById('cropProductionChart').getContext('2d');
+        const cropChart = new Chart(cropCtx, {
+            type: 'bar',
+            data: {
+                labels: ['粮食', '水果', '蔬菜'],
+                datasets: [{
+                    label: '面积(万亩)',
+                    data: [150.6, 54.46, 77.47],
+                    backgroundColor: 'rgba(255, 159, 64, 0.7)',
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    borderWidth: 1
+                }, {
+                    label: '产量(万吨)',
+                    data: [50.3, 69.09, 141.45],
+                    backgroundColor: 'rgba(153, 102, 255, 0.7)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '2024年主要农作物生产情况'
+                    },
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Processing Industry Chart
+        const processingCtx = document.getElementById('processingIndustryChart').getContext('2d');
+        const processingChart = new Chart(processingCtx, {
+            type: 'bar',
+            data: {
+                labels: ['蓝希络', '树上鲜', '鱼泉榨菜', '伴神酿造', '诗仙太白', '飞亚实业', '澳斯卡粮油'],
+                datasets: [{
+                    label: '2024年产值(亿元)',
+                    data: [5.02, 2.89, 2.94, 0.48, 1.3, 5.12, 0.63],
+                    backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }, {
+                    label: '同比增长(%)',
+                    data: [34.5, -27.2, 1.7, 22.9, 53.9, 2.9, 120.4],
+                    backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1,
+                    type: 'line',
+                    yAxisID: 'y1'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '2024年主要农产品加工企业产值及增长'
+                    },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: '产值(亿元)'
+                        }
+                    },
+                    y1: {
+                        position: 'right',
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: '增长率(%)'
+                        },
+                        grid: {
+                            drawOnChartArea: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Supply and Demand Chart
+        const supplyDemandCtx = document.getElementById('supplyDemandChart').getContext('2d');
+        const supplyDemandChart = new Chart(supplyDemandCtx, {
+            type: 'bar',
+            data: {
+                labels: ['猪肉', '鸡蛋', '蔬菜'],
+                datasets: [{
+                    label: '需求量(万吨)',
+                    data: [4.61, 1.6, 30.05],
+                    backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }, {
+                    label: '本地供应量(万吨)',
+                    data: [9.12, 1.2, 12],
+                    backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '2024年主要农产品供需情况'
+                    },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Pork Sales Chart
+        const porkSalesCtx = document.getElementById('porkSalesChart').getContext('2d');
+        const porkSalesChart = new Chart(porkSalesCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['区内销售', '区外销售'],
+                datasets: [{
+                    data: [53.5, 46.5],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 99, 132, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '2024年猪肉销售区域分布(%)'
+                    },
+                }
+            }
+        });
+
+        // Pig Price Chart
+        const pigPriceCtx = document.getElementById('pigPriceChart').getContext('2d');
+        const pigPriceChart = new Chart(pigPriceCtx, {
+            type: 'line',
+            data: {
+                labels: ['2024年1月', '2024年12月', '2025年1月'],
+                datasets: [{
+                    label: '生猪价格(元/千克)',
+                    data: [13.96, 20.42, 17.82],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 2,
+                    tension: 0.1
+                }, {
+                    label: '仔猪价格(元/千克)',
+                    data: [30.37, 35.33, 34.67],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 2,
+                    tension: 0.1
+                }, {
+                    label: '猪肉价格(元/千克)',
+                    data: [21.36, 27.46, 25.96],
+                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                    borderColor: 'rgba(255, 206, 86, 1)',
+                    borderWidth: 2,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '生猪及猪肉价格趋势'
+                    },
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+
+        // Feed Price Chart
+        const feedPriceCtx = document.getElementById('feedPriceChart').getContext('2d');
+        const feedPriceChart = new Chart(feedPriceCtx, {
+            type: 'bar',
+            data: {
+                labels: ['玉米', '豆粕', '小麦麸', '进口鱼粉', '育肥猪配合饲料', '肉鸡配合饲料', '蛋鸡配合饲料'],
+                datasets: [{
+                    label: '2025年1月价格(元/千克)',
+                    data: [2.38, 3.08, 1.93, 12.96, 3.19, 3.21, 1.93],
+                    backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '2025年1月饲料产品价格'
+                    },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Vegetable Price Chart
+        const vegetablePriceCtx = document.getElementById('vegetablePriceChart').getContext('2d');
+        const vegetablePriceChart = new Chart(vegetablePriceCtx, {
+            type: 'line',
+            data: {
+                labels: ['甘蓝', '生菜', '大白菜', '花椰菜', '萝卜', '莴笋', '瓢儿白', '青菜头', '莲藕'],
+                datasets: [{
+                    label: '同比变化(%)',
+                    data: [42.86, 30, 28.57, -50, -33.33, -22.73, -20, -16.67, -13.33],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 2,
+                    tension: 0.1
+                }, {
+                    label: '环比变化(%)',
+                    data: [-37.5, -35, 0, -56, null, -15, -5.88, -44.44, -11.36],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 2,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '2025年2月蔬菜价格同比环比变化'
+                    },
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+
+        // Fruit Price Chart
+        const fruitPriceCtx = document.getElementById('fruitPriceChart').getContext('2d');
+        const fruitPriceChart = new Chart(fruitPriceCtx, {
+            type: 'bar',
+            data: {
+                labels: ['产地直采(>5000斤)', '批发市场(65mm以上)', '社区零售', '电商平台(10斤装)'],
+                datasets: [{
+                    label: '玫瑰香橙价格(元/斤)',
+                    data: [1.5, 1.5, 4.5, 6],
+                    backgroundColor: 'rgba(255, 159, 64, 0.7)',
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '2025年2月玫瑰香橙不同渠道价格'
+                    },
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+```
+
+This HTML report provides a comprehensivenalysis of Wanzhou District's agricultural economy based on the 2024 data and early 2025 trends. Key features include:
+
+1. **Executive Summary** - Highlights the main agricultural economic indicators and trends
+2. **Key Metrics Dashboard** - Presents core indicators like primary industry added value, rural income, and grain production
+3. **Agricultural Production Analysis** - Visualizes livestock, crop production, and processing industry data
+4. **Supply and Demand Analysis** - Examines the balance between local production and consumption
+5. **Price Trends** - Tracks price movements for various agricultural products
+6. **Market Price Comparison** - Shows retail price differences across markets
+7. **Agricultural Conditions** - Reports on farming preparations, pest monitoring, etc.
+8. **Policy and Trends** - Summarizes policy directions and development trends
+9. **Recommendations** - Provides data-driven suggestions for agricultural development
+
+The report uses Chart.js to create interactive visualizations that make the data more accessible and understandable. The design is responsive and professional, suitable for decision-makers and stakeholders.
