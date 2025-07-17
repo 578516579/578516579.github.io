@@ -1,0 +1,177 @@
+```html
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>万州区农业信息专报（2025年第3期）分析报告</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { background-color: #f9f9f9; }
+    .chart-container { position: relative; margin: auto; height: 40vh; width: 80vw; }
+    h2 { color: #2c3e50; }
+  </style>
+</head>
+<body>
+  <div class="container-fluid py-4">
+    <h1 class="text-center mb-4">万州区农业信息专报（2025年第3期）分析报告</h1>
+
+    <!-- 执行摘要 -->
+    <section id="executive-summary" class="mb-5">
+      <h2>执行摘要</h2>
+      <p>本报告基于2025年3月及一季度农业数据，涵盖畜牧产业、农产品价格、农情调查、政策动向等方面。整体来看，生猪出栏量增长但存栏下降，家禽出栏大幅波动；饲料价格上涨导致养殖利润压缩；大春作物播种接近完成，蔬菜生产稳定。</p>
+    </section>
+
+    <!-- 关键指标展示 -->
+    <section id="key-metrics" class="mb-5">
+      <h2>关键指标展示</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="chart-container">
+            <canvas id="livestockChart"></canvas>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="chart-container">
+            <canvas id="priceTrendChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 详细数据分析 -->
+    <section id="detailed-analysis" class="mb-5">
+      <h2>详细数据分析</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="chart-container">
+            <canvas id="vegetablePriceChart"></canvas>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="chart-container">
+            <canvas id="grainFeedChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 趋势分析 -->
+    <section id="trend-analysis" class="mb-5">
+      <h2>趋势分析与建议</h2>
+      <ul>
+        <li><strong>生猪养殖：</strong>出栏量上升但存栏下降，需关注能繁母猪数量变化，防止后期供应不足。</li>
+        <li><strong>饲料成本：</strong>玉米、豆粕价格上涨，应优化饲养结构或引入替代饲料以降低成本。</li>
+        <li><strong>蔬菜产业：</strong>当前蔬菜长势良好，应加强产销对接，防止“卖难”问题。</li>
+        <li><strong>病虫害防控：</strong>油菜菌核病、蚜虫等病虫害需持续监测，及时防治。</li>
+        <li><strong>政策支持：</strong>高标准农田建设与农机补贴政策将推动农业生产现代化发展。</li>
+      </ul>
+    </section>
+  </div>
+
+  <script>
+    // 生猪与家禽出栏趋势图
+    const livestockCtx = document.getElementById('livestockChart').getContext('2d');
+    new Chart(livestockCtx, {
+      type: 'bar',
+      data: {
+        labels: ['3月生猪出栏', '1-3月累计生猪出栏', '3月家禽出栏', '1-3月累计家禽出栏'],
+        datasets: [{
+          label: '数量（万头/万只）',
+          data: [8.57, 34.85, 59.13, 249.18],
+          backgroundColor: ['#4e73df','#36b9cc','#f6c23e','#e74a3b']
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          title: { display: true, text: '生猪与家禽出栏情况' }
+        }
+      }
+    });
+
+    // 农产品价格趋势图
+    const priceCtx = document.getElementById('priceTrendChart').getContext('2d');
+    new Chart(priceCtx, {
+      type: 'line',
+      data: {
+        labels: ['上月', '本月'],
+        datasets: [
+          { label: '土杂肉猪（元/kg）', data: [16, 15.35], borderColor: '#4e73df', tension: 0.1 },
+          { label: '洋三元肉猪（元/kg）', data: [16.47, 15.53], borderColor: '#36b9cc', tension: 0.1 },
+          { label: '猪肉均价（元/kg）', data: [25.15, 23.25], borderColor: '#f6c23e', tension: 0.1 }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: { display: true, text: '主要农产品价格趋势' }
+        }
+      }
+    });
+
+    // 蔬菜价格变动图
+    const vegCtx = document.getElementById('vegetablePriceChart').getContext('2d');
+    new Chart(vegCtx, {
+      type: 'bar',
+      data: {
+        labels: ['老姜', '大葱', '青椒'],
+        datasets: [{
+          label: '3月均价（元/kg）',
+          data: [11.33, 9, 6.5],
+          backgroundColor: ['#4e73df','#36b9cc','#f6c23e']
+        }, {
+          label: '环比降幅',
+          data: [-5.58, -3.54, -7.14],
+          backgroundColor: ['#e74a3b','#e74a3b','#e74a3b']
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: { display: true, text: '部分蔬菜价格变动' }
+        }
+      }
+    });
+
+    // 粮食与饲料价格图
+    const grainCtx = document.getElementById('grainFeedChart').getContext('2d');
+    new Chart(grainCtx, {
+      type: 'radar',
+      data: {
+        labels: ['玉米', '豆粕', '小麦麸', '育肥猪料', '肉鸡料'],
+        datasets: [{
+          label: '3月均价（元/kg）',
+          data: [2.44, 3.73, 1.96, 3.32, 3.23],
+          fill: true,
+          backgroundColor: 'rgba(77, 197, 191, 0.2)',
+          borderColor: 'rgb(77, 197, 191)',
+          pointBackgroundColor: 'rgb(77, 197, 191)',
+          pointBorderColor: '#fff',
+          pointHoverBackgroundColor: '#fff',
+          pointHoverBorderColor: 'rgb(77, 197, 191)'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: { display: true, text: '粮食与饲料价格雷达图' }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+```
+
+✅ **已修正内容：**
+- 图表容器尺寸适配移动端；
+- 数据单位统一标注；
+- 使用 CDN 加载 Chart.js 和 Bootstrap；
+- 响应式布局；
+- 修复了中文字符兼容性问题；
+- 图表类型选择更贴合数据特征。
+
+📌 **运行方式：** 将以上代码保存为 `.html` 文件，用浏览器打开即可查看完整分析报告。
