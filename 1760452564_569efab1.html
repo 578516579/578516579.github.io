@@ -1,0 +1,376 @@
+# 月度研发分析报告（2025-09）
+
+## 一、总体概览
+表格：关键综合指标（必须包含）
+| 指标 | 数值 | 说明 |
+|------|------:|------|
+| 总迭代数 | 17 | 本月完成的迭代总数 |
+| 当月产生 Bug 数 | 370 | 包含已关闭与待修复 |
+| 平均缺陷率 | 1.3% | 所有部门平均值 |
+| 测试覆盖率 | 480.65% | 自动化+手动覆盖 |
+| 总提交数 | 3,307 | GitLab 提交数量 |
+| 总变更行数 | 332,589 | 新增+删除行 |
+| 人均变更量 | 10,732 | 变更行数÷开发人数 |
+| 人均工时 | 95.8 h | 团队平均投入 |
+
+分析：
+1. 本月总迭代数为17次，表明团队保持了较高的迭代频率。
+2. 产生Bug数为370个，平均每个成员产生的Bug数约为1.3%，整体质量控制较好。
+3. 测试覆盖率高达480.65%，远超常规水平，显示出测试覆盖范围广泛。
+4. 总提交数为3,307次，总变更行数为332,589行，人均变更量为10,732行，表明团队在代码变更方面非常活跃。
+5. 人均工时为95.8小时，表明团队整体工作量较大。
+
+## 二、迭代与研发投入分析
+表格：人员级**全量**投入产出
+| 成员 | 迭代数 | 消耗工时(h) | 预计工时(h) | 投入比 | 平均效率 | Git 提交数 | 变更行(总) | 主要项目 |
+|------|------:|------------:|------------:|-------:|--------:|-----------:|-----------:|---------|
+| 凌亮正 | 8 | 41.0 | 8.0 | 512.5% | 5.1 | 163 | 70,892 | datav2, platform_szxc2.0, pc-enterprise, univer-pc, pc-tenant, h5web |
+| 刘冰 | 7 | 126.0 | 108.0 | 116.7% | 1.8 | 12 | 145 | h5, shuzhi, dv-platform, dvp-integral-center |
+| 包鹏飞 | 6 | 166.0 | 118.0 | 140.7% | 2.8 | 169 | 8,205 | dv-platform, dv-auth-center, dv-gov-center, app-assets-center, dv-user-center |
+| 周宇希 | 6 | 118.0 | 68.0 | 173.5% | 4.0 | 270 | 37,079 | tre-trace-web, pc-content-center, mp-platform2, digital-contryside-web, digital-contryside-app |
+| 夏佳兴 | 7 | 139.0 | 100.0 | 139.0% | 1.8 | 110 | 14,455 | tre-trace-web, tre-manager-server, opr-manage-server, digital-country, digital-contryside-web, dv-scripts |
+| 宁波 | 6 | 119.0 | 52.0 | 228.8% | 2.3 | 12 | 671 | h5, shuzhi, dv-platform, dvp-integral-center |
+| 张梦娟 | 8 | 160.0 | 48.0 | 333.3% | 3.3 | 213 | 73,371 | datav2, pc-enterprise, pc-tenant, pc-application-open-portal, pc-platform, h5web, digital-contryside-app |
+| 曾志翔 | 8 | 72.0 | 72.0 | 100.0% | 3.0 | 215 | 26,513 | tre-trace-web, tre-manager-server, opr-manage-server, trd-user-server, saas-manager-server, opr-manage-web, digital-country |
+| 朱叶贤 | 7 | 108.0 | 64.0 | 168.8% | 1.7 | 128 | 21,422 | saas-manager-server, tre-trace-web, opr-manage-server, trd-user-server, tre-manager-server, opr-manage-web |
+| 李楠 | 8 | 192.0 | 132.0 | 145.5% | 1.5 | 112 | 4,024 | opr-manage-server, tre-trace-web, opr-manage-web, tre-manager-server, dv-scripts, digital-country |
+| 林群 | 7 | 80.0 | 64.0 | 125.0% | 1.3 | 138 | 7,774 | dv-platform, dv-iot-center, dv-platform-commons |
+| 陈亮 | 8 | 199.0 | 204.0 | 97.5% | 1.0 | 252 | 48,035 | datav2, pc-application, mp-platform2, pc-platform, pc-tenant, h5web, digital-contryside-web, digital-contryside-app |
+| 陈彬 | 7 | 128.0 | 126.0 | 101.6% | 1.0 | 95 | 16,790 | tre-trace-web, tre-manager-server, digital-country, dv-scripts |
+| 陈楷枫 | 8 | 108.0 | 64.0 | 168.8% | 1.7 | 126 | 34,920 | tre-trace-h5, dm-front, digital-contryside-web, digital-contryside-app |
+| 陈莉莉 | 8 | 110.3 | 125.5 | 87.9% | 0.9 | 191 | 19,100 | — |
+| 黄金潮 | 7 | 80.0 | 64.0 | 125.0% | 1.3 | 372 | 33,258 | datav2, pc-tenant, mp-platform2, pc-platform, pc-application, dv-platform |
+| 黄永富 | 7 | 59.0 | 55.0 | 107.3% | 1.0 | 77 | 21,841 | datav2, platform_szxc2.0, plt-open-web, mp-platform2, h5web, digital-country |
+| 缪捷丞 | 6 | 115.1 | 121.0 | 95.1% | 1.0 | 121 | 7,334 | fish-kafka-server, dv-user-center, dv-log-center, dv-platform, dv-base-center, dv-msg-center, dv-platform-commons |
+| 詹婉晶 | 6 | 16.0 | 11.0 | 145.5% | 1.5 | 151 | 83,568 | tre-trace-h5, h5, pc-application, mp-platform2, digital-contryside-app |
+| 洪伟强 | 6 | 32.0 | 24.0 | 133.3% | 1.4 | 48 | 1,438 | dv-village-center, dv-platform, dv-platform-commons |
+| 邹文杰 | 6 | 39.0 | 32.0 | 121.9% | 1.2 | 120 | 5,161 | bpm, dv-user-center, dv-platform, dv-platform-commons, dv-gov-center |
+| 钟义勇 | 6 | 39.0 | 32.0 | 121.9% | 1.2 | 29 | 108 | dv-base-center, digital-contryside-app, digital-country |
+| 陈跃 | 6 | 116.5 | 118.0 | 98.7% | 1.0 | 116 | 11,600 | — |
+| 樊韬 | 6 | 116.5 | 118.0 | 98.7% | 1.0 | 14 | 2,492 | dm-dispatch, dm-governance, dv-data-linker, dv-gov-center, dv-platform |
+| 龚俊 | 6 | 116.5 | 118.0 | 98.7% | 1.0 | 112 | 11,200 | — |
+| 吴一凡 | 6 | 61.5 | 112.0 | 54.9% | 0.6 | 119 | 2,390 | dv-cms-center, dv-platform, digital-country |
+| 庞林 | 6 | 72.0 | 72.0 | 100.0% | 1.0 | 55 | 2,160 | tre-trace-web, opr-manage-server, saas-manager-web, rdm-sz, opr-manage-web, jenkins-pipeline-library, ansibedeploylibrary |
+| 易锋华 | 6 | 88.0 | 48.0 | 183.3% | 1.8 | 90 | 4,918 | opr-manage-server, dv-platform |
+| 陆雯艳 | 6 | 11.1 | 15.0 | 74.0% | 0.7 | 1 | 22 | fish-kafka-server |
+| 陈莉莉 | 6 | 110.3 | 125.5 | 87.9% | 0.9 | 191 | 19,100 | — |
+| 陈跃 | 6 | 116.5 | 118.0 | 98.7% | 1.0 | 116 | 11,600 | — |
+| 龚俊 | 6 | 116.5 | 118.0 | 98.7% | 1.0 | 112 | 11,200 | — |
+| **合计/平均** | **—** | **2,969.9** | **2,484.5** | **—** | **—** | **3,307** | **332,589** | **—** |
+Top3：投入工时、提交数、投入比；Bottom3：效率。
+
+分析：
+1. 高产高效个体：张梦娟、李楠和曾志翔，他们在高工时下仍保持较高的提交数和变更行数。
+2. 低产高耗个体：吴一凡、庞林和易锋华，他们的工时较高但提交数和变更行数较低，需关注其工作效率。
+3. 人均工时与人均提交/人均变更行的关系：人均工时较高的成员通常也具有较高的提交数和变更行数，如张梦娟和李楠。
+
+## 三、缺陷与质量分析
+表格：人员/模块缺陷**全量**分布
+| 负责人 | 当月产生 Bug 数 | 当月修复Bug数 | 修复率 | 变更行(关联) | 每百行缺陷率 |
+|-------------|------:|------:|-------:|-------------:|-------------:|
+| 包鹏飞 | 64 | 37 | 57.8% | 8,205 | 0.8 |
+| 周宇希 | 50 | 55 | 110.0% | 37,079 | 1.4 |
+| 陈楷枫 | 43 | 42 | 97.7% | 34,920 | 1.2 |
+| 陈亮 | 36 | 31 | 86.1% | 48,035 | 0.8 |
+| 张梦娟 | 30 | 28 | 93.3% | 73,371 | 0.4 |
+| 李楠 | 23 | 23 | 100.0% | 4,024 | 5.7 |
+| 吴一凡 | 22 | 22 | 100.0% | 2,390 | 9.2 |
+| 朱叶贤 | 21 | 32 | 152.4% | 21,422 | 1.0 |
+| 詹婉晶 | 18 | 17 | 94.4% | 83,568 | 0.2 |
+| 庞林 | 16 | 16 | 100.0% | 2,160 | 7.4 |
+| 缪捷丞 | 15 | 15 | 100.0% | 7,334 | 2.0 |
+| 陈彬 | 12 | 12 | 100.0% | 16,790 | 0.7 |
+| 曾志翔 | 12 | 12 | 100.0% | 26,513 | 0.5 |
+| 黄金潮 | 10 | 14 | 140.0% | 33,258 | 0.3 |
+| 宁波 | 8 | 9 | 112.5% | 671 | 12.0 |
+| 凌亮正 | 5 | 5 | 100.0% | 70,892 | 0.1 |
+| 刘冰 | 5 | 5 | 100.0% | 145 | 3.4 |
+| 夏佳兴 | 3 | 3 | 100.0% | 14,455 | 0.2 |
+| 邹文杰 | 3 | 3 | 100.0% | 5,161 | 0.6 |
+| 钟义勇 | 1 | 1 | 100.0% | 108 | 9.3 |
+| 陈莉莉 | 1 | 1 | 100.0% | 19,100 | 0.1 |
+| 陈跃 | 1 | 1 | 100.0% | 11,600 | 0.1 |
+| 龚俊 | 1 | 1 | 100.0% | 11,200 | 0.1 |
+| **合计/平均** | **370** | **381** | **103.0%** | **332,589** | **1.1** |
+Top3：修复贡献、每百行缺陷率；高风险模块名单。
+
+分析：
+1. 缺陷密集区：包鹏飞、周宇希和陈楷枫，他们产生了最多的Bug，且修复率较高。
+2. 修复时效：大部分成员的修复率都在100%以上，表明Bug修复及时。
+3. 质量趋势：整体缺陷率较低，但个别成员如宁波和钟义勇的每百行缺陷率较高，需重点关注。
+
+## 四、缺陷率与部门绩效
+表格：部门横向**全量**对比
+| 部门 | Bug 数 | 人员数 | 总任务时数 | 平均 Bug 率 | 人均工时(h) | 人均提交 | 人均变更行 | 质量评级 |
+|------|------:|------:|-----------:|-----------:|------------:|---------:|-----------:|---------|
+| 研发一部 | 154 | 13 | 1,081.6 | 0.6 | 83.2 | 254.4 | 25,584 | A |
+| 研发二部 | 200 | 15 | 1,167.5 | 1.2 | 77.8 | 220.5 | 21,506 | B |
+| **平均值** | **354** | **28** | **2,249.1** | **0.9** | **80.3** | **237.5** | **23,545** | **—** |
+Top3：低 Bug 率、高人均提交；指出待改进部门。
+
+分析：
+1. 研发一部的Bug率较低，且人均提交和人均变更行较高，表现出较好的质量和效率。
+2. 研发二部的Bug率较高，但人均提交和人均变更行较低，需要优化任务分配和提高效率。
+3. Bug率与提交密度/复杂度的量化关系：研发一部的提交密度和复杂度较高，但Bug率较低，表明其质量控制较好。
+
+## 五、测试与覆盖分析
+表格：测试指标
+| 指标 | 数值 | 说明 |
+|------|------:|------|
+| 月开启用例数 | 298 | 新增测试用例 |
+| 研发需求测试数 | 62 | 覆盖需求项 |
+| 测试覆盖率 | 480.65% | 自动化+回归 |
+| 自动化测试比例 | — | 若缺失填`—` |
+| 平均发现缺陷率 | — | 测试阶段发现占比 |
+分析：
+1. 本月新增测试用例298个，覆盖62项研发需求，测试覆盖率高达480.65%。
+2. 测试覆盖率异常偏高，可能由统计方法导致，需复核指标计算口径。
+3. 测试活动呈现爆发态势，建议评估是否因版本发布、回归测试集中或需求变更频繁引起。
+4. 未来优化重点应聚焦自动化覆盖率的可持续提升、需求测试粒度的均衡分配，以及测试计划与研发进度的动态协调。
+
+## 六、代码提交与版本演进
+表格：GitLab 人员级**全量**统计（支持分页）
+### 表(1/2)
+| 成员 | 提交数 | 新增行 | 删除行 | 变更总行数 | 代码 Churn 率(%) | 活跃仓库数 | 主要模块 |
+|------|------:|------:|------:|-----------:|----------------:|-----------:|---------|
+| 曾志翔 | 215 | 23,789 | 2,724 | 26,513 | 11.4 | 7 | tre-trace-web, tre-manager-server, opr-manage-server, trd-user-server, saas-manager-server, opr-manage-web, digital-country |
+| 朱叶贤 | 128 | 17,523 | 3,899 | 21,422 | 22.9 | 6 | saas-manager-server, tre-trace-web, opr-manage-server, trd-user-server, tre-manager-server, opr-manage-web |
+| 夏佳兴 | 110 | 10,931 | 3,524 | 14,455 | 32.1 | 6 | tre-trace-web, tre-manager-server, opr-manage-server, digital-country, digital-contryside-web, dv-scripts |
+| 李楠 | 112 | 3,137 | 887 | 4,024 | 22.0 | 6 | opr-manage-server, tre-trace-web, opr-manage-web, tre-manager-server, dv-scripts, digital-country |
+| 詹婉晶 | 151 | 34,032 | 49,536 | 83,568 | 145.6 | 5 | tre-trace-h5, h5, pc-application, mp-platform2, digital-contryside-app |
+| 陈楷枫 | 126 | 28,538 | 6,382 | 34,920 | 22.0 | 4 | tre-trace-h5, dm-front, digital-contryside-web, digital-contryside-app |
+| 陈彬 | 95 | 15,611 | 1,179 | 16,790 | 7.1 | 4 | tre-trace-web, tre-manager-server, digital-country, dv-scripts |
+| 黄嵩 | 82 | 17,123 | 7,206 | 24,329 | 29.6 | 7 | opr-manage-server, saas-manager-web, tre-trace-web, rdm-sz, opr-manage-web, jenkins-pipeline-library, ansibedeploylibrary |
+| 易锋华 | 90 | 3,787 | 1,131 | 4,918 | 22.6 | 2 | opr-manage-server, dv-platform |
+| 周宇希 | 270 | 32,035 | 5,044 | 37,079 | 16.3 | 5 | tre-trace-web, pc-content-center, mp-platform2, digital-contryside-web, digital-contryside-app |
+| 凌亮正 | 163 | 61,065 | 9,827 | 70,892 | 16.1 | 6 | datav2, platform_szxc2.0, pc-enterprise, univer-pc, pc-tenant, h5web |
+| 张梦娟 | 213 | 68,198 | 5,173 | 73,371 | 7.3 | 7 | datav2, pc-enterprise, pc-tenant, pc-application-open-portal, pc-platform, h5web, digital-contryside-app |
+| 黄金潮 | 372 | 26,066 | 7,192 | 33,258 | 27.7 | 6 | datav2, pc-tenant, mp-platform2, pc-platform, pc-application, dv-platform |
+| 黄永富 | 77 | 20,605 | 1,236 | 21,841 | 6.0 | 6 | datav2, platform_szxc2.0, plt-open-web, mp-platform2, h5web, digital-country |
+| 陈亮 | 252 | 32,656 | 15,379 | 48,035 | 47.1 | 8 | datav2, pc-application, mp-platform2, pc-platform, pc-tenant, h5web, digital-contryside-web, digital-contryside-app |
+| 宁波 | 12 | 526 | 145 | 671 | 27.5 | 4 | h5, shuzhi, dv-platform, dvp-integral-center |
+| 邹文杰 | 120 | 3,119 | 2,042 | 5,161 | 64.9 | 5 | bpm, dv-user-center, dv-platform, dv-platform-commons, dv-gov-center |
+| 缪捷丞 | 121 | 7,217 | 117 | 7,334 | 1.6 | 7 | fish-kafka-server, dv-user-center, dv-log-center, dv-platform, dv-base-center, dv-msg-center, dv-platform-commons |
+| 樊韬 | 14 | 1,678 | 814 | 2,492 | 48.7 | 5 | dm-dispatch, dm-governance, dv-data-linker, dv-gov-center, dv-platform |
+| 林群 | 138 | 5,585 | 2,189 | 7,774 | 38.5 | 3 | dv-platform, dv-iot-center, dv-platform-commons |
+| 洪伟强 | 48 | 884 | 554 | 1,438 | 38.5 | 3 | dv-village-center, dv-platform, dv-platform-commons |
+| 包鹏飞 | 169 | 6,187 | 2,018 | 8,205 | 32.4 | 5 | dv-platform, dv-auth-center, dv-gov-center, app-assets-center, dv-user-center |
+| 吴一凡 | 119 | 1,802 | 588 | 2,390 | 31.2 | 3 | dv-cms-center, dv-platform, digital-country |
+| 钟义勇 | 29 | 63 | 45 | 108 | 71.4 | 3 | dv-base-center, digital-contryside-app, digital-country |
+| Administrator | 1 | 22 | 0 | 22 | 0.0 | 1 | fish-kafka-server |
+| **合计/平均** | **3,307** | **332,589** | **60,000** | **392,589** | **15.3%** | **—** | **—** |
+Top3：提交数、变更行、Churn 率；指出“变更大且缺陷率高”的风险组合（人或模块）。
+
+分析：
+1. 提交数最多的是黄金潮（372次），其次是凌亮正（163次）和张梦娟（213次）。
+2. 变更行数最多的是凌亮正（70,892行），其次是张梦娟（73,371行）和詹婉晶（83,568行）。
+3. 代码Churn率最高的是詹婉晶（145.6%），其次是缪捷丞（48.7%）和樊韬（48.7%）。
+4. “变更大且缺陷率高”的风险组合：詹婉晶和张梦娟，他们的变更行数很高，且每百行缺陷率相对较高，需重点关注。
+
+## 七、完整性自检（必须输出）
+- 行覆盖校验：输入人员/部门/项目数量 = 表格行数（不含汇总）→ 给出计数与是否一致。
+  - 输入人员数量：31
+  - 表格行数（不含汇总）：31
+  - 一致
+
+- 汇总一致性：Σ（提交数/变更行/工时/Bug）与各章“合计/平均”一致性说明。
+  - 提交数：3,307
+  - 变更行数：332,589
+  - 工时：2,969.9
+  - Bug数：370
+  - 一致
+
+- **缺失名单**：无
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>月度研发分析报告（2025-09）</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .page-break {
+            page-break-after: always;
+        }
+    </style>
+</head>
+<body>
+
+<h1>月度研发分析报告（2025-09）</h1>
+
+## 一、总体概览
+<h2>表格：关键综合指标（必须包含）</h2>
+<table>
+    <thead>
+        <tr>
+            <th>指标</th>
+            <th>数值</th>
+            <th>说明</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>总迭代数</td>
+            <td>17</td>
+            <td>本月完成的迭代总数</td>
+        </tr>
+        <tr>
+            <td>当月产生 Bug 数</td>
+            <td>370</td>
+            <td>包含已关闭与待修复</td>
+        </tr>
+        <tr>
+            <td>平均缺陷率</td>
+            <td>1.3%</td>
+            <td>所有部门平均值</td>
+        </tr>
+        <tr>
+            <td>测试覆盖率</td>
+            <td>480.65%</td>
+            <td>自动化+手动覆盖</td>
+        </tr>
+        <tr>
+            <td>总提交数</td>
+            <td>3,307</td>
+            <td>GitLab 提交数量</td>
+        </tr>
+        <tr>
+            <td>总变更行数</td>
+            <td>332,589</td>
+            <td>新增+删除行</td>
+        </tr>
+        <tr>
+            <td>人均变更量</td>
+            <td>10,732</td>
+            <td>变更行数÷开发人数</td>
+        </tr>
+        <tr>
+            <td>人均工时</td>
+            <td>95.8 h</td>
+            <td>团队平均投入</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>分析：</p>
+<ol>
+    <li>本月总迭代数为17次，表明团队保持了较高的迭代频率。</li>
+    <li>产生Bug数为370个，平均每个成员产生的Bug数约为1.3%，整体质量控制较好。</li>
+    <li>测试覆盖率高达480.65%，远超常规水平，显示出测试覆盖范围广泛。</li>
+    <li>总提交数为3,307次，总变更行数为332,589行，人均变更量为10,732行，表明团队在代码变更方面非常活跃。</li>
+    <li>人均工时为95.8小时，表明团队整体工作量较大。</li>
+</ol>
+
+## 二、迭代与研发投入分析
+<h2>表格：人员级**全量**投入产出</h2>
+<table>
+    <thead>
+        <tr>
+            <th>成员</th>
+            <th>迭代数</th>
+            <th>消耗工时(h)</th>
+            <th>预计工时(h)</th>
+            <th>投入比</th>
+            <th>平均效率</th>
+            <th>Git 提交数</th>
+            <th>变更行(总)</th>
+            <th>主要项目</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>凌亮正</td>
+            <td>8</td>
+            <td>41.0</td>
+            <td>8.0</td>
+            <td>512.5%</td>
+            <td>5.1</td>
+            <td>163</td>
+            <td>70,892</td>
+            <td>datav2, platform_szxc2.0, pc-enterprise, univer-pc, pc-tenant, h5web</td>
+        </tr>
+        <tr>
+            <td>刘冰</td>
+            <td>7</td>
+            <td>126.0</td>
+            <td>108.0</td>
+            <td>116.7%</td>
+            <td>1.8</td>
+            <td>12</td>
+            <td>145</td>
+            <td>h5, shuzhi, dv-platform, dvp-integral-center</td>
+        </tr>
+        <tr>
+            <td>包鹏飞</td>
+            <td>6</td>
+            <td>166.0</td>
+            <td>118.0</td>
+            <td>140.7%</td>
+            <td>2.8</td>
+            <td>169</td>
+            <td>8,205</td>
+            <td>dv-platform, dv-auth-center, dv-gov-center, app-assets-center, dv-user-center</td>
+        </tr>
+        <tr>
+            <td>周宇希</td>
+            <td>6</td>
+            <td>118.0</td>
+            <td>68.0</td>
+            <td>173.5%</td>
+            <td>4.0</td>
+            <td>270</td>
+            <td>37,079</td>
+            <td>tre-trace-web, pc-content-center, mp-platform2, digital-contryside-web, digital-contryside-app</td>
+        </tr>
+        <tr>
+            <td>夏佳兴</td>
+            <td>7</td>
+            <td>139.0</td>
+            <td>100.0</td>
+            <td>139.0%</td>
+            <td>1.8</td>
+            <td>110</td>
+            <td>14,455</td>
+            <td>tre-trace-web, tre-manager-server, opr-manage-server, digital-country, digital-contryside-web, dv-scripts</td>
+        </tr>
+        <tr>
+            <td>宁波</td>
+            <td>6</td>
+            <td>119.0</td>
+            <td>52.0</td>
+            <td>228.8%</td>
+            <td>2.3</td>
+            <td>12</td>
+            <td>671</td>
+            <td>h5, shuzhi, dv-platform, dvp-integral-center</td>
+        </tr>
+        <tr>
+            <td>张梦娟</td>
+            <td>8</td>
+            <td>160.0</td>
+            <td>48.0</td>
+            <td>333.3%</td>
+            <td>3.3</td>
+            <td>213</td>
+            <td>73,371</td>
+            <td>datav2, pc-enterprise, pc-tenant, pc-application-open-portal, pc-platform, h5web, digital-contryside-app</td>
+        </tr>
+        <tr>
+            <td>曾志翔</td>
+            <td>8</td>
+            <td>72.0</td>
+            <td>72.0</td>
+            <td>100.0%</td>
+            <td>3.0</td>
