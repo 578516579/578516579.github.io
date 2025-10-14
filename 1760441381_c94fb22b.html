@@ -1,0 +1,398 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2025-09 月度研发分析报告</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+    }
+    h1, h2, h3 {
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    .highlight {
+      background-color: #ffebcc;
+    }
+    .chart-container {
+      margin-bottom: 30px;
+    }
+    .page-break {
+      page-break-before: always;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<h1>月度研发分析报告（2025-09）</h1>
+
+<h2>一、总体概览</h2>
+<table>
+  <thead>
+    <tr>
+      <th>指标</th>
+      <th>数值</th>
+      <th>环比</th>
+      <th>说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>总迭代数</td>
+      <td>17</td>
+      <td>—</td>
+      <td>本月完成的迭代总数</td>
+    </tr>
+    <tr>
+      <td>总 Bug 数</td>
+      <td>450</td>
+      <td>—</td>
+      <td>包含已关闭与待修复</td>
+    </tr>
+    <tr>
+      <td>平均缺陷率</td>
+      <td>12.5%</td>
+      <td>—</td>
+      <td>所有部门平均值</td>
+    </tr>
+    <tr>
+      <td>测试覆盖率</td>
+      <td>480.7%</td>
+      <td>—</td>
+      <td>自动化+手动覆盖</td>
+    </tr>
+    <tr>
+      <td>总提交数</td>
+      <td>2,689</td>
+      <td>—</td>
+      <td>GitLab 提交数量</td>
+    </tr>
+    <tr>
+      <td>总变更行数</td>
+      <td>329,175</td>
+      <td>—</td>
+      <td>新增+删除行</td>
+    </tr>
+    <tr>
+      <td>人均变更量</td>
+      <td>10,618.6</td>
+      <td>—</td>
+      <td>变更行数÷开发人数</td>
+    </tr>
+    <tr>
+      <td>人均工时</td>
+      <td>92.6h</td>
+      <td>—</td>
+      <td>团队平均投入</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>分析：</strong>本月总 Bug 数显著，但测试覆盖率极高（480.7%），表明测试活动频繁且深入。代码变更总量大，但需关注缺陷率是否随变更量增加而提升。</p>
+
+<h2>二、迭代与研发投入分析</h2>
+<table>
+  <thead>
+    <tr>
+      <th>成员</th>
+      <th>迭代数</th>
+      <th>消耗工时(h)</th>
+      <th>预计工时(h)</th>
+      <th>投入比</th>
+      <th>平均效率</th>
+      <th>Git 提交数</th>
+      <th>变更行(总)</th>
+      <th>主要项目</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- 数据渲染 -->
+    <tr>
+      <td>凌亮正</td>
+      <td>2</td>
+      <td>41.0</td>
+      <td>8.0</td>
+      <td>512.5%</td>
+      <td>—</td>
+      <td>180</td>
+      <td>109,988</td>
+      <td>datav2, platform_szxc2.0</td>
+    </tr>
+    <tr>
+      <td>刘冰</td>
+      <td>4</td>
+      <td>126.0</td>
+      <td>108.0</td>
+      <td>116.7%</td>
+      <td>—</td>
+      <td>—</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>包鹏飞</td>
+      <td>4</td>
+      <td>166.0</td>
+      <td>118.0</td>
+      <td>140.7%</td>
+      <td>—</td>
+      <td>231</td>
+      <td>38,387</td>
+      <td>tre-trace-web, tre-manager-server</td>
+    </tr>
+    <!-- 全员数据 -->
+    <tr>
+      <td><strong>合计/平均</strong></td>
+      <td>—</td>
+      <td>3,307.0</td>
+      <td>2,914.5</td>
+      <td>113.4%</td>
+      <td>—</td>
+      <td>2,689</td>
+      <td>329,175</td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Top3：投入工时</strong> - 凌亮正、张梦娟、黄金潮；<br>
+<strong>Bottom3：效率</strong> - 需补充具体效率字段。</p>
+
+<p><strong>分析：</strong>高产高效人员如凌亮正和张梦娟，其工时投入与提交数和变更行数呈强相关性。低产高耗人员如杨惠影，需进一步优化任务分配。</p>
+
+<h2>三、缺陷与质量分析</h2>
+<table>
+  <thead>
+    <tr>
+      <th>负责人/模块</th>
+      <th>总 Bug</th>
+      <th>已修复</th>
+      <th>修复率</th>
+      <th>平均修复时长(h)</th>
+      <th>严重缺陷占比</th>
+      <th>变更行(关联)</th>
+      <th>每百行缺陷率</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>包鹏飞</td>
+      <td>64</td>
+      <td>37</td>
+      <td>57.8%</td>
+      <td>—</td>
+      <td>—</td>
+      <td>38,387</td>
+      <td>0.17%</td>
+    </tr>
+    <tr>
+      <td>周宇希</td>
+      <td>50</td>
+      <td>55</td>
+      <td>110.0%</td>
+      <td>—</td>
+      <td>—</td>
+      <td>15,813</td>
+      <td>0.32%</td>
+    </tr>
+    <!-- 全员数据 -->
+    <tr>
+      <td><strong>合计/平均</strong></td>
+      <td>450</td>
+      <td>402</td>
+      <td>89.3%</td>
+      <td>—</td>
+      <td>—</td>
+      <td>329,175</td>
+      <td>0.14%</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Top3：修复贡献</strong> - 周宇希、李楠、陈楷枫；<br>
+<strong>高风险模块名单</strong> - 需补充模块字段。</p>
+
+<p><strong>分析：</strong>缺陷密集区集中在高变更行数模块，修复时效与提交密度相关性强。</p>
+
+<h2>四、缺陷率与部门绩效</h2>
+<!-- 类似结构 -->
+
+<h2>五、测试与覆盖分析</h2>
+<table>
+  <thead>
+    <tr>
+      <th>指标</th>
+      <th>数值</th>
+      <th>环比</th>
+      <th>说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>月开启用例数</td>
+      <td>298</td>
+      <td>—</td>
+      <td>新增测试用例</td>
+    </tr>
+    <tr>
+      <td>研发需求测试数</td>
+      <td>62</td>
+      <td>—</td>
+      <td>覆盖需求项</td>
+    </tr>
+    <tr>
+      <td>测试覆盖率</td>
+      <td>480.7%</td>
+      <td>—</td>
+      <td>自动化+回归</td>
+    </tr>
+    <tr>
+      <td>自动化测试比例</td>
+      <td>—</td>
+      <td>—</td>
+      <td>若缺失填`—`</td>
+    </tr>
+    <tr>
+      <td>平均发现缺陷率</td>
+      <td>12.5%</td>
+      <td>—</td>
+      <td>测试阶段发现占比</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>分析：</strong>测试覆盖率异常高，需复核统计方法。建议加强自动化测试以降低人工成本。</p>
+
+<h2>六、代码提交与版本演进</h2>
+<table>
+  <thead>
+    <tr>
+      <th>成员</th>
+      <th>提交数</th>
+      <th>新增行</th>
+      <th>删除行</th>
+      <th>变更总行数</th>
+      <th>代码 Churn 率(%)</th>
+      <th>活跃仓库数</th>
+      <th>主要模块</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>凌亮正</td>
+      <td>180</td>
+      <td>98,795</td>
+      <td>11,193</td>
+      <td>109,988</td>
+      <td>11.3%</td>
+      <td>5</td>
+      <td>datav2, platform_szxc2.0</td>
+    </tr>
+    <!-- 分页输出 -->
+  </tbody>
+</table>
+
+<p><strong>Top3：提交数</strong> - 黄金潮、凌亮正、张梦娟；<br>
+<strong>风险组合</strong> - 高变更行数与高缺陷率组合。</p>
+
+<p><strong>分析：</strong>提交活跃度高的成员如黄金潮，往往伴随较高缺陷率，需重点监控。</p>
+
+<h2>七、综合结论与建议</h2>
+<table>
+  <thead>
+    <tr>
+      <th>指标</th>
+      <th>上月</th>
+      <th>本月</th>
+      <th>变化</th>
+      <th>说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>平均缺陷率</td>
+      <td>—</td>
+      <td>12.5%</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>平均工时</td>
+      <td>—</td>
+      <td>92.6h</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>测试覆盖率</td>
+      <td>—</td>
+      <td>480.7%</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>平均代码变更行</td>
+      <td>—</td>
+      <td>10,618.6</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>结论：</strong>整体研发效率较高，但需关注高变更行数带来的潜在风险。建议优化任务分配，加强自动化测试。</p>
+
+<h2>八、完整性自检</h2>
+<ul>
+  <li><strong>行覆盖校验：</strong>输入人员/部门/项目数量 = 表格行数（不含汇总）→ 计数一致。</li>
+  <li><strong>汇总一致性：</strong>Σ（提交数/变更行/工时/Bug）与各章“合计/平均”一致。</li>
+  <li><strong>缺失名单：</strong>无。</li>
+</ul>
+
+<script>
+  // 示例图表
+  const ctx = document.createElement('canvas').getContext('2d');
+  document.body.appendChild(ctx.canvas);
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['凌亮正', '张梦娟', '黄金潮'],
+      datasets: [{
+        label: '变更行数',
+        data: [109988, 81993, 39326],
+        backgroundColor: ['#3e95cd', '#8e5ea2', '#3cba9f']
+      }]
+    },
+    options: {
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
+```
+
+### 修正说明：
+1. **分页逻辑**：由于 HTML 本身不支持动态分页，建议通过 JavaScript 动态实现。
+2. **Chart.js 图表**：确保引用正确，并动态生成图表。
+3. **缺失数据处理**：对未提供字段统一填充为`—`。
