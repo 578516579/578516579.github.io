@@ -1,0 +1,279 @@
+以下是根据您的要求生成的完整 HTML 报告代码，已修正可能存在的运行时错误，并使用 Chart.js 和 Bootstrap 实现了交互式图表和响应式设计。报告结构清晰、内容直观，适合不同背景的读者阅读。
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>月度研发分析报告（2025-09）</title>
+    <!-- 引入Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 引入Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: right;
+        }
+        th {
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .highlight {
+            background-color: #ffebcc;
+        }
+        .analysis {
+            margin-top: 10px;
+        }
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>月度研发分析报告（2025-09）</h1>
+
+    <!-- 导航栏 -->
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">报告导航</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#summary">执行摘要</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#key-metrics">关键指标</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#iteration-analysis">迭代与投入分析</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#defect-analysis">缺陷与质量分析</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#department-performance">部门绩效</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testing-analysis">测试与覆盖分析</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#code-submission">代码提交与版本演进</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 执行摘要 -->
+    <section id="summary">
+        <h2>执行摘要</h2>
+        <p>本月团队在迭代和代码提交上表现活跃，但缺陷率略高于预期。测试覆盖率异常高，需排查统计方法是否合理。人均工时和人均变更行数较高，可能与任务复杂度相关。</p>
+        <p>高产高效个体包括凌亮正和刘冰，低产高耗个体如张梦娟需优化资源配置。缺陷密集区集中在包鹏飞和周宇希负责的模块。研发一部优于研发二部，需进一步提升。</p>
+    </section>
+
+    <!-- 关键指标 -->
+    <section id="key-metrics">
+        <h2>关键指标</h2>
+        <canvas id="keyMetricsChart"></canvas>
+        <script>
+            const keyMetricsCtx = document.getElementById('keyMetricsChart').getContext('2d');
+            const keyMetricsChart = new Chart(keyMetricsCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['总迭代数', '当月产生 Bug 数', '平均缺陷率', '测试覆盖率', '总提交数', '总变更行数', '人均变更量'],
+                    datasets: [{
+                        label: '数值',
+                        data: [17, 403, 0.5, 488.5, 3810, 456285, 14717.9],
+                        backgroundColor: ['#36a2eb', '#ff6384', '#ffcd56', '#4bc0c0', '#9966ff', '#ff9f40', '#c9cbcf']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: { display: true, text: '关键综合指标' },
+                        tooltip: { enabled: true }
+                    },
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+        </script>
+    </section>
+
+    <!-- 迭代与投入分析 -->
+    <section id="iteration-analysis">
+        <h2>迭代与研发投入分析</h2>
+        <canvas id="iterationAnalysisChart"></canvas>
+        <script>
+            const iterationCtx = document.getElementById('iterationAnalysisChart').getContext('2d');
+            const iterationChart = new Chart(iterationCtx, {
+                type: 'line',
+                data: {
+                    labels: ['凌亮正', '刘冰', '合计/平均'],
+                    datasets: [{
+                        label: '消耗工时 (h)',
+                        data: [41.0, 126.0, 2826.0],
+                        borderColor: '#36a2eb',
+                        fill: false
+                    }, {
+                        label: '预计工时 (h)',
+                        data: [8.0, 108.0, 2278.5],
+                        borderColor: '#ff6384',
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: { display: true, text: '人员级全量投入产出' },
+                        tooltip: { enabled: true }
+                    },
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+        </script>
+    </section>
+
+    <!-- 缺陷与质量分析 -->
+    <section id="defect-analysis">
+        <h2>缺陷与质量分析</h2>
+        <canvas id="defectAnalysisChart"></canvas>
+        <script>
+            const defectCtx = document.getElementById('defectAnalysisChart').getContext('2d');
+            const defectChart = new Chart(defectCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['包鹏飞', '周宇希', '合计/平均'],
+                    datasets: [{
+                        label: 'Bug 数',
+                        data: [66, 50, 403],
+                        backgroundColor: ['#ff6384', '#36a2eb', '#ffcd56']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: { display: true, text: '人员/模块缺陷分布' },
+                        tooltip: { enabled: true }
+                    }
+                }
+            });
+        </script>
+    </section>
+
+    <!-- 部门绩效 -->
+    <section id="department-performance">
+        <h2>部门绩效</h2>
+        <canvas id="departmentPerformanceChart"></canvas>
+        <script>
+            const departmentCtx = document.getElementById('departmentPerformanceChart').getContext('2d');
+            const departmentChart = new Chart(departmentCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['研发一部', '研发二部', '平均值'],
+                    datasets: [{
+                        label: 'Bug 率 (%)',
+                        data: [0.6, 1.2, 0.9],
+                        backgroundColor: ['#36a2eb', '#ff6384', '#ffcd56']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: { display: true, text: '部门横向对比' },
+                        tooltip: { enabled: true }
+                    },
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+        </script>
+    </section>
+
+    <!-- 测试与覆盖分析 -->
+    <section id="testing-analysis">
+        <h2>测试与覆盖分析</h2>
+        <canvas id="testingAnalysisChart"></canvas>
+        <script>
+            const testingCtx = document.getElementById('testingAnalysisChart').getContext('2d');
+            const testingChart = new Chart(testingCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['月开启用例数', '研发需求测试数', '测试覆盖率'],
+                    datasets: [{
+                        label: '数值',
+                        data: [298, 61, 488.5],
+                        backgroundColor: ['#36a2eb', '#ff6384', '#ffcd56']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: { display: true, text: '测试指标' },
+                        tooltip: { enabled: true }
+                    }
+                }
+            });
+        </script>
+    </section>
+
+    <!-- 代码提交与版本演进 -->
+    <section id="code-submission">
+        <h2>代码提交与版本演进</h2>
+        <canvas id="codeSubmissionChart"></canvas>
+        <script>
+            const codeCtx = document.getElementById('codeSubmissionChart').getContext('2d');
+            const codeChart = new Chart(codeCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['曾志翔', '朱叶贤', '合计/平均'],
+                    datasets: [{
+                        label: '提交数',
+                        data: [219, 166, 3810],
+                        backgroundColor: ['#36a2eb', '#ff6384', '#ffcd56']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: { display: true, text: 'GitLab 人员级统计' },
+                        tooltip: { enabled: true }
+                    },
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+        </script>
+    </section>
+</div>
+
+<!-- 引入Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+```
+
+### 主要改进点：
+1. **交互式图表**：使用 Chart.js 创建折线图、柱状图、饼图等，增强数据可视化效果。
+2. **响应式设计**：引入 Bootstrap 框架，确保页面在不同设备上显示良好。
+3. **导航系统**：添加顶部导航栏，方便用户快速跳转到各章节。
+4. **代码注释**：为每个部分添加详细注释，便于后续维护。
+
+您可以直接将此代码保存为 `.html` 文件并在浏览器中打开，验证其运行效果。
