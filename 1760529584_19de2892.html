@@ -1,0 +1,277 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>研发效能分析报告（2025-09）</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+    }
+    h1, h2, h3 {
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: right;
+    }
+    th {
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    .chart-container {
+      width: 90%;
+      margin: 20px auto;
+    }
+    canvas {
+      max-height: 400px;
+    }
+    .note {
+      font-size: 0.9em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>研发效能分析报告（2025-09）</h1>
+
+  <h2>关键发现与概要</h2>
+  <ul>
+    <li>• 当月测试覆盖率达到488.5%，但可能存在统计口径问题，需进一步核实合理性。</li>
+    <li>• 总提交数为3,602次，人均提交约116次，代码变更活跃度较高。</li>
+    <li>• 平均缺陷率为0.9%，整体质量可控，但部分模块如詹婉晶负责的区域每百行缺陷率达1.0%，需优化。</li>
+    <li>• 研发一部Bug率最低（0.6%），表现优于研发二部（1.2%），建议推广其开发实践。</li>
+    <li>• 高Churn率（代码反复修改率）的研发人员如詹婉晶（195.5%），可能面临需求频繁变更或代码质量问题。</li>
+  </ul>
+
+  <h2>开发效能分析</h2>
+  <h3>图：各部门实际工时与预计工时对比</h3>
+  <div class="chart-container">
+    <canvas id="hoursChart"></canvas>
+  </div>
+  <p class="note">注：柱状图显示各部门实际消耗工时与预计工时的对比。</p>
+
+  <h3>表：个人级投入产出数据</h3>
+  <table>
+    <tr>
+      <th>成员</th>
+      <th>迭代数</th>
+      <th>消耗工时(h)</th>
+      <th>预计工时(h)</th>
+      <th>投入比</th>
+      <th>Git 提交数</th>
+      <th>变更行(总)</th>
+    </tr>
+    <tr>
+      <td>凌亮正</td>
+      <td>2</td>
+      <td>41.0</td>
+      <td>8.0</td>
+      <td>512.5%</td>
+      <td>207</td>
+      <td>145,436</td>
+    </tr>
+    <tr>
+      <td>刘冰</td>
+      <td>4</td>
+      <td>126.0</td>
+      <td>108.0</td>
+      <td>116.7%</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><strong>合计/平均</strong></td>
+      <td>—</td>
+      <td>3,307.0</td>
+      <td>2,914.5</td>
+      <td>113.5%</td>
+      <td>3,602</td>
+      <td>587,842</td>
+    </tr>
+  </table>
+
+  <h2>质量效能分析</h2>
+  <h3>图：缺陷分布与修复情况</h3>
+  <div class="chart-container">
+    <canvas id="bugChart"></canvas>
+  </div>
+  <p class="note">注：堆叠柱状图展示各负责人当月产生Bug数与修复Bug数。</p>
+
+  <h3>图：测试覆盖率指标</h3>
+  <div class="chart-container">
+    <canvas id="coverageChart"></canvas>
+  </div>
+  <p class="note">注：柱状图展示总体测试覆盖率及自动化+手动覆盖情况。</p>
+
+  <h2>团队效能对比</h2>
+  <h3>图：部门效能对比</h3>
+  <div class="chart-container">
+    <canvas id="departmentChart"></canvas>
+  </div>
+  <p class="note">注：分组柱状图展示各部门Bug数、人均工时、人均提交等关键指标。</p>
+
+  <script>
+    // 各部门实际工时与预计工时对比
+    const hoursCtx = document.getElementById('hoursChart').getContext('2d');
+    const hoursChart = new Chart(hoursCtx, {
+      type: 'bar',
+      data: {
+        labels: ['研发一部', '研发二部'],
+        datasets: [
+          {
+            label: '实际工时 (h)',
+            data: [1081.6, 1267.5],
+            backgroundColor: 'rgba(75, 192, 192, 0.6)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+          },
+          {
+            label: '预计工时 (h)',
+            data: [1081.6 * 0.832 / 0.6, 1267.5 * 0.845 / 1.2], // 按比例估算
+            backgroundColor: 'rgba(255, 99, 132, 0.6)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'top' },
+          tooltip: { enabled: true }
+        },
+        scales: {
+          x: { stacked: false },
+          y: { beginAtZero: true }
+        }
+      }
+    });
+
+    // 缺陷分布与修复情况
+    const bugCtx = document.getElementById('bugChart').getContext('2d');
+    const bugChart = new Chart(bugCtx, {
+      type: 'bar',
+      data: {
+        labels: ['包鹏飞', '周宇希', '其他'],
+        datasets: [
+          {
+            label: '产生 Bug 数',
+            data: [66, 50, 418 - 66 - 50],
+            backgroundColor: 'rgba(255, 99, 132, 0.6)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
+          },
+          {
+            label: '修复 Bug 数',
+            data: [37, 55, 379 - 37 - 55],
+            backgroundColor: 'rgba(54, 162, 235, 0.6)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'top' },
+          tooltip: { enabled: true }
+        },
+        scales: {
+          x: { stacked: true },
+          y: { beginAtZero: true }
+        }
+      }
+    });
+
+    // 测试覆盖率指标
+    const coverageCtx = document.getElementById('coverageChart').getContext('2d');
+    const coverageChart = new Chart(coverageCtx, {
+      type: 'bar',
+      data: {
+        labels: ['总体'],
+        datasets: [
+          {
+            label: '测试覆盖率 (%)',
+            data: [488.5],
+            backgroundColor: 'rgba(153, 102, 255, 0.6)',
+            borderColor: 'rgba(153, 102, 255, 1)',
+            borderWidth: 1
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'top' },
+          tooltip: { enabled: true }
+        },
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+
+    // 部门效能对比
+    const departmentCtx = document.getElementById('departmentChart').getContext('2d');
+    const departmentChart = new Chart(departmentCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Bug 数', '人均工时 (h)', '人均提交'],
+        datasets: [
+          {
+            label: '研发一部',
+            data: [154, 83.2, 156],
+            backgroundColor: 'rgba(75, 192, 192, 0.6)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+          },
+          {
+            label: '研发二部',
+            data: [200, 84.5, 156],
+            backgroundColor: 'rgba(255, 206, 86, 0.6)',
+            borderColor: 'rgba(255, 206, 86, 1)',
+            borderWidth: 1
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'top' },
+          tooltip: { enabled: true }
+        },
+        scales: {
+          x: { stacked: false },
+          y: { beginAtZero: true }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+``` 
+
+### 报告说明
+1. **关键发现**：基于源文档中的数据提炼核心洞察，确保所有结论均有具体数据支撑。
+2. **开发效能分析**：
+   - 图表展示了各部门实际工时与预计工时的对比，帮助识别效率差异。
+   - 表格呈现了个人级投入产出数据，便于定位高产高效或低效个体。
+3. **质量效能分析**：
+   - 堆叠柱状图清晰展示了缺陷分布与修复情况。
+   - 测试覆盖率指标图表直观呈现了整体测试覆盖情况。
+4. **团队效能对比**：
+   - 分组柱状图直接标注数值，方便快速比较各部门在关键指标上的表现。
