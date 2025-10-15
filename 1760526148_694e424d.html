@@ -1,0 +1,208 @@
+以下是一个基于您提供的HTML文档生成的交互式研发效能分析报告。该报告使用Chart.js进行数据可视化，并采用Bootstrap构建响应式布局。
+
+---
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>研发效能分析报告</title>
+  <!-- 引入 Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- 引入 Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+    }
+    .chart-container {
+      width: 100%;
+      margin-bottom: 40px;
+    }
+    .insight {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-left: 5px solid #0d6efd;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center">研发效能分析报告</h1>
+
+    <!-- 关键发现与概要 -->
+    <section>
+      <h2>关键发现与概要</h2>
+      <ul class="insight">
+        <li>本月测试覆盖率高达488.5%，但可能存在统计口径问题，需进一步核实。</li>
+        <li>代码提交活跃度高，总提交数达3,602次，人均提交约116次。</li>
+        <li>缺陷修复率整体较高（90.7%），但部分成员和模块的每百行缺陷率偏高，需关注。</li>
+        <li>团队工时投入超出预计工时（投入比113.5%），建议优化任务分配。</li>
+      </ul>
+    </section>
+
+    <!-- 开发效能分析 -->
+    <section>
+      <h2>开发效能分析</h2>
+      <p>以下是关于迭代完成情况、工时投入与产出效率、代码提交活跃度的分析。</p>
+
+      <!-- 图表：迭代完成情况 -->
+      <div class="chart-container">
+        <canvas id="iterationsChart"></canvas>
+      </div>
+
+      <!-- 图表：工时投入与预计对比 -->
+      <div class="chart-container">
+        <canvas id="effortChart"></canvas>
+      </div>
+
+      <!-- 图表：代码提交活跃度 -->
+      <div class="chart-container">
+        <canvas id="commitsChart"></canvas>
+      </div>
+    </section>
+
+    <!-- 质量效能分析 -->
+    <section>
+      <h2>质量效能分析</h2>
+      <p>以下是关于缺陷分布、修复情况以及测试覆盖度的分析。</p>
+
+      <!-- 图表：缺陷分布 -->
+      <div class="chart-container">
+        <canvas id="bugsChart"></canvas>
+      </div>
+
+      <!-- 图表：测试覆盖率 -->
+      <div class="chart-container">
+        <canvas id="coverageChart"></canvas>
+      </div>
+    </section>
+
+    <!-- 团队效能对比 -->
+    <section>
+      <h2>团队效能对比</h2>
+      <p>以下是各部门和个人的效能指标对比。</p>
+
+      <!-- 图表：部门效能对比 -->
+      <div class="chart-container">
+        <canvas id="teamPerformanceChart"></canvas>
+      </div>
+
+      <!-- 图表：个人效能排名 -->
+      <div class="chart-container">
+        <canvas id="individualPerformanceChart"></canvas>
+      </div>
+    </section>
+
+    <!-- 改进建议 -->
+    <section>
+      <h2>改进建议</h2>
+      <ul class="insight">
+        <li>针对高Churn率（如詹婉晶）的代码，加强代码审查和重构。</li>
+        <li>优化任务分配，减少低产高耗人员（如张梦娟）的工作负担。</li>
+        <li>对高频缺陷模块（如周宇希负责的模块）实施更严格的测试覆盖。</li>
+        <li>推动自动化测试以提升长期效率，降低手工测试占比。</li>
+      </ul>
+    </section>
+  </div>
+
+  <script>
+    // 数据提取与图表初始化
+    document.addEventListener("DOMContentLoaded", function () {
+      const iterationsData = [17]; // 总迭代数
+      const effortData = [3307, 2914.5]; // 实际 vs 预计工时
+      const commitsData = [207, 449, 240, 243]; // 提交数Top4
+      const bugsData = [418, 379]; // 当月产生 vs 修复Bug数
+      const coverageData = [488.5]; // 测试覆盖率
+      const teamPerformanceData = [0.6, 1.2]; // 各部门平均Bug率
+      const individualPerformanceData = [449, 240, 243]; // 提交数Top3
+
+      // 图表1：迭代完成情况
+      new Chart(document.getElementById("iterationsChart"), {
+        type: "bar",
+        data: {
+          labels: ["总迭代数"],
+          datasets: [{ label: "迭代数", data: iterationsData, backgroundColor: "#0d6efd" }],
+        },
+        options: { responsive: true, plugins: { legend: { display: false } } },
+      });
+
+      // 图表2：工时投入与预计对比
+      new Chart(document.getElementById("effortChart"), {
+        type: "bar",
+        data: {
+          labels: ["实际工时", "预计工时"],
+          datasets: [{ label: "工时(h)", data: effortData, backgroundColor: ["#198754", "#dc3545"] }],
+        },
+        options: { responsive: true },
+      });
+
+      // 图表3：代码提交活跃度
+      new Chart(document.getElementById("commitsChart"), {
+        type: "pie",
+        data: {
+          labels: ["凌亮正", "黄金潮", "詹婉晶", "曾志翔"],
+          datasets: [{ data: commitsData, backgroundColor: ["#0d6efd", "#198754", "#ffc107", "#dc3545"] }],
+        },
+        options: { responsive: true },
+      });
+
+      // 图表4：缺陷分布
+      new Chart(document.getElementById("bugsChart"), {
+        type: "line",
+        data: {
+          labels: ["当月产生Bug数", "当月修复Bug数"],
+          datasets: [{ label: "Bug数", data: bugsData, borderColor: "#0d6efd", fill: false }],
+        },
+        options: { responsive: true },
+      });
+
+      // 图表5：测试覆盖率
+      new Chart(document.getElementById("coverageChart"), {
+        type: "doughnut",
+        data: {
+          labels: ["测试覆盖率"],
+          datasets: [{ data: coverageData, backgroundColor: ["#0d6efd"] }],
+        },
+        options: { responsive: true },
+      });
+
+      // 图表6：部门效能对比
+      new Chart(document.getElementById("teamPerformanceChart"), {
+        type: "radar",
+        data: {
+          labels: ["研发一部", "研发二部"],
+          datasets: [{ label: "平均Bug率(%)", data: teamPerformanceData, backgroundColor: "rgba(13, 110, 253, 0.2)" }],
+        },
+        options: { responsive: true },
+      });
+
+      // 图表7：个人效能排名
+      new Chart(document.getElementById("individualPerformanceChart"), {
+        type: "bar",
+        data: {
+          labels: ["黄金潮", "詹婉晶", "曾志翔"],
+          datasets: [{ label: "提交数", data: individualPerformanceData, backgroundColor: "#0d6efd" }],
+        },
+        options: { responsive: true },
+      });
+    });
+  </script>
+</body>
+</html>
+```
+
+---
+
+### 报告特点：
+1. **交互式图表**：通过Chart.js实现动态数据展示。
+2. **响应式设计**：利用Bootstrap确保在不同设备上良好显示。
+3. **清晰结构**：按模块划分内容，便于阅读与分析。
+4. **数据驱动洞察**：所有结论均基于提取的数据，避免主观臆断。
+
+您可以将此HTML文件保存并在浏览器中打开查看效果！
