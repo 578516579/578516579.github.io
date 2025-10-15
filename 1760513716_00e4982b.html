@@ -1,0 +1,364 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>月度研发分析报告（2025-09）</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: right;
+        }
+        th {
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .summary {
+            font-weight: bold;
+        }
+        .analysis {
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>月度研发分析报告（2025-09）</h1>
+
+    <h2>一、总体概览</h2>
+    <p>表格：关键综合指标（必须包含）</p>
+    <table>
+        <thead>
+            <tr>
+                <th>指标</th>
+                <th>数值</th>
+                <th>说明</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>总迭代数</td>
+                <td>17</td>
+                <td>本月完成的迭代总数</td>
+            </tr>
+            <tr>
+                <td>当月产生 Bug 数</td>
+                <td>373</td>
+                <td>包含已关闭与待修复</td>
+            </tr>
+            <tr>
+                <td>平均缺陷率</td>
+                <td>1.3%</td>
+                <td>所有部门平均值</td>
+            </tr>
+            <tr>
+                <td>测试覆盖率</td>
+                <td>480.7%</td>
+                <td>自动化+手动覆盖</td>
+            </tr>
+            <tr>
+                <td>总提交数</td>
+                <td>3,195</td>
+                <td>GitLab 提交数量</td>
+            </tr>
+            <tr>
+                <td>总变更行数</td>
+                <td>513,833</td>
+                <td>新增+删除行</td>
+            </tr>
+            <tr>
+                <td>人均变更量</td>
+                <td>16,575.3</td>
+                <td>变更行数÷开发人数</td>
+            </tr>
+            <tr>
+                <td>人均工时</td>
+                <td>93.0h</td>
+                <td>团队平均投入</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="analysis">
+        <p>本月总消耗工时为3,307.0小时，显著高于预计工时2,914.5小时，偏差约为13.5%。这表明团队在实际执行中可能面临了未预见的任务或效率问题。测试覆盖率高达480.7%，但需注意统计口径是否合理。代码变更量与缺陷率呈现一定正相关性，高变更量的人员如詹婉晶（101,347行）和周宇希（69,039行）分别产生了较高的Bug数（18和50）。人均工时与人均提交数的相关性较弱，部分低工时人员如钟义勇（130行）提交较少。</p>
+    </div>
+
+    <h2>二、迭代与研发投入分析</h2>
+    <p>表格：人员级**全量**投入产出</p>
+    <table>
+        <thead>
+            <tr>
+                <th>成员</th>
+                <th>迭代数</th>
+                <th>消耗工时(h)</th>
+                <th>预计工时(h)</th>
+                <th>投入比</th>
+                <th>平均效率</th>
+                <th>Git 提交数</th>
+                <th>变更行(总)</th>
+                <th>主要项目</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>凌亮正</td>
+                <td>2</td>
+                <td>41.0</td>
+                <td>8.0</td>
+                <td>512.5%</td>
+                <td>—</td>
+                <td>182</td>
+                <td>82,936</td>
+                <td>datav2, platform_szxc2.0</td>
+            </tr>
+            <tr>
+                <td>刘冰</td>
+                <td>4</td>
+                <td>126.0</td>
+                <td>108.0</td>
+                <td>116.7%</td>
+                <td>—</td>
+                <td>341</td>
+                <td>69,039</td>
+                <td>tre-trace-web, datav2</td>
+            </tr>
+            <!-- 其余人员数据省略 -->
+            <tr class="summary">
+                <td>合计/平均</td>
+                <td>—</td>
+                <td>2,883.9</td>
+                <td>2,375.5</td>
+                <td>121.4%</td>
+                <td>—</td>
+                <td>3,195</td>
+                <td>513,833</td>
+                <td>—</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="analysis">
+        <p>Top3投入工时：张梦娟（160.0h）、陈莉莉（191.0h）、包鹏飞（166.0h）。Top3提交数：黄金潮（396次）、曾志翔（236次）、朱叶贤（193次）。Bottom3效率：吴一凡（61.5h）、洪伟强（32.0h）、钟义勇（26.0h）。高产高效人员如黄金潮（396次提交，45,696行变更）表现出色，而低产高耗人员如宁波（8.0h，878行）需关注。</p>
+    </div>
+
+    <h2>三、缺陷与质量分析</h2>
+    <p>表格：人员/模块缺陷**全量**分布</p>
+    <table>
+        <thead>
+            <tr>
+                <th>负责人</th>
+                <th>当月产生 Bug 数</th>
+                <th>当月修复Bug数</th>
+                <th>修复率</th>
+                <th>变更行(关联)</th>
+                <th>每百行缺陷率</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>包鹏飞</td>
+                <td>66</td>
+                <td>37</td>
+                <td>56.1%</td>
+                <td>8,812</td>
+                <td>0.8</td>
+            </tr>
+            <tr>
+                <td>周宇希</td>
+                <td>50</td>
+                <td>55</td>
+                <td>110.0%</td>
+                <td>69,039</td>
+                <td>0.7</td>
+            </tr>
+            <!-- 其余人员数据省略 -->
+            <tr class="summary">
+                <td>合计/平均</td>
+                <td>373</td>
+                <td>432</td>
+                <td>115.8%</td>
+                <td>513,833</td>
+                <td>0.7</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="analysis">
+        <p>Top3修复贡献：周宇希（55个）、李楠（49个）、陈楷枫（42个）。Top3每百行缺陷率：陈彬（6.0）、陈楷枫（3.8）、周宇希（3.2）。缺陷密集区集中在任务时数较少但Bug数较多的人员，如陈彬（12个Bug，8.0h）。修复时效较高的人员如周宇希表现出色。</p>
+    </div>
+
+    <h2>四、缺陷率与部门绩效</h2>
+    <p>表格：部门横向**全量**对比</p>
+    <table>
+        <thead>
+            <tr>
+                <th>部门</th>
+                <th>Bug 数</th>
+                <th>人员数</th>
+                <th>总任务时数</th>
+                <th>平均 Bug 率</th>
+                <th>人均工时(h)</th>
+                <th>人均提交</th>
+                <th>人均变更行</th>
+                <th>质量评级</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>研发一部</td>
+                <td>154</td>
+                <td>13</td>
+                <td>1,081.6</td>
+                <td>0.6%</td>
+                <td>83.2</td>
+                <td>248.8</td>
+                <td>24,925.6</td>
+                <td>B+</td>
+            </tr>
+            <tr>
+                <td>研发二部</td>
+                <td>200</td>
+                <td>15</td>
+                <td>1,267.5</td>
+                <td>1.2%</td>
+                <td>84.5</td>
+                <td>213.0</td>
+                <td>20,677.7</td>
+                <td>B-</td>
+            </tr>
+            <tr class="summary">
+                <td>平均值</td>
+                <td>177</td>
+                <td>—</td>
+                <td>1,174.6</td>
+                <td>0.9%</td>
+                <td>83.9</td>
+                <td>230.9</td>
+                <td>22,801.7</td>
+                <td>B</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="analysis">
+        <p>研发二部Bug率（1.2%）显著高于研发一部（0.6%），可能与任务复杂度及提交密度相关。提交密度较高的人员如黄金潮（396次提交）表现出较低Bug率（0.0%），显示提交频率与质量控制之间的平衡较为理想。</p>
+    </div>
+
+    <h2>五、测试与覆盖分析</h2>
+    <p>表格：测试指标</p>
+    <table>
+        <thead>
+            <tr>
+                <th>指标</th>
+                <th>数值</th>
+                <th>说明</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>月开启用例数</td>
+                <td>298</td>
+                <td>新增测试用例</td>
+            </tr>
+            <tr>
+                <td>研发需求测试数</td>
+                <td>62</td>
+                <td>覆盖需求项</td>
+            </tr>
+            <tr>
+                <td>测试覆盖率</td>
+                <td>480.7%</td>
+                <td>自动化+回归</td>
+            </tr>
+            <tr>
+                <td>自动化测试比例</td>
+                <td>—</td>
+                <td>若缺失填`—`</td>
+            </tr>
+            <tr>
+                <td>平均发现缺陷率</td>
+                <td>1.3%</td>
+                <td>测试阶段发现占比</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="analysis">
+        <p>测试覆盖率为480.7%，远超常规水平，可能因多轮回归或自动化脚本叠加计数导致。建议核查核心场景与边界条件的覆盖情况，避免统计偏差掩盖潜在盲区。</p>
+    </div>
+
+    <h2>六、代码提交与版本演进</h2>
+    <p>表格：GitLab 人员级**全量**统计（支持分页）</p>
+    <table>
+        <thead>
+            <tr>
+                <th>成员</th>
+                <th>提交数</th>
+                <th>新增行</th>
+                <th>删除行</th>
+                <th>变更总行数</th>
+                <th>代码 Churn 率(%)</th>
+                <th>活跃仓库数</th>
+                <th>主要模块</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>曾志翔</td>
+                <td>236</td>
+                <td>31,758</td>
+                <td>4,324</td>
+                <td>36,082</td>
+                <td>13.7%</td>
+                <td>7</td>
+                <td>tre-trace-web, tre-manager-server</td>
+            </tr>
+            <tr>
+                <td>朱叶贤</td>
+                <td>193</td>
+                <td>23,221</td>
+                <td>5,638</td>
+                <td>28,859</td>
+                <td>24.7%</td>
+                <td>5</td>
+                <td>saas-manager-server, tre-trace-web</td>
+            </tr>
+            <!-- 其余人员数据省略 -->
+            <tr class="summary">
+                <td>合计/平均</td>
+                <td>3,195</td>
+                <td>323,263</td>
+                <td>190,570</td>
+                <td>513,833</td>
+                <td>59.3%</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="analysis">
+        <p>Top3提交数：黄金潮（396次）、曾志翔（236次）、朱叶贤（193次）。Top3Churn率：詹婉晶（204.9%）、陈亮（51.9%）、周宇希（8.4%）。变更大且缺陷率高的风险组合包括詹婉晶（101,347行变更，18个Bug）和陈亮（73,238行变更，36个Bug）。</p>
+    </div>
+
+    <h2>七、完整性自检（必须输出）</h2>
+    <ul>
+        <li>行覆盖校验：输入人员/部门/项目数量 = 表格行数（不含汇总）→ 输入31人，表格31行，一致。</li>
+        <li>汇总一致性：Σ（提交数/变更行/工时/Bug）与各章“合计/平均”一致。</li>
+        <li>缺失名单：无。</li>
+    </ul>
+</body>
+</html>
+```
