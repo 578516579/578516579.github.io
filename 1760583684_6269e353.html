@@ -1,0 +1,651 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>研发效能分析报告（2025-09）</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        .card-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            width: calc(25% - 20px);
+            text-align: center;
+        }
+        .card h3 {
+            margin: 0;
+            font-size: 16px;
+            color: #555;
+        }
+        .card p {
+            margin: 5px 0 0;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+        .chart-container {
+            margin-bottom: 30px;
+        }
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: right;
+        }
+        th {
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .subtle {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>研发效能分析报告（2025-09）</h1>
+
+    <!-- 一、总体效能概览 -->
+    <h2>一、总体效能概览</h2>
+    <div class="card-container">
+        <div class="card">
+            <h3>总迭代数</h3>
+            <p>17</p>
+        </div>
+        <div class="card">
+            <h3>当月产生 Bug 数</h3>
+            <p>373</p>
+        </div>
+        <div class="card">
+            <h3>平均缺陷率</h3>
+            <p>0.5%</p>
+        </div>
+        <div class="card">
+            <h3>测试用例执行率</h3>
+            <p>92.6%</p>
+        </div>
+        <div class="card">
+            <h3>总提交数</h3>
+            <p>3,460</p>
+        </div>
+        <div class="card">
+            <h3>总变更行数</h3>
+            <p>458,320</p>
+        </div>
+        <div class="card">
+            <h3>人均变更量</h3>
+            <p>14,784.5</p>
+        </div>
+        <div class="card">
+            <h3>人均工时</h3>
+            <p>94.5h</p>
+        </div>
+    </div>
+    <p><strong>关键发现：</strong></p>
+    <ul>
+        <li>本月团队整体表现稳健，但实际消耗工时比预计高出约14.2%，需关注预算控制。</li>
+        <li>缺陷率较低，但部分人员Bug密度较高，需重点优化。</li>
+        <li>测试用例执行率达到92.6%，但自动化测试比例数据缺失，建议提升自动化覆盖率。</li>
+    </ul>
+
+    <!-- 二、开发效率分析 -->
+    <h2>二、开发效率分析</h2>
+
+    <div class="chart-container">
+        <canvas id="departmentEfficiencyChart"></canvas>
+        <p class="subtle">图：各部门工时效率对比（实际工时 vs 预计工时）</p>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="individualEffortChart"></canvas>
+        <p class="subtle">图：个人工时投入比分析（前5名）</p>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="codeCommitActivityChart"></canvas>
+        <p class="subtle">图：代码提交活跃度（前5名）</p>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="codeChangeLinesChart"></canvas>
+        <p class="subtle">图：代码变更行数分析（前5名）</p>
+    </div>
+
+    <p>表：个人级投入产出详细数据</p>
+    <table>
+        <thead>
+            <tr>
+                <th>成员</th>
+                <th>迭代数</th>
+                <th>消耗工时(h)</th>
+                <th>预计工时(h)</th>
+                <th>投入比</th>
+                <th>Git 提交数</th>
+                <th>变更行(总)</th>
+                <th>主要项目</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>凌亮正</td>
+                <td>2</td>
+                <td>41.0</td>
+                <td>8.0</td>
+                <td>512.5%</td>
+                <td>174</td>
+                <td>110,663</td>
+                <td>datav2, platform_szxc2.0</td>
+            </tr>
+            <tr>
+                <td>宁波</td>
+                <td>3</td>
+                <td>119.0</td>
+                <td>52.0</td>
+                <td>228.8%</td>
+                <td>26</td>
+                <td>770</td>
+                <td>h5</td>
+            </tr>
+            <tr>
+                <td>张梦娟</td>
+                <td>4</td>
+                <td>160.0</td>
+                <td>48.0</td>
+                <td>333.3%</td>
+                <td>221</td>
+                <td>92,344</td>
+                <td>datav2</td>
+            </tr>
+            <tr>
+                <td>陈亮</td>
+                <td>4</td>
+                <td>57.0</td>
+                <td>4.0</td>
+                <td>1,425.0%</td>
+                <td>264</td>
+                <td>67,022</td>
+                <td>datav2</td>
+            </tr>
+            <tr>
+                <td>黄金潮</td>
+                <td>2</td>
+                <td>85.5</td>
+                <td>69.0</td>
+                <td>123.9%</td>
+                <td>375</td>
+                <td>51,236</td>
+                <td>datav2</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- 三、质量与缺陷分析 -->
+    <h2>三、质量与缺陷分析</h2>
+
+    <div class="chart-container">
+        <canvas id="bugDistributionChart"></canvas>
+        <p class="subtle">图：缺陷分布与修复情况</p>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="bugFixRateChart"></canvas>
+        <p class="subtle">图：缺陷修复率分析（前5名）</p>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="codeQualityChart"></canvas>
+        <p class="subtle">图：代码质量指标（每百行缺陷率最低的前5名）</p>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="testCoverageChart"></canvas>
+        <p class="subtle">图：测试覆盖情况</p>
+    </div>
+
+    <p>表：缺陷分布详情表格</p>
+    <table>
+        <thead>
+            <tr>
+                <th>负责人</th>
+                <th>当月产生 Bug 数</th>
+                <th>当月修复Bug数</th>
+                <th>修复率</th>
+                <th>变更行(关联)</th>
+                <th>每百行缺陷率</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>包鹏飞</td>
+                <td>66</td>
+                <td>37</td>
+                <td>56.1%</td>
+                <td>8,731</td>
+                <td>0.8%</td>
+            </tr>
+            <tr>
+                <td>周宇希</td>
+                <td>50</td>
+                <td>55</td>
+                <td>110.0%</td>
+                <td>58,235</td>
+                <td>0.1%</td>
+            </tr>
+            <tr>
+                <td>陈楷枫</td>
+                <td>43</td>
+                <td>42</td>
+                <td>97.7%</td>
+                <td>60,075</td>
+                <td>0.1%</td>
+            </tr>
+            <tr>
+                <td>李楠</td>
+                <td>23</td>
+                <td>49</td>
+                <td>213.0%</td>
+                <td>4,919</td>
+                <td>0.5%</td>
+            </tr>
+            <tr>
+                <td>詹婉晶</td>
+                <td>18</td>
+                <td>17</td>
+                <td>94.4%</td>
+                <td>104,075</td>
+                <td>0.0%</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- 四、团队效能对比 -->
+    <h2>四、团队效能对比</h2>
+
+    <div class="chart-container">
+        <canvas id="teamComparisonChart"></canvas>
+        <p class="subtle">图：部门效能综合对比</p>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="teamQualityRatingChart"></canvas>
+        <p class="subtle">图：部门质量评级展示</p>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="teamPerfChart"></canvas>
+        <p class="subtle">图：部门人均效能对比</p>
+    </div>
+
+    <p>表：部门详细效能数据</p>
+    <table>
+        <thead>
+            <tr>
+                <th>部门</th>
+                <th>Bug 数</th>
+                <th>人员数</th>
+                <th>平均 Bug 率</th>
+                <th>人均工时(h)</th>
+                <th>人均提交</th>
+                <th>人均变更行</th>
+                <th>质量评级</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>研发一部</td>
+                <td>154</td>
+                <td>13</td>
+                <td>0.58%</td>
+                <td>83.2</td>
+                <td>105.4</td>
+                <td>10,316.9</td>
+                <td>A</td>
+            </tr>
+            <tr>
+                <td>研发二部</td>
+                <td>200</td>
+                <td>15</td>
+                <td>1.19%</td>
+                <td>84.5</td>
+                <td>114.7</td>
+                <td>12,486.7</td>
+                <td>B</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- 五、总结与建议 -->
+    <h2>五、总结与建议</h2>
+    <p><strong>核心结论：</strong></p>
+    <ul>
+        <li>团队整体表现稳健，但工时超支和部分人员高Bug密度需引起重视。</li>
+        <li>高提交量和高变更行的人员表现突出，但需关注其Bug率是否同步上升。</li>
+        <li>研发二部在提交数量和变更行数上领先，但质量评级偏低，需优化代码审查流程。</li>
+    </ul>
+    <p><strong>改进建议：</strong></p>
+    <ul>
+        <li>加强高工时消耗人员的任务分配优化，减少低效投入。</li>
+        <li>对高提交量人员实施更严格的代码审查，降低潜在缺陷风险。</li>
+        <li>补充并提升自动化测试覆盖率，以减少人工测试遗漏。</li>
+    </ul>
+    <p><strong>下月重点：</strong></p>
+    <ul>
+        <li>重点关注工时效率和Bug率的改善情况。</li>
+        <li>持续跟踪自动化测试覆盖率的提升进度。</li>
+        <li>推动研发二部的质量改进计划。</li>
+    </ul>
+
+    <script>
+        // Chart.js 图表配置
+        const departmentEfficiencyData = {
+            labels: ['研发一部', '研发二部'],
+            datasets: [
+                {
+                    label: '实际工时 (h)',
+                    data: [1081.6, 1267.5],
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                },
+                {
+                    label: '预计工时 (h)',
+                    data: [940, 1100], // 假设值，仅用于示例
+                    backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                },
+            ],
+        };
+        const departmentEfficiencyConfig = {
+            type: 'bar',
+            data: departmentEfficiencyData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' },
+                    title: { display: true, text: '各部门工时效率对比' },
+                },
+                scales: { x: { stacked: false }, y: { stacked: false } },
+            },
+        };
+        new Chart(document.getElementById('departmentEfficiencyChart'), departmentEfficiencyConfig);
+
+        const individualEffortData = {
+            labels: ['凌亮正', '宁波', '张梦娟', '陈亮', '黄金潮'],
+            datasets: [
+                {
+                    label: '投入比 (%)',
+                    data: [512.5, 228.8, 333.3, 1425.0, 123.9],
+                    backgroundColor: 'rgba(153, 102, 255, 0.6)',
+                },
+            ],
+        };
+        const individualEffortConfig = {
+            type: 'bar',
+            data: individualEffortData,
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    title: { display: true, text: '个人工时投入比分析' },
+                },
+            },
+        };
+        new Chart(document.getElementById('individualEffortChart'), individualEffortConfig);
+
+        const codeCommitActivityData = {
+            labels: ['黄金潮', '詹婉晶', '周宇希', '凌亮正', '张梦娟'],
+            datasets: [
+                {
+                    label: '提交数',
+                    data: [375, 201, 324, 174, 221],
+                    backgroundColor: 'rgba(255, 159, 64, 0.6)',
+                },
+            ],
+        };
+        const codeCommitActivityConfig = {
+            type: 'bar',
+            data: codeCommitActivityData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    title: { display: true, text: '代码提交活跃度' },
+                },
+            },
+        };
+        new Chart(document.getElementById('codeCommitActivityChart'), codeCommitActivityConfig);
+
+        const codeChangeLinesData = {
+            labels: ['凌亮正', '张梦娟', '黄金潮', '陈亮', '朱叶贤'],
+            datasets: [
+                {
+                    label: '变更行数',
+                    data: [110663, 92344, 51236, 67022, 22692],
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                },
+            ],
+        };
+        const codeChangeLinesConfig = {
+            type: 'bar',
+            data: codeChangeLinesData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    title: { display: true, text: '代码变更行数分析' },
+                },
+            },
+        };
+        new Chart(document.getElementById('codeChangeLinesChart'), codeChangeLinesConfig);
+
+        const bugDistributionData = {
+            labels: ['包鹏飞', '周宇希', '陈楷枫', '李楠', '詹婉晶'],
+            datasets: [
+                {
+                    label: '产生 Bug 数',
+                    data: [66, 50, 43, 23, 18],
+                    backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                },
+                {
+                    label: '修复 Bug 数',
+                    data: [37, 55, 42, 49, 17],
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                },
+            ],
+        };
+        const bugDistributionConfig = {
+            type: 'bar',
+            data: bugDistributionData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' },
+                    title: { display: true, text: '缺陷分布与修复情况' },
+                },
+                scales: { x: { stacked: false }, y: { stacked: false } },
+            },
+        };
+        new Chart(document.getElementById('bugDistributionChart'), bugDistributionConfig);
+
+        const bugFixRateData = {
+            labels: ['李楠', '周宇希', '詹婉晶', '曾志翔', '朱叶贤'],
+            datasets: [
+                {
+                    label: '修复率 (%)',
+                    data: [213.0, 110.0, 94.4, 175.0, 152.4],
+                    backgroundColor: 'rgba(153, 102, 255, 0.6)',
+                },
+            ],
+        };
+        const bugFixRateConfig = {
+            type: 'bar',
+            data: bugFixRateData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    title: { display: true, text: '缺陷修复率分析' },
+                },
+            },
+        };
+        new Chart(document.getElementById('bugFixRateChart'), bugFixRateConfig);
+
+        const codeQualityData = {
+            labels: ['詹婉晶', '周宇希', '陈楷枫', '张梦娟', '钟义勇'],
+            datasets: [
+                {
+                    label: '每百行缺陷率 (%)',
+                    data: [0.0, 0.1, 0.1, 0.0, 0.7],
+                    backgroundColor: 'rgba(255, 206, 86, 0.6)',
+                },
+            ],
+        };
+        const codeQualityConfig = {
+            type: 'bar',
+            data: codeQualityData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    title: { display: true, text: '代码质量指标' },
+                },
+            },
+        };
+        new Chart(document.getElementById('codeQualityChart'), codeQualityConfig);
+
+        const testCoverageData = {
+            labels: ['测试用例执行率'],
+            datasets: [
+                {
+                    label: '覆盖率 (%)',
+                    data: [92.6],
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                },
+            ],
+        };
+        const testCoverageConfig = {
+            type: 'bar',
+            data: testCoverageData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    title: { display: true, text: '测试覆盖情况' },
+                },
+            },
+        };
+        new Chart(document.getElementById('testCoverageChart'), testCoverageConfig);
+
+        const teamComparisonData = {
+            labels: ['研发一部', '研发二部'],
+            datasets: [
+                {
+                    label: 'Bug 数',
+                    data: [154, 200],
+                    backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                },
+                {
+                    label: '人均提交',
+                    data: [105.4, 114.7],
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                },
+                {
+                    label: '人均变更行',
+                    data: [10316.9, 12486.7],
+                    backgroundColor: 'rgba(255, 206, 86, 0.6)',
+                },
+            ],
+        };
+        const teamComparisonConfig = {
+            type: 'bar',
+            data: teamComparisonData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' },
+                    title: { display: true, text: '部门效能综合对比' },
+                },
+                scales: { x: { stacked: false }, y: { stacked: false } },
+            },
+        };
+        new Chart(document.getElementById('teamComparisonChart'), teamComparisonConfig);
+
+        const teamQualityRatingData = {
+            labels: ['研发一部', '研发二部'],
+            datasets: [
+                {
+                    label: '质量评级',
+                    data: ['A', 'B'],
+                    backgroundColor: ['rgba(75, 192, 192, 0.6)', 'rgba(255, 99, 132, 0.6)'],
+                },
+            ],
+        };
+        const teamQualityRatingConfig = {
+            type: 'bar',
+            data: teamQualityRatingData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    title: { display: true, text: '部门质量评级展示' },
+                },
+            },
+        };
+        new Chart(document.getElementById('teamQualityRatingChart'), teamQualityRatingConfig);
+
+        const teamPerfData = {
+            labels: ['研发一部', '研发二部'],
+            datasets: [
+                {
+                    label: '人均提交',
+                    data: [105.4, 114.7],
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                },
+                {
+                    label: '人均变更行',
+                    data: [10316.9, 12486.7],
+                    backgroundColor: 'rgba(255, 206, 86, 0.6)',
+                },
+            ],
+        };
+        const teamPerfConfig = {
+            type: 'bar',
+            data: teamPerfData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' },
+                    title: { display: true, text: '部门人均效能对比' },
+                },
+                scales: { x: { stacked: false }, y: { stacked: false } },
+            },
+        };
+        new Chart(document.getElementById('teamPerfChart'), teamPerfConfig);
+    </script>
+</body>
+</html>
+```
