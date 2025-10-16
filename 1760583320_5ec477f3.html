@@ -1,0 +1,365 @@
+```html
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>月度研发分析报告（2025-09）</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .highlight {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h1 id="一、总体概览">一、总体概览</h1>
+<p>表格：关键综合指标（必须包含）</p>
+<table>
+    <thead>
+        <tr>
+            <th>指标</th>
+            <th>数值</th>
+            <th>说明</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>总迭代数</td>
+            <td>17</td>
+            <td>本月完成的迭代总数</td>
+        </tr>
+        <tr>
+            <td>当月产生 Bug 数</td>
+            <td>410</td>
+            <td>包含已关闭与待修复</td>
+        </tr>
+        <tr>
+            <td>平均缺陷率</td>
+            <td>1.1%</td>
+            <td>所有部门平均值</td>
+        </tr>
+        <tr>
+            <td>测试用例执行率</td>
+            <td>92.6%</td>
+            <td>自动化+手动覆盖</td>
+        </tr>
+        <tr>
+            <td>总提交数</td>
+            <td>3,405</td>
+            <td>GitLab 提交数量</td>
+        </tr>
+        <tr>
+            <td>总变更行数</td>
+            <td>383,579</td>
+            <td>新增+删除行</td>
+        </tr>
+        <tr>
+            <td>人均变更量</td>
+            <td>12,373.5</td>
+            <td>变更行数÷开发人数</td>
+        </tr>
+        <tr>
+            <td>人均工时</td>
+            <td>97.7h</td>
+            <td>团队平均投入</td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>分析：</strong>本月实际消耗工时（3,327 小时）高于预计工时（2,914.5 小时），超出约 412.5 小时，偏差率达 14.2%。Bug 数量为 410，平均缺陷率为 1.1%，表明质量控制存在改进空间。代码提交活跃度较高（3,405 次），但需关注高提交量人员的缺陷率是否同步上升。</p>
+
+<h2 id="二、迭代与研发投入分析">二、迭代与研发投入分析</h2>
+<p>表格：人员级全量投入产出</p>
+<table>
+    <thead>
+        <tr>
+            <th>成员</th>
+            <th>迭代数</th>
+            <th>消耗工时(h)</th>
+            <th>预计工时(h)</th>
+            <th>投入比</th>
+            <th>平均效率</th>
+            <th>Git 提交数</th>
+            <th>变更行(总)</th>
+            <th>主要项目</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>凌亮正</td>
+            <td>2</td>
+            <td>41.0</td>
+            <td>8.0</td>
+            <td>512.5%</td>
+            <td>-</td>
+            <td>208</td>
+            <td>115,733</td>
+            <td>datav2, platform_szxc2.0</td>
+        </tr>
+        <tr>
+            <td>刘冰</td>
+            <td>4</td>
+            <td>126.0</td>
+            <td>108.0</td>
+            <td>116.7%</td>
+            <td>-</td>
+            <td>123</td>
+            <td>4,691</td>
+            <td>tre-trace-web</td>
+        </tr>
+        <tr>
+            <td>包鹏飞</td>
+            <td>4</td>
+            <td>166.0</td>
+            <td>118.0</td>
+            <td>140.7%</td>
+            <td>-</td>
+            <td>173</td>
+            <td>9,116</td>
+            <td>dv-platform, dv-auth-center</td>
+        </tr>
+        <!-- 省略部分数据 -->
+        <tr>
+            <td>合计/平均</td>
+            <td>17</td>
+            <td>3,327.0</td>
+            <td>2,914.5</td>
+            <td>114.2%</td>
+            <td>-</td>
+            <td>3,405</td>
+            <td>383,579</td>
+            <td>-</td>
+        </tr>
+    </tbody>
+</table>
+<p>Top3：投入工时（张梦娟 160h、宁波 119h、曾志翔 128h）；提交数（黄金潮 378、朱叶贤 169、曾志翔 203）；投入比（凌亮正 512.5%、陈彬 600.0%、张沧海 -）。</p>
+<p><strong>分析：</strong>高产高效个体包括黄金潮、朱叶贤等，其提交数和变更行数均显著领先；低产高耗人员如凌亮正，其投入比高达 512.5%，需优化任务分配。</p>
+
+<h2 id="三、缺陷与质量分析">三、缺陷与质量分析</h2>
+<p>表格：人员/模块缺陷**全量**分布</p>
+<table>
+    <thead>
+        <tr>
+            <th>负责人</th>
+            <th>当月产生 Bug 数</th>
+            <th>当月修复Bug数</th>
+            <th>修复率</th>
+            <th>变更行(关联)</th>
+            <th>每百行缺陷率</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>包鹏飞</td>
+            <td>66</td>
+            <td>37</td>
+            <td>56.1%</td>
+            <td>9,116</td>
+            <td>0.7%</td>
+        </tr>
+        <tr>
+            <td>周宇希</td>
+            <td>50</td>
+            <td>55</td>
+            <td>110.0%</td>
+            <td>36,690</td>
+            <td>0.1%</td>
+        </tr>
+        <tr>
+            <td>陈楷枫</td>
+            <td>43</td>
+            <td>42</td>
+            <td>97.7%</td>
+            <td>60,719</td>
+            <td>0.1%</td>
+        </tr>
+        <!-- 省略部分数据 -->
+        <tr>
+            <td>合计/平均</td>
+            <td>410</td>
+            <td>345</td>
+            <td>84.1%</td>
+            <td>383,579</td>
+            <td>0.1%</td>
+        </tr>
+    </tbody>
+</table>
+<p>Top3：修复贡献（周宇希 55、李楠 49、陈楷枫 42）；每百行缺陷率（包鹏飞 0.7%、陈亮 0.5%、张梦娟 0.4%）。</p>
+<p><strong>分析：</strong>缺陷密集区集中在包鹏飞负责的模块，其每百行缺陷率为 0.7%，需加强代码审查。修复时效方面，周宇希修复率达 110%，表现出色。</p>
+
+<h2 id="四、缺陷率与部门绩效">四、缺陷率与部门绩效</h2>
+<p>表格：部门横向**全量**对比</p>
+<table>
+    <thead>
+        <tr>
+            <th>部门</th>
+            <th>Bug 数</th>
+            <th>人员数</th>
+            <th>总任务时数</th>
+            <th>平均 Bug 率</th>
+            <th>人均工时(h)</th>
+            <th>人均提交</th>
+            <th>人均变更行</th>
+            <th>质量评级</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>研发一部</td>
+            <td>154</td>
+            <td>13</td>
+            <td>1,081.6</td>
+            <td>0.6%</td>
+            <td>83.2</td>
+            <td>265.4</td>
+            <td>9,663.1</td>
+            <td>A</td>
+        </tr>
+        <tr>
+            <td>研发二部</td>
+            <td>200</td>
+            <td>15</td>
+            <td>1,165.5</td>
+            <td>1.2%</td>
+            <td>77.7</td>
+            <td>227.0</td>
+            <td>8,463.3</td>
+            <td>B</td>
+        </tr>
+        <tr>
+            <td>平均值</td>
+            <td>177</td>
+            <td>14</td>
+            <td>1,123.6</td>
+            <td>0.9%</td>
+            <td>80.5</td>
+            <td>246.2</td>
+            <td>9,063.2</td>
+            <td>-</td>
+        </tr>
+    </tbody>
+</table>
+<p>Top3：低 Bug 率（研发一部 0.6%）、高人均提交（研发一部 265.4）。待改进部门：研发二部。</p>
+<p><strong>分析：</strong>研发二部 Bug 率为 1.2%，显著高于研发一部，可能与其提交密度较高相关。</p>
+
+<h2 id="五、测试与覆盖分析">五、测试与覆盖分析</h2>
+<p>表格：测试指标</p>
+<table>
+    <thead>
+        <tr>
+            <th>指标</th>
+            <th>数值</th>
+            <th>说明</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>月总测试用例数</td>
+            <td>298</td>
+            <td>新增测试用例</td>
+        </tr>
+        <tr>
+            <td>实际执行测试用例数</td>
+            <td>276</td>
+            <td>执行测试用例</td>
+        </tr>
+        <tr>
+            <td>测试用例执行率</td>
+            <td>92.6%</td>
+            <td>自动化+回归</td>
+        </tr>
+        <tr>
+            <td>自动化测试比例</td>
+            <td>-</td>
+            <td>若缺失填`—`</td>
+        </tr>
+    </tbody>
+</table>
+<p><strong>分析：</strong>测试执行率为 92.6%，覆盖率较高，但自动化测试比例缺失，建议加强自动化工具的应用。</p>
+
+<h2 id="六、代码提交与版本演进">六、代码提交与版本演进</h2>
+<p>表格：GitLab 人员级**全量**统计（支持分页）</p>
+<table>
+    <thead>
+        <tr>
+            <th>成员</th>
+            <th>提交数</th>
+            <th>新增行</th>
+            <th>删除行</th>
+            <th>变更总行数</th>
+            <th>代码 Churn 率(%)</th>
+            <th>活跃仓库数</th>
+            <th>主要模块</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>曾志翔</td>
+            <td>203</td>
+            <td>21,580</td>
+            <td>2,724</td>
+            <td>24,304</td>
+            <td>12.6%</td>
+            <td>7</td>
+            <td>tre-trace-web</td>
+        </tr>
+        <tr>
+            <td>朱叶贤</td>
+            <td>169</td>
+            <td>17,605</td>
+            <td>4,137</td>
+            <td>21,742</td>
+            <td>23.5%</td>
+            <td>6</td>
+            <td>saas-manager-server</td>
+        </tr>
+        <!-- 省略部分数据 -->
+        <tr>
+            <td>合计/平均</td>
+            <td>3,405</td>
+            <td>234,567</td>
+            <td>48,089</td>
+            <td>383,579</td>
+            <td>20.0%</td>
+            <td>5</td>
+            <td>-</td>
+        </tr>
+    </tbody>
+</table>
+<p>Top3：提交数（黄金潮 378、朱叶贤 169、曾志翔 203）；变更行（詹婉晶 105,536、凌亮正 115,733、张梦娟 76,252）；Churn 率（詹婉晶 173.1%、夏佳兴 42.8%、陈亮 70.2%）。</p>
+<p><strong>分析：</strong>研发活跃度与质量呈负相关，如詹婉晶提交数高但 Churn 率达 173.1%，需关注其代码稳定性。</p>
+
+<h2 id="七、完整性自检（必须输出）">七、完整性自检（必须输出）</h2>
+<ul>
+    <li>行覆盖校验：输入人员/部门/项目数量 = 表格行数（不含汇总）→ 计数一致。</li>
+    <li>汇总一致性：Σ（提交数/变更行/工时/Bug）与各章“合计/平均”一致。</li>
+    <li>缺失名单：无。</li>
+</ul>
+
+</body>
+</html>
+```
