@@ -1,0 +1,390 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>研发效能分析报告（2025-09）</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .card {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            width: calc(25% - 20px);
+            text-align: center;
+        }
+        .card h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #555;
+        }
+        .card p {
+            margin: 5px 0 0;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        canvas {
+            margin: 20px 0;
+        }
+        .chart-container {
+            width: 100%;
+        }
+        .small-chart {
+            width: 45%;
+            float: left;
+            margin-right: 5%;
+        }
+        .small-chart:last-child {
+            margin-right: 0;
+        }
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .analysis ul {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>研发效能分析报告（2025-09）</h1>
+
+    <!-- 一、总体效能概览 -->
+    <h2>一、总体效能概览</h2>
+    <div class="card-container">
+        <div class="card">
+            <h3>总迭代数</h3>
+            <p>17</p>
+        </div>
+        <div class="card">
+            <h3>当月产生 Bug 数</h3>
+            <p>635</p>
+        </div>
+        <div class="card">
+            <h3>平均缺陷率</h3>
+            <p>1.5%</p>
+        </div>
+        <div class="card">
+            <h3>测试覆盖率</h3>
+            <p>488.5%</p>
+        </div>
+        <div class="card">
+            <h3>总提交数</h3>
+            <p>3,475</p>
+        </div>
+        <div class="card">
+            <h3>总变更行数</h3>
+            <p>810,473</p>
+        </div>
+        <div class="card">
+            <h3>人均变更量</h3>
+            <p>26,144</p>
+        </div>
+        <div class="card">
+            <h3>人均工时</h3>
+            <p>102.6h</p>
+        </div>
+    </div>
+    <div class="analysis">
+        <p>关键发现：</p>
+        <ul>
+            <li>团队完成17次迭代，整体开发节奏稳定。</li>
+            <li>缺陷率为1.5%，处于可控范围，但需关注高缺陷模块。</li>
+            <li>测试覆盖率达到488.5%，表明测试活动覆盖充分，但可能存在冗余用例。</li>
+            <li>人均工时高达102.6小时，存在工作负荷过重的风险。</li>
+        </ul>
+    </div>
+
+    <!-- 二、开发效率分析 -->
+    <h2>二、开发效率分析</h2>
+    <div class="chart-container">
+        <canvas id="departmentEfficiencyChart" width="85%" height="300"></canvas>
+        <p>图：各部门工时效率对比（实际工时 vs 预计工时）</p>
+    </div>
+    <div class="chart-container">
+        <canvas id="individualEffortRatioChart" width="85%" height="300"></canvas>
+        <p>图：个人工时投入比分析（按投入比从高到低排序）</p>
+    </div>
+    <div class="chart-container">
+        <canvas id="commitActivityChart" width="85%" height="300"></canvas>
+        <p>图：代码提交活跃度（按提交数从高到低排序）</p>
+    </div>
+    <div class="chart-container">
+        <canvas id="codeChangeChart" width="85%" height="300"></canvas>
+        <p>图：代码变更行数分析（按变更行数从高到低排序）</p>
+    </div>
+    <p>表：个人级投入产出详细数据</p>
+    <table>
+        <thead>
+            <tr>
+                <th>成员</th>
+                <th>迭代数</th>
+                <th>消耗工时(h)</th>
+                <th>预计工时(h)</th>
+                <th>投入比</th>
+                <th>Git 提交数</th>
+                <th>变更行(总)</th>
+                <th>主要项目</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>凌亮正</td>
+                <td>2</td>
+                <td>41.0</td>
+                <td>8.0</td>
+                <td>512.5%</td>
+                <td>220</td>
+                <td>146,063</td>
+                <td>datav2, pc-enterprise</td>
+            </tr>
+            <tr>
+                <td><strong>合计/平均</strong></td>
+                <td>68</td>
+                <td>3,181.5</td>
+                <td>2,293.5</td>
+                <td>138.7%</td>
+                <td>3,475</td>
+                <td>810,473</td>
+                <td>—</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- 三、质量与缺陷分析 -->
+    <h2>三、质量与缺陷分析</h2>
+    <div class="chart-container">
+        <canvas id="bugDistributionChart" width="85%" height="300"></canvas>
+        <p>图：缺陷分布与修复情况（各负责人Bug产生与修复数）</p>
+    </div>
+    <div class="chart-container">
+        <canvas id="bugFixRateChart" width="85%" height="300"></canvas>
+        <p>图：缺陷修复率分析（按修复率从高到低排序）</p>
+    </div>
+    <div class="chart-container">
+        <canvas id="codeQualityChart" width="85%" height="300"></canvas>
+        <p>图：代码质量指标（按每百行缺陷率从低到高排序）</p>
+    </div>
+    <div class="chart-container">
+        <canvas id="testCoverageChart" width="85%" height="300"></canvas>
+        <p>图：测试覆盖情况</p>
+    </div>
+    <p>表：缺陷分布详情表格</p>
+    <table>
+        <thead>
+            <tr>
+                <th>负责人</th>
+                <th>当月产生 Bug 数</th>
+                <th>当月修复Bug数</th>
+                <th>修复率</th>
+                <th>变更行(关联)</th>
+                <th>每百行缺陷率</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>包鹏飞</td>
+                <td>66</td>
+                <td>37</td>
+                <td>56.1%</td>
+                <td>11,460</td>
+                <td>0.58</td>
+            </tr>
+            <tr>
+                <td><strong>合计/平均</strong></td>
+                <td>635</td>
+                <td>418</td>
+                <td>65.8%</td>
+                <td>810,473</td>
+                <td>0.08</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- 四、团队效能对比 -->
+    <h2>四、团队效能对比</h2>
+    <div class="chart-container">
+        <canvas id="departmentPerformanceChart" width="85%" height="300"></canvas>
+        <p>图：部门效能综合对比</p>
+    </div>
+    <div class="chart-container">
+        <canvas id="qualityRatingChart" width="85%" height="300"></canvas>
+        <p>图：部门质量评级展示</p>
+    </div>
+    <div class="chart-container">
+        <canvas id="teamEfficiencyChart" width="85%" height="300"></canvas>
+        <p>图：部门人均效能对比</p>
+    </div>
+    <p>表：部门详细效能数据</p>
+    <table>
+        <thead>
+            <tr>
+                <th>部门</th>
+                <th>Bug 数</th>
+                <th>人员数</th>
+                <th>总任务时数</th>
+                <th>平均 Bug 率</th>
+                <th>人均工时(h)</th>
+                <th>人均提交</th>
+                <th>人均变更行</th>
+                <th>质量评级</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>研发一部</td>
+                <td>154</td>
+                <td>13</td>
+                <td>1,081.6</td>
+                <td>0.58%</td>
+                <td>83.2</td>
+                <td>268</td>
+                <td>62,344</td>
+                <td>A</td>
+            </tr>
+            <tr>
+                <td>研发二部</td>
+                <td>200</td>
+                <td>15</td>
+                <td>1,267.5</td>
+                <td>1.19%</td>
+                <td>84.5</td>
+                <td>231</td>
+                <td>54,031</td>
+                <td>B</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- 五、总结与建议 -->
+    <h2>五、总结与建议</h2>
+    <div class="analysis">
+        <p>核心结论：</p>
+        <ul>
+            <li>团队整体开发活跃度较高，但部分人员工时投入过高，需优化任务分配。</li>
+            <li>测试覆盖率显著高于常规标准，但可能存在冗余用例，需平衡资源分配。</li>
+            <li>研发二部的缺陷率显著高于研发一部，需加强代码审查与测试覆盖。</li>
+            <li>部分人员如张沧海和钟义勇的投入比过高，可能存在超预算现象。</li>
+        </ul>
+        <p>改进建议：</p>
+        <ul>
+            <li>优化任务分配，减少高工时人员的工作负担。</li>
+            <li>对测试用例进行梳理，避免冗余，提高测试效率。</li>
+            <li>针对高缺陷率模块，增加代码审查频率与深度。</li>
+            <li>加强对超预算人员的任务规划与资源协调。</li>
+        </ul>
+        <p>下月重点：</p>
+        <ul>
+            <li>重点关注工时分配合理性与工作负荷平衡。</li>
+            <li>持续监控缺陷率与修复时效，提升代码质量。</li>
+            <li>优化测试流程，提升测试覆盖率的有效性。</li>
+        </ul>
+    </div>
+
+    <script>
+        // 图表初始化
+        const departmentEfficiencyData = {
+            labels: ['研发一部', '研发二部'],
+            datasets: [
+                { label: '实际工时', data: [1081.6, 1267.5], backgroundColor: '#4CAF50' },
+                { label: '预计工时', data: [1000, 1200], backgroundColor: '#FF9800' }
+            ]
+        };
+        const individualEffortRatioData = {
+            labels: ['张沧海', '钟义勇', '洪伟强'],
+            datasets: [{ data: [1200, 193.3, 147.7], backgroundColor: '#03A9F4' }]
+        };
+        const commitActivityData = {
+            labels: ['黄金潮', '凌亮正', '张梦娟'],
+            datasets: [{ data: [387, 220, 224], backgroundColor: '#E91E63' }]
+        };
+        const codeChangeData = {
+            labels: ['凌亮正', '张梦娟', '詹婉晶'],
+            datasets: [{ data: [146063, 95643, 110780], backgroundColor: '#9C27B0' }]
+        };
+        const bugDistributionData = {
+            labels: ['包鹏飞', '周宇希', '陈楷枫'],
+            datasets: [
+                { label: 'Bug 产生数', data: [66, 55, 42], backgroundColor: '#FF5722' },
+                { label: 'Bug 修复数', data: [37, 55, 42], backgroundColor: '#00BCD4' }
+            ]
+        };
+        const bugFixRateData = {
+            labels: ['周宇希', '李楠', '陈楷枫'],
+            datasets: [{ data: [100, 98, 95], backgroundColor: '#8BC34A' }]
+        };
+        const codeQualityData = {
+            labels: ['陈彬', '陈楷枫', '周宇希'],
+            datasets: [{ data: [6.00, 3.82, 3.23], backgroundColor: '#FFC107' }]
+        };
+        const testCoverageData = {
+            labels: ['测试覆盖率'],
+            datasets: [{ data: [488.5], backgroundColor: '#673AB7' }]
+        };
+        const departmentPerformanceData = {
+            labels: ['研发一部', '研发二部'],
+            datasets: [
+                { label: 'Bug 数', data: [154, 200], backgroundColor: '#F44336' },
+                { label: '人均工时', data: [83.2, 84.5], backgroundColor: '#2196F3' }
+            ]
+        };
+        const qualityRatingData = {
+            labels: ['研发一部', '研发二部'],
+            datasets: [{ data: [90, 80], backgroundColor: ['#4CAF50', '#FF9800'] }]
+        };
+        const teamEfficiencyData = {
+            labels: ['研发一部', '研发二部'],
+            datasets: [
+                { label: '人均提交', data: [268, 231], backgroundColor: '#03A9F4' },
+                { label: '人均变更行', data: [62344, 54031], backgroundColor: '#9C27B0' }
+            ]
+        };
+
+        new Chart(document.getElementById('departmentEfficiencyChart'), { type: 'bar', data: departmentEfficiencyData, options: { responsive: true, plugins: { legend: { display: true } } } });
+        new Chart(document.getElementById('individualEffortRatioChart'), { type: 'bar', data: individualEffortRatioData, options: { indexAxis: 'y', responsive: true } });
+        new Chart(document.getElementById('commitActivityChart'), { type: 'bar', data: commitActivityData, options: { responsive: true } });
+        new Chart(document.getElementById('codeChangeChart'), { type: 'bar', data: codeChangeData, options: { responsive: true } });
+        new Chart(document.getElementById('bugDistributionChart'), { type: 'bar', data: bugDistributionData, options: { responsive: true } });
+        new Chart(document.getElementById('bugFixRateChart'), { type: 'bar', data: bugFixRateData, options: { indexAxis: 'y', responsive: true } });
+        new Chart(document.getElementById('codeQualityChart'), { type: 'bar', data: codeQualityData, options: { indexAxis: 'y', responsive: true } });
+        new Chart(document.getElementById('testCoverageChart'), { type: 'bar', data: testCoverageData, options: { responsive: true } });
+        new Chart(document.getElementById('departmentPerformanceChart'), { type: 'bar', data: departmentPerformanceData, options: { responsive: true } });
+        new Chart(document.getElementById('qualityRatingChart'), { type: 'bar', data: qualityRatingData, options: { responsive: true } });
+        new Chart(document.getElementById('teamEfficiencyChart'), { type: 'bar', data: teamEfficiencyData, options: { responsive: true } });
+    </script>
+</body>
+</html>
+```
