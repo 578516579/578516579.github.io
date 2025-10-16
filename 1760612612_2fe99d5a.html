@@ -1,0 +1,364 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>月度研发效能分析报告（2025-09）</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: "Microsoft YaHei", sans-serif; margin: 40px; background: #f9f9f9; }
+        h1, h2 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 8px; }
+        .grid-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 40px; }
+        .card { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); text-align: center; }
+        .card.blue { background: #3498db; color: white; }
+        .card.green { background: #2ecc71; color: white; }
+        .card.orange { background: #e67e22; color: white; }
+        .card.red { background: #e74c3c; color: white; }
+        .card .value { font-size: 24px; font-weight: bold; margin: 5px 0; }
+        .chart-container { margin-bottom: 30px; }
+        .chart-container canvas { max-width: 100%; height: auto; }
+        .chart-description { font-size: 14px; color: #555; margin-top: 5px; text-align: center; }
+    </style>
+</head>
+<body>
+
+<h1>月度研发效能分析报告（2025-09）</h1>
+
+<!-- 一、总体效能概览 -->
+<h2>一、总体效能概览</h2>
+<div class="grid-container">
+    <div class="card blue">
+        <div class="label">总迭代数</div>
+        <div class="value">17</div>
+        <div class="description">本月完成的迭代总数</div>
+    </div>
+    <div class="card green">
+        <div class="label">当月产生 Bug 数</div>
+        <div class="value">390</div>
+        <div class="description">包含已关闭与待修复</div>
+    </div>
+    <div class="card orange">
+        <div class="label">平均缺陷率</div>
+        <div class="value">0.9%</div>
+        <div class="description">所有部门平均值</div>
+    </div>
+    <div class="card red">
+        <div class="label">测试用例执行率</div>
+        <div class="value">92.6%</div>
+        <div class="description">自动化+手动覆盖</div>
+    </div>
+    <div class="card blue">
+        <div class="label">总提交数</div>
+        <div class="value">4,583</div>
+        <div class="description">GitLab 提交数量</div>
+    </div>
+    <div class="card green">
+        <div class="label">总变更行数</div>
+        <div class="value">1,009,339</div>
+        <div class="description">新增+删除行</div>
+    </div>
+    <div class="card orange">
+        <div class="label">人均变更量</div>
+        <div class="value">32,559.3</div>
+        <div class="description">变更行数÷开发人数</div>
+    </div>
+    <div class="card red">
+        <div class="label">人均工时</div>
+        <div class="value">89.9h</div>
+        <div class="description">团队平均投入</div>
+    </div>
+</div>
+
+<!-- 二、开发效率分析 -->
+<h2>二、开发效率分析</h2>
+
+<div class="chart-container">
+    <canvas id="teamEfficiencyChart"></canvas>
+    <div class="chart-description">图：各部门工时效率对比</div>
+</div>
+
+<div class="chart-container">
+    <canvas id="individualEffortRatioChart"></canvas>
+    <div class="chart-description">图：个人工时投入比分析（按投入比从高到小排序）</div>
+</div>
+
+<div class="chart-container">
+    <canvas id="commitVsChangeChart"></canvas>
+    <div class="chart-description">图：代码提交与变更关系（标注离群点）</div>
+</div>
+
+<div class="chart-container">
+    <canvas id="codeOutputDistributionChart"></canvas>
+    <div class="chart-description">图：代码产出分布（按变更行数从大到小排序）</div>
+</div>
+
+<div class="chart-container">
+    <canvas id="effortNormalDistributionChart"></canvas>
+    <div class="chart-description">图：工时投入正态分布分析（标注异常值）</div>
+</div>
+
+<!-- 三、质量与缺陷分析 -->
+<h2>三、质量与缺陷分析</h2>
+
+<div class="chart-container">
+    <canvas id="bugDistributionChart"></canvas>
+    <div class="chart-description">图：缺陷分布与修复情况</div>
+</div>
+
+<div class="chart-container">
+    <canvas id="bugFixRateChart"></canvas>
+    <div class="chart-description">图：缺陷修复率分析（按修复率从高到低排序）</div>
+</div>
+
+<div class="chart-container">
+    <canvas id="bugStatusDistributionChart"></canvas>
+    <div class="chart-description">图：缺陷状态分布</div>
+</div>
+
+<div class="chart-container">
+    <canvas id="codeQualityVsBugsChart"></canvas>
+    <div class="chart-description">图：代码质量与缺陷关系（标注离群点）</div>
+</div>
+
+<div class="chart-container">
+    <canvas id="testCoverageChart"></canvas>
+    <div class="chart-description">图：测试覆盖情况</div>
+</div>
+
+<div class="chart-container">
+    <canvas id="bugDensityNormalDistributionChart"></canvas>
+    <div class="chart-description">图：缺陷密度正态分布分析（标注异常值）</div>
+</div>
+
+<!-- 四、团队效能对比 -->
+<h2>四、团队效能对比</h2>
+
+<div class="chart-container">
+    <canvas id="departmentEfficiencyComparisonChart"></canvas>
+    <div class="chart-description">图：部门效能综合对比</div>
+</div>
+
+<div class="chart-container">
+    <canvas id="departmentRadarChart"></canvas>
+    <div class="chart-description">图：部门人均效能对比</div>
+</div>
+
+<!-- 五、总结与建议 -->
+<h2>五、总结与建议</h2>
+<div class="analysis">
+    <p><strong>核心结论：</strong></p>
+    <ol>
+        <li>高工时投入直接驱动代码产出，但部分成员（如陈亮、张梦娟）存在显著的Churn率问题，需优化任务分配。</li>
+        <li>缺陷密集区集中在宁波和包鹏飞，建议对缺陷率>0.5/百行者启动根因分析，并将相关模块纳入质量攻坚专项。</li>
+        <li>研发二部Bug率（1.21%）显著高于研发一部（0.58%），且新人高复杂度任务导致“低产出高缺陷”，建议实施导师制并降低新人模块复杂度。</li>
+        <li>测试执行率92.6%属行业高位，但自动化比例缺失可能导致回归成本攀升，建议Q4重点建设UI/API自动化框架。</li>
+    </ol>
+    <p><strong>改进建议：</strong></p>
+    <ul>
+        <li>针对高Churn率（>50%）模块强制代码评审，并限制单日删除行阈值。</li>
+        <li>对缺陷率>0.5/百行者启动根因分析，优化质量流程。</li>
+        <li>研发二部实施导师制，逐步提升新人复杂度任务处理能力。</li>
+        <li>建立自动化测试框架，目标自动化率≥40%，并引入用例有效性评估机制。</li>
+    </ul>
+</div>
+
+<script>
+    // 二、开发效率分析 - 各部门工时效率对比
+    const teamEfficiencyCtx = document.getElementById('teamEfficiencyChart').getContext('2d');
+    new Chart(teamEfficiencyCtx, {
+        type: 'bar',
+        data: {
+            labels: ['研发一部', '研发二部'],
+            datasets: [
+                { label: '总任务时数(h)', data: [1081.6, 1267.5], backgroundColor: '#3498db' },
+                { label: '人均工时(h)', data: [83.2, 84.5], backgroundColor: '#2ecc71' }
+            ]
+        },
+        options: { responsive: true, plugins: { legend: { position: 'top' } } }
+    });
+
+    // 个人工时投入比分析
+    const individualEffortRatioCtx = document.getElementById('individualEffortRatioChart').getContext('2d');
+    const effortData = [
+        { name: '陈亮', ratio: 1425 }, { name: '张梦娟', ratio: 333.3 }, { name: '宁波', ratio: 228.8 },
+        { name: '陈彬', ratio: 228 }, { name: '曾志翔', ratio: 183.3 }, { name: '周宇希', ratio: 173.5 },
+        { name: '夏佳兴', ratio: 139 }, { name: '包鹏飞', ratio: 140.7 }, { name: '李楠', ratio: 145.5 },
+        { name: '詹婉晶', ratio: 95.1 }, { name: '杨惠影', ratio: 88.3 }, { name: '陈跃', ratio: 87.8 }
+    ].sort((a, b) => b.ratio - a.ratio);
+    new Chart(individualEffortRatioCtx, {
+        type: 'bar',
+        data: {
+            labels: effortData.map(d => d.name),
+            datasets: [{ label: '投入比(%)', data: effortData.map(d => d.ratio), backgroundColor: '#e67e22' }]
+        },
+        options: { indexAxis: 'y', responsive: true, plugins: { legend: { display: false } } }
+    });
+
+    // 代码提交与变更关系
+    const commitVsChangeCtx = document.getElementById('commitVsChangeChart').getContext('2d');
+    const commitData = [
+        { name: '黄金潮', commits: 337, changes: 38034 }, { name: '周宇希', commits: 330, changes: 66684 },
+        { name: '庞林', commits: 265, changes: 14530 }, { name: '凌亮正', commits: 220, changes: 130118 },
+        { name: '张梦娟', commits: 234, changes: 93915 }, { name: '詹婉晶', commits: 230, changes: 107498 }
+    ];
+    new Chart(commitVsChangeCtx, {
+        type: 'scatter',
+        data: {
+            datasets: [{
+                label: '提交与变更关系',
+                data: commitData.map(d => ({ x: d.commits, y: d.changes })),
+                backgroundColor: '#e74c3c'
+            }]
+        },
+        options: { scales: { x: { title: { display: true, text: '提交数' } }, y: { title: { display: true, text: '变更行数' } } } }
+    });
+
+    // 代码产出分布
+    const codeOutputDistributionCtx = document.getElementById('codeOutputDistributionChart').getContext('2d');
+    const outputData = [
+        { name: '凌亮正', changes: 130118 }, { name: '张梦娟', changes: 93915 }, { name: '詹婉晶', changes: 107498 },
+        { name: '周宇希', changes: 66684 }, { name: '黄金潮', changes: 38034 }, { name: '庞林', changes: 14530 }
+    ].sort((a, b) => b.changes - a.changes);
+    new Chart(codeOutputDistributionCtx, {
+        type: 'pie',
+        data: {
+            labels: outputData.map(d => d.name),
+            datasets: [{ data: outputData.map(d => d.changes), backgroundColor: ['#3498db', '#2ecc71', '#e67e22', '#e74c3c', '#9b59b6', '#34495e'] }]
+        }
+    });
+
+    // 工时投入正态分布分析
+    const effortNormalDistributionCtx = document.getElementById('effortNormalDistributionChart').getContext('2d');
+    const effortNormalData = [41, 126, 166, 61.5, 118, 139, 119, 72, 160, 128, 88, 108, 192, 114.3, 80, 116.5, 32, 199, 115.1, 39, 48, 11.1, 57, 57, 149, 191, 122, 85.5, 59, 112, 8];
+    new Chart(effortNormalDistributionCtx, {
+        type: 'line',
+        data: {
+            labels: Array.from({ length: 31 }, (_, i) => i + 1),
+            datasets: [
+                { label: '工时分布', data: effortNormalData, borderColor: '#3498db', fill: false },
+                { label: '正态分布曲线', data: Array(31).fill(89.9), borderColor: '#e67e22', fill: false }
+            ]
+        },
+        options: { scales: { x: { title: { display: true, text: '人员编号' } }, y: { title: { display: true, text: '工时(h)' } } } }
+    });
+
+    // 三、质量与缺陷分析 - 缺陷分布与修复情况
+    const bugDistributionCtx = document.getElementById('bugDistributionChart').getContext('2d');
+    const bugData = [
+        { name: '包鹏飞', bugs: 69, fixes: 37 }, { name: '周宇希', bugs: 50, fixes: 55 },
+        { name: '陈楷枫', bugs: 43, fixes: 42 }, { name: '陈亮', bugs: 36, fixes: 31 },
+        { name: '张梦娟', bugs: 30, fixes: 28 }, { name: '李楠', bugs: 23, fixes: 49 }
+    ];
+    new Chart(bugDistributionCtx, {
+        type: 'bar',
+        data: {
+            labels: bugData.map(d => d.name),
+            datasets: [
+                { label: 'Bug数', data: bugData.map(d => d.bugs), backgroundColor: '#3498db' },
+                { label: '修复数', data: bugData.map(d => d.fixes), backgroundColor: '#2ecc71' }
+            ]
+        },
+        options: { responsive: true, plugins: { legend: { position: 'top' } } }
+    });
+
+    // 缺陷修复率分析
+    const bugFixRateCtx = document.getElementById('bugFixRateChart').getContext('2d');
+    const fixRateData = [
+        { name: '李楠', rate: 213 }, { name: '曾志翔', rate: 175 }, { name: '朱叶贤', rate: 152.4 },
+        { name: '庞林', rate: 131.3 }, { name: '黄金潮', rate: 140 }, { name: '陈彬', rate: 125 }
+    ].sort((a, b) => b.rate - a.rate);
+    new Chart(bugFixRateCtx, {
+        type: 'bar',
+        data: {
+            labels: fixRateData.map(d => d.name),
+            datasets: [{ label: '修复率(%)', data: fixRateData.map(d => d.rate), backgroundColor: '#e67e22' }]
+        },
+        options: { indexAxis: 'y', responsive: true, plugins: { legend: { display: false } } }
+    });
+
+    // 缺陷状态分布
+    const bugStatusDistributionCtx = document.getElementById('bugStatusDistributionChart').getContext('2d');
+    new Chart(bugStatusDistributionCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['已修复', '待修复'],
+            datasets: [{ data: [390, 0], backgroundColor: ['#2ecc71', '#e74c3c'] }]
+        }
+    });
+
+    // 代码质量与缺陷关系
+    const codeQualityVsBugsCtx = document.getElementById('codeQualityVsBugsChart').getContext('2d');
+    const qualityData = [
+        { name: '宁波', bugs: 8, changes: 777 }, { name: '吴一凡', bugs: 22, changes: 2920 },
+        { name: '钟义勇', bugs: 1, changes: 127 }, { name: '凌亮正', bugs: 5, changes: 130118 }
+    ];
+    new Chart(codeQualityVsBugsCtx, {
+        type: 'scatter',
+        data: {
+            datasets: [{
+                label: '代码质量与缺陷关系',
+                data: qualityData.map(d => ({ x: d.changes, y: d.bugs })),
+                backgroundColor: '#e74c3c'
+            }]
+        },
+        options: { scales: { x: { title: { display: true, text: '变更行数' } }, y: { title: { display: true, text: 'Bug数' } } } }
+    });
+
+    // 测试覆盖情况
+    const testCoverageCtx = document.getElementById('testCoverageChart').getContext('2d');
+    new Chart(testCoverageCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['已执行', '未执行'],
+            datasets: [{ data: [276, 298 - 276], backgroundColor: ['#2ecc71', '#e74c3c'] }]
+        }
+    });
+
+    // 缺陷密度正态分布分析
+    const bugDensityNormalDistributionCtx = document.getElementById('bugDensityNormalDistributionChart').getContext('2d');
+    const densityData = [0.92, 0.07, 0.06, 0.05, 0.03, 0.53, 0.75, 0.09, 0.02, 0.11, 0.17, 0.04, 0.04, 0.03, 1.03, 0.79];
+    new Chart(bugDensityNormalDistributionCtx, {
+        type: 'line',
+        data: {
+            labels: Array.from({ length: 16 }, (_, i) => i + 1),
+            datasets: [
+                { label: '缺陷密度分布', data: densityData, borderColor: '#3498db', fill: false },
+                { label: '正态分布曲线', data: Array(16).fill(0.04), borderColor: '#e67e22', fill: false }
+            ]
+        },
+        options: { scales: { x: { title: { display: true, text: '人员编号' } }, y: { title: { display: true, text: '每百行缺陷率' } } } }
+    });
+
+    // 四、团队效能对比 - 部门效能综合对比
+    const departmentEfficiencyComparisonCtx = document.getElementById('departmentEfficiencyComparisonChart').getContext('2d');
+    new Chart(departmentEfficiencyComparisonCtx, {
+        type: 'bar',
+        data: {
+            labels: ['研发一部', '研发二部'],
+            datasets: [
+                { label: 'Bug数', data: [154, 200], backgroundColor: '#3498db' },
+                { label: '人均提交', data: [147.2, 148.5], backgroundColor: '#2ecc71' },
+                { label: '人均变更行', data: [56797.5, 28476.9], backgroundColor: '#e67e22' }
+            ]
+        },
+        options: { responsive: true, plugins: { legend: { position: 'top' } } }
+    });
+
+    // 部门人均效能对比
+    const departmentRadarCtx = document.getElementById('departmentRadarChart').getContext('2d');
+    new Chart(departmentRadarCtx, {
+        type: 'radar',
+        data: {
+            labels: ['Bug率', '人均工时', '人均提交', '人均变更行'],
+            datasets: [
+                { label: '研发一部', data: [0.58, 83.2, 147.2, 56797.5], backgroundColor: 'rgba(52, 152, 219, 0.2)', borderColor: '#3498db' },
+                { label: '研发二部', data: [1.21, 84.5, 148.5, 28476.9], backgroundColor: 'rgba(46, 204, 113, 0.2)', borderColor: '#2ecc71' }
+            ]
+        },
+        options: { responsive: true, plugins: { legend: { position: 'top' } } }
+    });
+</script>
+
+</body>
+</html>
+```
