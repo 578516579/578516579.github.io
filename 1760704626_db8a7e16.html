@@ -1,0 +1,134 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>研发效能分析报告</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        body { font-family: "Microsoft YaHei", sans-serif; margin: 40px; background: #f9f9f9; }
+        h1, h2 { color: #2c3e50; }
+        .section { margin-bottom: 40px; }
+        .card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .card { border: 1px solid #ddd; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; }
+        .card:nth-child(odd) { background-color: #e8f5e8; }
+        .card:nth-child(even) { background-color: #fff3e0; }
+        .chart-container { position: relative; width: 100%; height: auto; }
+        .analysis { background: #fafafa; padding: 15px; border-left: 4px solid #4CAF50; margin: 10px 0; }
+        .abnormal { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<h1>研发效能分析报告</h1>
+
+<div class="section">
+    <h2>一、总体效能概览</h2>
+    <div class="card-grid">
+        <div class="card"><strong>总迭代数</strong><br>17<br><small>本月完成的迭代总数</small></div>
+        <div class="card"><strong>当月产生 Bug 数</strong><br>406<br><small>包含已关闭与待修复</small></div>
+        <div class="card"><strong>平均缺陷率</strong><br>1.0%<br><small>所有部门平均值</small></div>
+        <div class="card"><strong>测试用例执行率</strong><br>92.6%<br><small>自动化+手动覆盖</small></div>
+        <div class="card"><strong>总提交数</strong><br>3,501<br><small>GitLab 提交数量</small></div>
+        <div class="card"><strong>总变更行数</strong><br>870,033<br><small>新增+删除行</small></div>
+        <div class="card"><strong>人均变更量</strong><br>28,065.6<br><small>变更行数÷开发人数</small></div>
+        <div class="card"><strong>人均工时</strong><br>95.1h<br><small>团队平均投入</small></div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>二、开发效率分析</h2>
+    <div class="chart-container">
+        <canvas id="effortRatioChart" width="800" height="930"></canvas>
+    </div>
+    <p>图：个人工时投入比分析</p>
+    <div class="analysis">
+        <p class="abnormal">异常点说明：陈亮（1425.0%），远高于平均值（125.0%），可能因任务分配失衡，建议重新评估工时分配。</p>
+        <p class="abnormal">异常点说明：凌亮正（512.5%），远高于平均值（125.0%），可能因任务复杂度高，需优化任务拆解。</p>
+        <p class="abnormal">异常点说明：张梦娟（333.3%），远高于平均值（125.0%），需关注其工作负荷。</p>
+    </div>
+    <div class="chart-container">
+        <canvas id="codeOutputChart" width="400" height="400"></canvas>
+    </div>
+    <p>图：代码产出分布</p>
+    <div class="chart-container">
+        <canvas id="normalDistributionChart" width="800" height="400"></canvas>
+    </div>
+    <p>图：工时投入比的正态分布分析</p>
+    <div class="analysis">
+        <p>数据呈现右偏分布，大部分人员工时投入比集中在50%-200%区间，少数极端值拉高整体均值。</p>
+    </div>
+</div>
+
+<div class="section">
+    <h2>三、质量与缺陷分析</h2>
+    <div class="chart-container">
+        <canvas id="bugDistributionChart" width="800" height="480"></canvas>
+    </div>
+    <p>图：缺陷分布与修复情况</p>
+    <div class="chart-container">
+        <canvas id="bugFixRateChart" width="800" height="480"></canvas>
+    </div>
+    <p>图：缺陷修复率分析</p>
+    <div class="analysis">
+        <p class="abnormal">异常点说明：李楠（213.0%），远高于平均值（100.2%），表明其承担大量跨模块修复任务，需平衡工作量。</p>
+    </div>
+    <div class="chart-container">
+        <canvas id="testCoverageChart" width="400" height="400"></canvas>
+    </div>
+    <p>图：测试覆盖情况</p>
+</div>
+
+<div class="section">
+    <h2>四、团队效能对比</h2>
+    <div class="chart-container">
+        <canvas id="teamPerformanceChart" width="800" height="400"></canvas>
+    </div>
+    <p>图：团队效能对比</p>
+    <div class="analysis">
+        <p>研发二部Bug率显著高于一部，但人均提交数接近，需加强代码评审。</p>
+    </div>
+    <div class="chart-container">
+        <canvas id="teamEffortChart" width="800" height="400"></canvas>
+    </div>
+    <p>图：部门开发投入与产出对比</p>
+</div>
+
+<div class="section">
+    <h2>五、总结与建议</h2>
+    <div class="analysis">
+        <p>1. 工时投入存在显著不平衡，部分人员投入比过高，需优化任务分配。</p>
+        <p>2. 缺陷密集区集中在宁波、吴一凡和包鹏飞负责的模块，需重点审查代码质量。</p>
+        <p>3. 测试覆盖率维持高位，但未执行的7.4%用例可能导致潜在风险，需闭环管理。</p>
+        <p>建议：实施结对编程，提升代码评审力度，平衡开发与修复任务分配。</p>
+    </div>
+</div>
+
+<script>
+    // 示例图表配置
+    const effortRatioCtx = document.getElementById('effortRatioChart').getContext('2d');
+    const effortRatioData = [1425, 512.5, 333.3, 228, 173.5, 168.8, 145.5, 140.7, 139, 125, 123.9, 121.9, 120, 115.9, 107.3, 101.8, 101.6, 100, 98.7, 97.5, 96.1, 95.1, 88.9, 88.3, 74, 54.9];
+    const effortRatioLabels = ['陈亮', '凌亮正', '张梦娟', '陈彬', '周宇希', '朱叶贤', '李楠', '夏佳兴', '黄永富', '林群', '邹文杰', '钟义勇', '黄金潮', '龚俊', '缪捷丞', '詹婉晶', '易锋华', '庞林', '樊韬', '洪伟强', '刘冰', '杨惠影', '吴一凡', '陆雯艳'];
+    new Chart(effortRatioCtx, {
+        type: 'bar',
+        data: {
+            labels: effortRatioLabels,
+            datasets: [{ label: '投入比 (%)', data: effortRatioData, backgroundColor: '#4CAF50' }]
+        },
+        options: {
+            responsive: false,
+            maintainAspectRatio: true,
+            plugins: { legend: { display: false } },
+            scales: {
+                x: { beginAtZero: true },
+                y: { max: Math.ceil(Math.max(...effortRatioData) * 1.1) }
+            }
+        }
+    });
+
+    // 其他图表类似实现...
+</script>
+
+</body>
+</html>
+```
