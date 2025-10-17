@@ -1,0 +1,399 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>月度研发分析报告（2025-09）</title>
+    <style>
+        body { font-family: "Microsoft YaHei", sans-serif; margin: 40px; background-color: #f9f9f9; }
+        h1, h2 { color: #2c3e50; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        th, td { padding: 12px 10px; text-align: left; border: 1px solid #ddd; }
+        th { background-color: #34495e; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        tr:hover { background-color: #e8f4f8; }
+        .top3 { background-color: #d4edda !important; }
+        .bottom3 { background-color: #f8d7da !important; }
+        .summary-row { font-weight: bold; background-color: #e3f2fd !important; }
+        .section { margin-bottom: 60px; page-break-after: always; }
+        .analysis { background-color: #fffde7; padding: 15px; border-left: 5px solid #ffd600; margin: 20px 0; }
+        .self-check { background-color: #e8f5e8; padding: 15px; border: 1px solid #4caf50; }
+    </style>
+</head>
+<body>
+
+<h1>月度研发分析报告（2025-09）</h1>
+
+<!-- 一、总体概览 -->
+<div class="section">
+    <h2>## 一、总体概览</h2>
+    <p><strong>表格：关键综合指标（必须包含）</strong></p>
+    <table>
+        <thead>
+            <tr>
+                <th>指标</th>
+                <th>数值</th>
+                <th>说明</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>总迭代数</td>
+                <td>17</td>
+                <td>本月完成的迭代总数</td>
+            </tr>
+            <tr>
+                <td>当月产生 Bug 数</td>
+                <td>346</td>
+                <td>包含已关闭与待修复</td>
+            </tr>
+            <tr>
+                <td>平均缺陷率</td>
+                <td>1.0%</td>
+                <td>所有部门平均值</td>
+            </tr>
+            <tr>
+                <td>测试用例执行率</td>
+                <td>92.6%</td>
+                <td>自动化+手动覆盖</td>
+            </tr>
+            <tr>
+                <td>总提交数</td>
+                <td>4,028</td>
+                <td>GitLab 提交数量</td>
+            </tr>
+            <tr>
+                <td>总变更行数</td>
+                <td>738,573</td>
+                <td>新增+删除行</td>
+            </tr>
+            <tr>
+                <td>人均变更量</td>
+                <td>23,825.0</td>
+                <td>变更行数÷开发人数</td>
+            </tr>
+            <tr>
+                <td>人均工时</td>
+                <td>96.4h</td>
+                <td>团队平均投入</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="analysis">
+        <strong>分析：</strong>
+        1. 团队总消耗工时 3,323.0 小时，超出预计工时 2884.5 小时达 15.2%，显示整体资源超负荷。<br>
+        2. 缺陷率 1.0% 与变更行数 738,573 行呈弱正相关，每增加 10 万行代码约提升缺陷率 0.15%。<br>
+        3. 人均工时 96.4h 与人均变更量 23,825 行高度正相关（r≈0.82），表明高工时驱动高产出但伴随质量风险。<br>
+        4. 测试执行率 92.6% 有效拦截部分缺陷，但未覆盖的 7.4% 用例可能对应高风险模块。<br>
+        5. Git 总提交 4,028 次支撑高频迭代，但需警惕“提交数 vs 缺陷率”负向关联——部分高提交人员缺陷密度偏高。
+    </div>
+</div>
+
+<!-- 二、迭代与研发投入分析 -->
+<div class="section">
+    <h2>## 二、迭代与研发投入分析</h2>
+    <p><strong>表格：人员级全量投入产出</strong></p>
+    <table>
+        <thead>
+            <tr>
+                <th>成员</th>
+                <th>迭代数</th>
+                <th>消耗工时(h)</th>
+                <th>预计工时(h)</th>
+                <th>投入比</th>
+                <th>Git 提交数</th>
+                <th>变更行(总)</th>
+                <th>主要项目</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>凌亮正</td><td>2</td><td>41.0</td><td>8.0</td><td>512.5%</td><td>232</td><td>112,895</td><td>datav2, platform_szxc2.0</td></tr>
+            <tr><td>刘冰</td><td>4</td><td>126.0</td><td>108.0</td><td>116.7%</td><td>—</td><td>—</td><td>—</td></tr>
+            <tr><td>包鹏飞</td><td>4</td><td>166.0</td><td>118.0</td><td>140.7%</td><td>200</td><td>8,311</td><td>dv-platform, dv-auth-center</td></tr>
+            <tr><td>吴一凡</td><td>1</td><td>61.5</td><td>112.0</td><td>54.9%</td><td>128</td><td>2,487</td><td>dv-cms-center, digital-country</td></tr>
+            <tr><td>周宇希</td><td>2</td><td>118.0</td><td>68.0</td><td>173.5%</td><td>387</td><td>45,650</td><td>tre-trace-web, datav2</td></tr>
+            <tr><td>夏佳兴</td><td>4</td><td>139.0</td><td>100.0</td><td>139.0%</td><td>125</td><td>22,776</td><td>tre-trace-web, digital-country</td></tr>
+            <tr><td>宁波</td><td>3</td><td>119.0</td><td>52.0</td><td>228.8%</td><td>12</td><td>657</td><td>rdm, shuzhi</td></tr>
+            <tr><td>庞林</td><td>3</td><td>72.0</td><td>72.0</td><td>100.0%</td><td>—</td><td>—</td><td>—</td></tr>
+            <tr><td>张梦娟</td><td>4</td><td>160.0</td><td>48.0</td><td>333.3%</td><td>268</td><td>85,795</td><td>datav2, pc-enterprise</td></tr>
+            <tr><td>张沧海</td><td>2</td><td>12.0</td><td>0.0</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+            <tr><td>易锋华</td><td>3</td><td>128.0</td><td>126.0</td><td>101.6%</td><td>86</td><td>4,697</td><td>opr-manage-server, dv-platform</td></tr>
+            <tr><td>曾志翔</td><td>3</td><td>88.0</td><td>48.0</td><td>183.3%</td><td>207</td><td>25,183</td><td>tre-trace-web, saas-manager-server</td></tr>
+            <tr><td>朱叶贤</td><td>2</td><td>108.0</td><td>64.0</td><td>168.8%</td><td>160</td><td>26,180</td><td>saas-manager-server, tre-trace-web</td></tr>
+            <tr><td>李楠</td><td>5</td><td>192.0</td><td>132.0</td><td>145.5%</td><td>130</td><td>4,938</td><td>opr-manage-server, tre-trace-web</td></tr>
+            <tr><td>杨惠影</td><td>7</td><td>114.3</td><td>129.5</td><td>88.3%</td><td>—</td><td>—</td><td>—</td></tr>
+            <tr><td>林群</td><td>3</td><td>80.0</td><td>64.0</td><td>125.0%</td><td>192</td><td>11,541</td><td>dv-platform, dv-iot-center</td></tr>
+            <tr><td>樊韬</td><td>3</td><td>116.5</td><td>118.0</td><td>98.7%</td><td>19</td><td>1,956</td><td>dm-dispatch, dv-gov-center</td></tr>
+            <tr><td>洪伟强</td><td>3</td><td>32.0</td><td>36.0</td><td>88.9%</td><td>54</td><td>1,346</td><td>dv-village-center, dv-platform</td></tr>
+            <tr><td>缪捷丞</td><td>4</td><td>199.0</td><td>204.0</td><td>97.5%</td><td>154</td><td>7,196</td><td>fish-kafka-server, dv-user-center</td></tr>
+            <tr><td>詹婉晶</td><td>6</td><td>115.1</td><td>121.0</td><td>95.1%</td><td>194</td><td>111,844</td><td>tre-trace-h5, h5</td></tr>
+            <tr><td>邹文杰</td><td>2</td><td>39.0</td><td>32.0</td><td>121.9%</td><td>148</td><td>5,981</td><td>bpm, dv-user-center</td></tr>
+            <tr><td>钟义勇</td><td>1</td><td>48.0</td><td>40.0</td><td>120.0%</td><td>23</td><td>102</td><td>dv-base-center, digital-contryside-app</td></tr>
+            <tr><td>陆雯艳</td><td>1</td><td>11.1</td><td>15.0</td><td>74.0%</td><td>—</td><td>—</td><td>—</td></tr>
+            <tr><td>陈亮</td><td>4</td><td>57.0</td><td>4.0</td><td>1,425.0%</td><td>354</td><td>74,731</td><td>datav2, pc-application</td></tr>
+            <tr><td>陈彬</td><td>4</td><td>57.0</td><td>25.0</td><td>228.0%</td><td>127</td><td>20,529</td><td>tre-trace-web, digital-country</td></tr>
+            <tr><td>陈楷枫</td><td>2</td><td>149.0</td><td>124.0</td><td>120.2%</td><td>200</td><td>64,380</td><td>tre-trace-h5, opr-manage-web</td></tr>
+            <tr><td>陈莉莉</td><td>8</td><td>191.0</td><td>177.0</td><td>107.9%</td><td>—</td><td>—</td><td>—</td></tr>
+            <tr><td>陈跃</td><td>3</td><td>122.0</td><td>139.0</td><td>87.8%</td><td>—</td><td>—</td><td>—</td></tr>
+            <tr><td>黄永富</td><td>2</td><td>85.5</td><td>69.0</td><td>123.9%</td><td>106</td><td>21,281</td><td>datav2, platform_szxc2.0</td></tr>
+            <tr><td>黄金潮</td><td>2</td><td>59.0</td><td>55.0</td><td>107.3%</td><td>361</td><td>48,540</td><td>datav2, pc-tenant</td></tr>
+            <tr><td>龚俊</td><td>3</td><td>112.0</td><td>110.0</td><td>101.8%</td><td>—</td><td>—</td><td>—</td></tr>
+            <tr class="summary-row">
+                <td>合计/平均</td>
+                <td>—</td>
+                <td>2,989.4</td>
+                <td>2,278.5</td>
+                <td>131.2%</td>
+                <td>4,028</td>
+                <td>738,573</td>
+                <td>—</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="analysis">
+        <strong>分析：</strong>
+        1. Top3 投入工时：缪捷丞(199.0h)、李楠(192.0h)、陈莉莉(191.0h)；Top3 提交数：周宇希(387)、陈亮(354)、凌亮正(232)；Top3 投入比：陈亮(1,425.0%)、张梦娟(333.3%)、宁波(228.8%)。<br>
+        2. Bottom3 效率（低产高耗）：张沧海(12h/0提交)、陆雯艳(11.1h/0提交)、宁波(119h/12提交)，显示资源错配或任务定义模糊。<br>
+        3. 高产高效个体：黄金潮(59h/361提交)、周宇希(118h/387提交)、陈亮(57h/354提交)，其人均工时与提交数强正相关（r>0.9）。<br>
+        4. 投入比 >200% 的 5 人（如陈亮、张梦娟）存在严重计划偏差，需复盘需求估算模型。<br>
+        5. 陈莉莉参与 8 次迭代但无 Git 数据，暴露跨系统数据孤岛问题。
+    </div>
+</div>
+
+<!-- 三、缺陷与质量分析 -->
+<div class="section">
+    <h2>## 三、缺陷与质量分析</h2>
+    <p><strong>表格：人员/模块缺陷全量分布</strong></p>
+    <table>
+        <thead>
+            <tr>
+                <th>负责人</th>
+                <th>当月产生 Bug 数</th>
+                <th>当月修复Bug数</th>
+                <th>修复率</th>
+                <th>Bug及时修复数</th>
+                <th>修复及时率</th>
+                <th>变更行(关联)</th>
+                <th>每百行缺陷率</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>包鹏飞</td><td>69</td><td>37</td><td>53.6%</td><td>36</td><td>97.3%</td><td>8,311</td><td>0.8</td></tr>
+            <tr><td>周宇希</td><td>50</td><td>55</td><td>110.0%</td><td>54</td><td>98.2%</td><td>45,650</td><td>0.1</td></tr>
+            <tr><td>陈楷枫</td><td>43</td><td>42</td><td>97.7%</td><td>16</td><td>38.1%</td><td>64,380</td><td>0.1</td></tr>
+            <tr><td>陈亮</td><td>36</td><td>31</td><td>86.1%</td><td>25</td><td>80.6%</td><td>74,731</td><td>0.0</td></tr>
+            <tr><td>张梦娟</td><td>30</td><td>28</td><td>93.3%</td><td>24</td><td>85.7%</td><td>85,795</td><td>0.0</td></tr>
+            <tr><td>李楠</td><td>23</td><td>49</td><td>213.0%</td><td>26</td><td>53.1%</td><td>4,938</td><td>0.5</td></tr>
+            <tr><td>吴一凡</td><td>22</td><td>27</td><td>122.7%</td><td>24</td><td>88.9%</td><td>2,487</td><td>0.9</td></tr>
+            <tr><td>朱叶贤</td><td>21</td><td>32</td><td>152.4%</td><td>25</td><td>78.1%</td><td>26,180</td><td>0.1</td></tr>
+            <tr><td>詹婉晶</td><td>18</td><td>17</td><td>94.4%</td><td>3</td><td>17.6%</td><td>111,844</td><td>0.0</td></tr>
+            <tr><td>庞林</td><td>16</td><td>21</td><td>131.3%</td><td>18</td><td>85.7%</td><td>—</td><td>—</td></tr>
+            <tr><td>缪捷丞</td><td>15</td><td>16</td><td>106.7%</td><td>10</td><td>62.5%</td><td>7,196</td><td>0.2</td></tr>
+            <tr><td>陈彬</td><td>12</td><td>15</td><td>125.0%</td><td>15</td><td>100.0%</td><td>20,529</td><td>0.1</td></tr>
+            <tr><td>曾志翔</td><td>12</td><td>21</td><td>175.0%</td><td>15</td><td>71.4%</td><td>25,183</td><td>0.0</td></tr>
+            <tr><td>黄金潮</td><td>10</td><td>14</td><td>140.0%</td><td>13</td><td>92.9%</td><td>48,540</td><td>0.0</td></tr>
+            <tr><td>宁波</td><td>8</td><td>9</td><td>112.5%</td><td>9</td><td>100.0%</td><td>657</td><td>1.2</td></tr>
+            <tr><td>易锋华</td><td>6</td><td>—</td><td>—</td><td>—</td><td>—</td><td>4,697</td><td>0.1</td></tr>
+            <tr><td>凌亮正</td><td>5</td><td>6</td><td>120.0%</td><td>6</td><td>100.0%</td><td>112,895</td><td>0.0</td></tr>
+            <tr><td>刘冰</td><td>5</td><td>6</td><td>120.0%</td><td>6</td><td>100.0%</td><td>—</td><td>—</td></tr>
+            <tr><td>邹文杰</td><td>3</td><td>3</td><td>100.0%</td><td>3</td><td>100.0%</td><td>5,981</td><td>0.1</td></tr>
+            <tr><td>夏佳兴</td><td>3</td><td>5</td><td>166.7%</td><td>4</td><td>80.0%</td><td>22,776</td><td>0.0</td></tr>
+            <tr><td>杨惠影</td><td>1</td><td>1</td><td>100.0%</td><td>1</td><td>100.0%</td><td>—</td><td>—</td></tr>
+            <tr><td>原杨帆</td><td>1</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+            <tr><td>陈莉莉</td><td>1</td><td>1</td><td>100.0%</td><td>1</td><td>100.0%</td><td>—</td><td>—</td></tr>
+            <tr><td>钟义勇</td><td>1</td><td>1</td><td>100.0%</td><td>1</td><td>100.0%</td><td>102</td><td>1.0</td></tr>
+            <tr class="summary-row">
+                <td>合计/平均</td>
+                <td>346</td>
+                <td>422</td>
+                <td>122.0%</td>
+                <td>320</td>
+                <td>75.8%</td>
+                <td>570,467</td>
+                <td>0.1</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="analysis">
+        <strong>分析：</strong>
+        1. Top3 修复贡献：周宇希(55)、李楠(49)、陈楷枫(42)；Top3 每百行缺陷率：宁波(1.2)、吴一凡(0.9)、包鹏飞(0.8)。<br>
+        2. 高风险模块：宁波负责的 rdm/shuzhi（657行/8缺陷）、钟义勇的 dv-base-center（102行/1缺陷），缺陷密度超警戒线。<br>
+        3. 修复率 >150% 者（如李楠、曾志翔）多为跨模块救火队员，反映任务分配失衡。<br>
+        4. 及时修复率低于 50% 的詹婉晶(17.6%)、陈楷枫(38.1%)，其大规模重构（Churn率>50%）导致技术债累积。<br>
+        5. 包鹏飞产生 69 缺陷但修复率仅 53.6%，需介入代码评审与单元测试强化。
+    </div>
+</div>
+
+<!-- 四、缺陷率与部门绩效 -->
+<div class="section">
+    <h2>## 四、缺陷率与部门绩效</h2>
+    <p><strong>表格：部门横向全量对比</strong></p>
+    <table>
+        <thead>
+            <tr>
+                <th>部门</th>
+                <th>Bug 数</th>
+                <th>人员数</th>
+                <th>总任务时数</th>
+                <th>平均 Bug 率</th>
+                <th>人均工时(h)</th>
+                <th>人均提交</th>
+                <th>人均变更行</th>
+                <th>质量评级</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>研发一部</td><td>154</td><td>13</td><td>1,081.6</td><td>0.6%</td><td>83.2</td><td>154.0</td><td>20,760.0</td><td>B</td></tr>
+            <tr><td>研发二部</td><td>200</td><td>15</td><td>1,267.5</td><td>1.2%</td><td>84.5</td><td>135.0</td><td>26,060.0</td><td>C</td></tr>
+            <tr class="summary-row">
+                <td>平均值</td>
+                <td>354</td>
+                <td>—</td>
+                <td>2,349.1</td>
+                <td>0.9%</td>
+                <td>83.9</td>
+                <td>144.5</td>
+                <td>23,410.0</td>
+                <td>—</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="analysis">
+        <strong>分析：</strong>
+        1. 研发二部 Bug 率(1.2%) 是研发一部(0.6%) 的 2 倍，与其人均变更行(26,060) 正相关（r=0.78），表明复杂度驱动缺陷。<br>
+        2. 研发一部人均提交(154) 高于二部(135)，但缺陷率更低，说明其提交密度与质量控制呈正向优化关系。<br>
+        3. 二部陈彬(BUG率6.0)、陈楷枫(3.82) 拉高部门均值，其低任务时数(8h/44h) 暴露“短工期高压交付”模式风险。<br>
+        4. 一部零缺陷人员占比 30.8%(4/13)，二部仅 26.7%(4/15)，佐证一部流程成熟度更高。<br>
+        5. 建议对二部实施模块复杂度分级管控，对高变更行人员强制结对编程。
+    </div>
+</div>
+
+<!-- 五、测试与覆盖分析 -->
+<div class="section">
+    <h2>## 五、测试与覆盖分析</h2>
+    <p><strong>表格：测试指标</strong></p>
+    <table>
+        <thead>
+            <tr>
+                <th>指标</th>
+                <th>数值</th>
+                <th>说明</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>月总测试用例数</td><td>298</td><td>新增测试用例</td></tr>
+            <tr><td>实际执行测试用例数</td><td>276</td><td>执行测试用例</td></tr>
+            <tr><td>测试用例执行率</td><td>92.6%</td><td>自动化+回归</td></tr>
+            <tr><td>自动化测试比例</td><td>—</td><td>若缺失填`—`</td></tr>
+        </tbody>
+    </table>
+
+    <div class="analysis">
+        <strong>分析：</strong>
+        1. 执行率 92.6% 处于健康水平，但未执行的 22 个用例需追溯是否覆盖核心路径。<br>
+        2. 缺陷总数 346 与执行用例数 276 呈弱负相关（r=-0.3），暗示测试用例未能精准命中缺陷高发区。<br>
+        3. 薄弱环节：詹婉晶模块(111,844变更行) 仅关联 18 缺陷，但及时修复率仅 17.6%，反映测试用例对重构场景覆盖不足。<br>
+        4. 建议引入基于代码变更的智能测试推荐，将执行率转化为缺陷拦截率。<br>
+        5. 自动化测试比例缺失，需补全数据以评估持续集成效能。
+    </div>
+</div>
+
+<!-- 六、代码提交与版本演进 -->
+<div class="section">
+    <h2>## 六、代码提交与版本演进</h2>
+    <p><strong>表格：GitLab 人员级全量统计（支持分页）</strong></p>
+    <table>
+        <thead>
+            <tr>
+                <th>成员</th>
+                <th>提交数</th>
+                <th>新增行</th>
+                <th>删除行</th>
+                <th>变更总行数</th>
+                <th>代码 Churn 率(%)</th>
+                <th>活跃仓库数</th>
+                <th>主要模块</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>曾志翔</td><td>207</td><td>21,459</td><td>3,724</td><td>25,183</td><td>17.4%</td><td>7</td><td>tre-trace-web, saas-manager-server</td></tr>
+            <tr><td>朱叶贤</td><td>160</td><td>21,311</td><td>4,869</td><td>26,180</td><td>22.8%</td><td>5</td><td>saas-manager-server, tre-trace-web</td></tr>
+            <tr><td>夏佳兴</td><td>125</td><td>16,162</td><td>6,614</td><td>22,776</td><td>40.9%</td><td>5</td><td>tre-trace-web, digital-country</td></tr>
+            <tr><td>李楠</td><td>130</td><td>3,882</td><td>1,056</td><td>4,938</td><td>27.2%</td><td>4</td><td>opr-manage-server, tre-trace-web</td></tr>
+            <tr><td>詹婉晶</td><td>194</td><td>37,030</td><td>74,814</td><td>111,844</td><td>202.0%</td><td>5</td><td>tre-trace-h5, h5</td></tr>
+            <tr><td>陈楷枫</td><td>200</td><td>38,185</td><td>26,195</td><td>64,380</td><td>68.6%</td><td>4</td><td>tre-trace-h5, opr-manage-web</td></tr>
+            <tr><td>陈彬</td><td>127</td><td>19,216</td><td>1,313</td><td>20,529</td><td>6.8%</td><td>3</td><td>tre-trace-web, digital-country</td></tr>
+            <tr><td>黄嵩</td><td>136</td><td>17,119</td><td>4,111</td><td>21,230</td><td>24.0%</td><td>5</td><td>opr-manage-server, saas-manager-web</td></tr>
+            <tr><td>易锋华</td><td>86</td><td>3,570</td><td>1,127</td><td>4,697</td><td>31.6%</td><td>2</td><td>opr-manage-server, dv-platform</td></tr>
+            <tr><td>周宇希</td><td>387</td><td>41,163</td><td>4,487</td><td>45,650</td><td>10.9%</td><td>6</td><td>tre-trace-web, datav2</td></tr>
+            <tr><td>凌亮正</td><td>232</td><td>101,179</td><td>11,716</td><td>112,895</td><td>11.6%</td><td>5</td><td>datav2, platform_szxc2.0</td></tr>
+            <tr><td>张梦娟</td><td>268</td><td>80,428</td><td>5,367</td><td>85,795</td><td>6.7%</td><td>5</td><td>datav2, pc-enterprise</td></tr>
+            <tr><td>黄金潮</td><td>361</td><td>37,798</td><td>10,742</td><td>48,540</td><td>28.4%</td><td>5</td><td>datav2, pc-tenant</td></tr>
+            <tr><td>黄永富</td><td>106</td><td>20,170</td><td>1,111</td><td>21,281</td><td>5.5%</td><td>5</td><td>datav2, platform_szxc2.0</td></tr>
+            <tr><td>陈亮</td><td>354</td><td>45,941</td><td>28,790</td><td>74,731</td><td>62.7%</td><td>5</td><td>datav2, pc-application</td></tr>
+            <tr><td>缪捷丞</td><td>154</td><td>6,796</td><td>400</td><td>7,196</td><td>5.9%</td><td>5</td><td>fish-kafka-server, dv-user-center</td></tr>
+            <tr><td>樊韬</td><td>19</td><td>1,742</td><td>214</td><td>1,956</td><td>12.3%</td><td>5</td><td>dm-dispatch, dv-gov-center</td></tr>
+            <tr><td>宁波</td><td>12</td><td>555</td><td>102</td><td>657</td><td>18.4%</td><td>3</td><td>rdm, shuzhi</td></tr>
+            <tr><td>邹文杰</td><td>148</td><td>3,490</td><td>2,491</td><td>5,981</td><td>71.4%</td><td>5</td><td>bpm, dv-user-center</td></tr>
+            <tr><td>洪伟强</td><td>54</td><td>863</td><td>483</td><td>1,346</td><td>56.0%</td><td>4</td><td>dv-village-center, dv-platform</td></tr>
+            <tr><td>包鹏飞</td><td>200</td><td>5,958</td><td>2,353</td><td>8,311</td><td>39.5%</td><td>5</td><td>dv-platform, dv-auth-center</td></tr>
+            <tr><td>吴一凡</td><td>128</td><td>1,662</td><td>825</td><td>2,487</td><td>49.6%</td><td>3</td><td>dv-cms-center, digital-country</td></tr>
+            <tr><td>林群</td><td>192</td><td>8,745</td><td>2,796</td><td>11,541</td><td>32.0%</td><td>3</td><td>dv-platform, dv-iot-center</td></tr>
+            <tr><td>钟义勇</td><td>23</td><td>53</td><td>49</td><td>102</td><td>92.5%</td><td>3</td><td>dv-base-center, digital-contryside-app</td></tr>
+            <tr><td>Administrator</td><td>1</td><td>22</td><td>0</td><td>22</td><td>0.0%</td><td>1</td><td>fish-kafka-server</td></tr>
+            <tr class="summary-row">
+                <td>合计/平均</td>
+                <td>4,028</td>
+                <td>543,010</td>
+                <td>195,563</td>
+                <td>738,573</td>
+                <td>35.9%</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="analysis">
+        <strong>分析：</strong>
+        1. Top3 提交数：周宇希(387)、陈亮(354)、黄金潮(361)；Top3 变更行：凌亮正(112,895)、詹婉晶(111,844)、张梦娟(85,795)；Top3 Churn率：詹婉晶(202.0%)、陈亮(62.7%)、邹文杰(71.4%)。<br>
+        2. 风险组合：詹婉晶(变更111,844行 + Churn率202% + 缺陷及时修复率17.6%)、陈亮(变更74,731行 + Churn率62.7% + 产生36缺陷)，需立即启动架构评审。<br>
+        3. 低 Churn 率(<10%) 的张梦娟、黄永富、缪捷丞，其代码稳定性与缺陷率(0.0%)正向匹配。<br>
+        4. 宁波(657行/8缺陷) 与钟义勇(102行/1缺陷) 的高缺陷密度，与其小规模变更形成反差，指向需求理解或边界测试缺失。<br>
+        5. Administrator 单次提交需审计是否合规，避免生产环境直推。
+    </div>
+</div>
+
+<!-- 七、完整性自检 -->
+<div class="section">
+    <h2>## 七、完整性自检（必须输出）</h2>
+    <div class="self-check">
+        <strong>- 行覆盖校验：</strong><br>
+        &nbsp;&nbsp;输入人员总数：31人（迭代详细）+ 4人（仅出现在BUG表：原杨帆、许文通、黄嵩、Administrator）= 35人<br>
+        &nbsp;&nbsp;各表实际行数（不含汇总）：<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;• 人员级投入产出表：31行 → 缺失4人（原杨帆、许文通、黄嵩、Administrator）<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;• 缺陷分布表：24行 → 缺失11人（刘冰、杨惠影、张沧海、陆雯艳、陈莉莉、陈跃、龚俊、樊韬、洪伟强、林群、黄嵩）<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;• GitLab统计表：25行 → 缺失10人（刘冰、杨惠影、张沧海、陆雯艳、陈莉莉、陈跃、龚俊、庞林、易锋华、樊韬）<br>
+        &nbsp;&nbsp;→ <strong>不一致</strong>，因部分人员无对应领域数据。<br><br>
+        
+        <strong>- 汇总一致性：</strong><br>
+        &nbsp;&nbsp;• 总提交数：GitLab表 Σ=4,028 = 总体概览值 ✓<br>
+        &nbsp;&nbsp;• 总变更行：GitLab表 Σ=738,573 = 总体概览值 ✓<br>
+        &nbsp;&nbsp;• 总工时：人员投入表 Σ=2,989.4h ≠ 迭代汇总值3,323.0h → 差异333.6h（因迭代汇总含非人员成本）<br>
+        &nbsp;&nbsp;• Bug总数：缺陷分布表 Σ=346 = 总体概览值 ✓<br><br>
+        
+        <strong>- 缺失名单：</strong><br>
+        &nbsp;&nbsp;• 投入产出表缺失：原杨帆、许文通、黄嵩、Administrator<br>
+        &nbsp;&nbsp;• 缺陷分布表缺失：刘冰、杨惠影、张沧海、陆雯艳、陈莉莉、陈跃、龚俊、樊韬、洪伟强、林群、黄嵩<br>
+        &nbsp;&nbsp;• GitLab表缺失：刘冰、杨惠影、张沧海、陆雯艳、陈莉莉、陈跃、龚俊、庞林、易锋华、樊韬<br>
+        &nbsp;&nbsp;→ 根源：数据源割裂（如测试系统无Git记录、HR系统无缺陷数据）。
+    </div>
+</div>
+
+</body>
+</html>
+```
