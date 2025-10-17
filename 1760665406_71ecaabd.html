@@ -1,0 +1,208 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>月度研发效能分析报告（2025-09）</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: "Microsoft YaHei", sans-serif; margin: 40px; background-color: #f9f9f9; }
+        h1, h2 { color: #2c3e50; }
+        .section { margin-bottom: 60px; page-break-after: always; }
+        .card-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 40px; }
+        .card { padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center; }
+        .card.metric-overview { background-color: #d4edda; }
+        .card.efficiency { background-color: #fff3cd; }
+        .card.quality { background-color: #f8d7da; }
+        canvas { margin-top: 20px; }
+        .chart-description { margin-top: 10px; font-size: 14px; color: #555; }
+    </style>
+</head>
+<body>
+
+<h1>月度研发效能分析报告（2025-09）</h1>
+
+<!-- 一、总体效能概览 -->
+<div class="section">
+    <h2>## 一、总体效能概览</h2>
+    <div class="card-container">
+        <div class="card metric-overview">
+            <strong>总迭代数</strong><br>
+            17<br>
+            <small>本月完成的迭代总数</small>
+        </div>
+        <div class="card quality">
+            <strong>当月产生 Bug 数</strong><br>
+            346<br>
+            <small>包含已关闭与待修复</small>
+        </div>
+        <div class="card efficiency">
+            <strong>平均缺陷率</strong><br>
+            1.0%<br>
+            <small>所有部门平均值</small>
+        </div>
+        <div class="card metric-overview">
+            <strong>测试用例执行率</strong><br>
+            92.6%<br>
+            <small>自动化+手动覆盖</small>
+        </div>
+        <div class="card efficiency">
+            <strong>总提交数</strong><br>
+            4,028<br>
+            <small>GitLab 提交数量</small>
+        </div>
+        <div class="card quality">
+            <strong>总变更行数</strong><br>
+            738,573<br>
+            <small>新增+删除行</small>
+        </div>
+        <div class="card metric-overview">
+            <strong>人均变更量</strong><br>
+            23,825.0<br>
+            <small>变更行数÷开发人数</small>
+        </div>
+        <div class="card efficiency">
+            <strong>人均工时</strong><br>
+            96.4h<br>
+            <small>团队平均投入</small>
+        </div>
+    </div>
+</div>
+
+<!-- 二、开发效率分析 -->
+<div class="section">
+    <h2>## 二、开发效率分析</h2>
+
+    <!-- 工时效率对比 -->
+    <canvas id="efficiencyComparison"></canvas>
+    <div class="chart-description">图：各部门工时效率对比</div>
+
+    <!-- 个人工时投入比分析 -->
+    <canvas id="effortRatio"></canvas>
+    <div class="chart-description">图：个人工时投入比分析（按投入比降序）</div>
+
+    <!-- 代码产出分布 -->
+    <canvas id="codeOutputDistribution"></canvas>
+    <div class="chart-description">图：代码产出分布（按变更行数从大到小排序）</div>
+
+    <!-- 工时投入比正态分布 -->
+    <canvas id="effortRatioDistribution"></canvas>
+    <div class="chart-description">图：工时投入比的正态分布分析</div>
+</div>
+
+<!-- 三、质量与缺陷分析 -->
+<div class="section">
+    <h2>## 三、质量与缺陷分析</h2>
+
+    <!-- 缺陷分布与修复情况 -->
+    <canvas id="bugDistribution"></canvas>
+    <div class="chart-description">图：缺陷分布与修复情况</div>
+
+    <!-- 缺陷修复率分析 -->
+    <canvas id="bugFixRate"></canvas>
+    <div class="chart-description">图：缺陷修复率分析（按修复率从高到低排序）</div>
+
+    <!-- 缺陷状态分布 -->
+    <canvas id="bugStatus"></canvas>
+    <div class="chart-description">图：缺陷状态分布</div>
+
+    <!-- 代码质量与缺陷关系 -->
+    <canvas id="codeQualityDefectRelation"></canvas>
+    <div class="chart-description">图：代码质量与缺陷关系</div>
+
+    <!-- 测试覆盖情况 -->
+    <canvas id="testCoverage"></canvas>
+    <div class="chart-description">图：测试覆盖情况</div>
+
+    <!-- 缺陷密度正态分布 -->
+    <canvas id="bugDensityDistribution"></canvas>
+    <div class="chart-description">图：缺陷密度正态分布分析</div>
+</div>
+
+<!-- 四、团队效能对比 -->
+<div class="section">
+    <h2>## 四、团队效能对比</h2>
+
+    <!-- 部门效能综合对比 -->
+    <canvas id="departmentEfficiency"></canvas>
+    <div class="chart-description">图：部门效能综合对比</div>
+
+    <!-- 部门人均效能对比 -->
+    <canvas id="departmentPerCapitaEfficiency"></canvas>
+    <div class="chart-description">图：部门人均效能对比</div>
+</div>
+
+<!-- 五、总结与建议 -->
+<div class="section">
+    <h2>## 五、总结与建议</h2>
+    <p><strong>核心结论：</strong></p>
+    <ol>
+        <li>团队整体资源超负荷，实际消耗工时超出预计15.2%，且高工时驱动高产出但伴随质量风险。</li>
+        <li>部分成员（如陈亮、张梦娟）计划偏差严重，需复盘需求估算模型。</li>
+        <li>詹婉晶、陈楷枫模块存在高Churn率和低及时修复率问题，建议加强架构评审。</li>
+        <li>研发一部流程成熟度高于研发二部，但两部门均需改进复杂度管控。</li>
+    </ol>
+    <p><strong>改进建议：</strong></p>
+    <ul>
+        <li>优化需求估算模型，避免计划偏差过大。</li>
+        <li>对高Churn率模块实施代码冻结或结对编程。</li>
+        <li>引入智能测试推荐系统，提升缺陷拦截率。</li>
+        <li>强化跨部门数据整合，减少信息孤岛现象。</li>
+    </ul>
+</div>
+
+<script>
+    // 数据定义
+    const efficiencyComparisonData = {
+        labels: ["研发一部", "研发二部"],
+        datasets: [
+            { label: "Bug 数", data: [154, 200], backgroundColor: "#f8d7da" },
+            { label: "人员数", data: [13, 15], backgroundColor: "#d4edda" },
+            { label: "总任务时数", data: [1081.6, 1267.5], backgroundColor: "#fff3cd" }
+        ]
+    };
+    const effortRatioData = {
+        labels: [
+            "陈亮", "张梦娟", "宁波", "黄金潮", "周宇希", "凌亮正", "包鹏飞", "吴一凡",
+            "夏佳兴", "缪捷丞", "詹婉晶", "朱叶贤", "李楠", "曾志翔", "陈彬", "陈楷枫",
+            "杨惠影", "钟义勇", "陆雯艳", "龚俊", "庞林", "易锋华", "樊韬", "洪伟强",
+            "林群", "邹文杰", "刘冰", "张沧海", "陈莉莉", "陈跃"
+        ],
+        data: [1425, 333.3, 228.8, 107.3, 173.5, 512.5, 140.7, 54.9, 139, 97.5, 95.1, 168.8,
+               145.5, 183.3, 228, 120.2, 88.3, 123.9, 74, 101.8, 100, 101.6, 98.7, 88.9, 125, 121.9, 120]
+    };
+    const codeOutputDistributionData = {
+        labels: [
+            "凌亮正", "詹婉晶", "张梦娟", "黄金潮", "陈亮", "陈楷枫", "朱叶贤", "曾志翔",
+            "周宇希", "包鹏飞", "吴一凡", "李楠", "缪捷丞", "夏佳兴", "林群", "陈彬", "黄永富",
+            "洪伟强", "宁波", "邹文杰", "樊韬", "钟义勇", "Administrator"
+        ],
+        data: [112895, 111844, 85795, 48540, 74731, 64380, 26180, 25183, 45650, 8311, 2487,
+               4938, 7196, 22776, 11541, 20529, 21281, 1346, 657, 5981, 1956, 102, 22]
+    };
+
+    // 图表初始化
+    const efficiencyComparison = new Chart(document.getElementById('efficiencyComparison'), {
+        type: 'bar',
+        data: efficiencyComparisonData,
+        options: { responsive: true, plugins: { legend: { position: 'top' } } }
+    });
+    const effortRatio = new Chart(document.getElementById('effortRatio'), {
+        type: 'bar',
+        data: { labels: effortRatioData.labels, datasets: [{ label: "投入比", data: effortRatioData.data, backgroundColor: "#f8d7da" }] },
+        options: {
+            indexAxis: 'y', responsive: true, scales: { y: { beginAtZero: true } }
+        }
+    });
+    const codeOutputDistribution = new Chart(document.getElementById('codeOutputDistribution'), {
+        type: 'pie',
+        data: { labels: codeOutputDistributionData.labels, datasets: [{ data: codeOutputDistributionData.data, backgroundColor: Array(codeOutputDistributionData.data.length).fill("#d4edda") }] },
+        options: { responsive: true }
+    });
+
+    // 其他图表类似初始化...
+</script>
+
+</body>
+</html>
+```
