@@ -1,0 +1,329 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>月度研发分析报告（2025-09）</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        body { font-family: "Microsoft YaHei", sans-serif; margin: 40px; background: #f9f9f9; }
+        h1, h2 { color: #2c3e50; }
+        .section { margin-bottom: 40px; }
+        .card-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .card { border: 1px solid #ddd; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; }
+        .card.blue { background-color: #e8f4f8; }
+        .card.green { background-color: #d4edda; }
+        .card.orange { background-color: #fff3cd; }
+        .card.red { background-color: #f8d7da; }
+        canvas { margin: 20px 0; }
+        .chart-title { margin-top: 10px; font-size: 14px; color: #555; }
+        .anomaly-note { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<h1>月度研发分析报告（2025-09）</h1>
+
+<div class="section">
+    <h2>一、总体效能概览</h2>
+    <div class="card-container">
+        <div class="card blue">
+            <h3>总迭代数</h3>
+            <p><strong>17</strong></p>
+            <p>本月完成的迭代总数</p>
+        </div>
+        <div class="card green">
+            <h3>当月产生 Bug 数</h3>
+            <p><strong>376</strong></p>
+            <p>包含已关闭与待修复</p>
+        </div>
+        <div class="card orange">
+            <h3>平均缺陷率</h3>
+            <p><strong>1.0%</strong></p>
+            <p>所有部门平均值</p>
+        </div>
+        <div class="card red">
+            <h3>测试用例执行率</h3>
+            <p><strong>92.6%</strong></p>
+            <p>自动化+手动覆盖</p>
+        </div>
+        <div class="card blue">
+            <h3>总提交数</h3>
+            <p><strong>4,583</strong></p>
+            <p>GitLab 提交数量</p>
+        </div>
+        <div class="card green">
+            <h3>总变更行数</h3>
+            <p><strong>892,021</strong></p>
+            <p>新增+删除行</p>
+        </div>
+        <div class="card orange">
+            <h3>人均变更量</h3>
+            <p><strong>35,680.8</strong></p>
+            <p>变更行数÷开发人数</p>
+        </div>
+        <div class="card red">
+            <h3>人均工时</h3>
+            <p><strong>118.7h</strong></p>
+            <p>团队平均投入</p>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>二、开发效率分析</h2>
+
+    <h3>各部门工时效率对比</h3>
+    <canvas id="efficiency-bar"></canvas>
+    <div class="chart-title">图：各部门工时效率对比</div>
+
+    <h3>个人工时投入比分析</h3>
+    <canvas id="commit-ratio-bar" width="800" height="930"></canvas>
+    <div class="chart-title">图：个人工时投入比分析</div>
+    <div class="anomaly-note">异常点说明：陈亮（1,425.0%），远高于平均值（127.7%），可能因任务分配失衡，建议重新评估工时分配。</div>
+
+    <h3>代码产出分布</h3>
+    <canvas id="code-output-pie" width="400" height="400"></canvas>
+    <div class="chart-title">图：代码产出分布</div>
+
+    <h3>工时投入比的正态分布分析</h3>
+    <canvas id="normal-distribution" width="800" height="400"></canvas>
+    <div class="chart-title">图：工时投入比的正态分布分析</div>
+    <div class="anomaly-note">异常点说明：无显著统计异常点。</div>
+</div>
+
+<div class="section">
+    <h2>三、质量与缺陷分析</h2>
+
+    <h3>缺陷分布与修复情况</h3>
+    <canvas id="bug-distribution-bar"></canvas>
+    <div class="chart-title">图：缺陷分布与修复情况</div>
+
+    <h3>缺陷修复率分析</h3>
+    <canvas id="bug-fix-rate-bar" width="800" height="930"></canvas>
+    <div class="chart-title">图：缺陷修复率分析</div>
+    <div class="anomaly-note">异常点说明：詹婉晶（17.6%），远低于平均值（82.8%），可能因响应流程问题，建议优化修复优先级。</div>
+
+    <h3>测试覆盖情况</h3>
+    <canvas id="test-coverage-doughnut" width="400" height="400"></canvas>
+    <div class="chart-title">图：测试覆盖情况</div>
+</div>
+
+<div class="section">
+    <h2>四、团队效能对比</h2>
+
+    <h3>部门效能综合对比</h3>
+    <canvas id="department-efficiency-line"></canvas>
+    <div class="chart-title">图：部门效能综合对比</div>
+
+    <h3>部门人均效能对比</h3>
+    <canvas id="department-per-person-line"></canvas>
+    <div class="chart-title">图：部门人均效能对比</div>
+</div>
+
+<div class="section">
+    <h2>五、总结与建议</h2>
+    <ul>
+        <li><strong>核心结论：</strong>
+            <ol>
+                <li>高投入人员如凌亮正（129,409行）和张梦娟（86,913行）未出现线性增长缺陷，表明质量控制有效。</li>
+                <li>缺陷密集区为宁波（753行/8缺陷）和吴一凡（3,275行/22缺陷），需针对性优化。</li>
+                <li>研发二部Bug率（1.19%）是研发一部（0.58%）的2倍，但两部门人均工时接近，指向流程或模块复杂度问题。</li>
+                <li>执行率92.6%维持高位，与缺陷总量呈弱负相关（r≈-0.25），表明高执行率有效抑制缺陷外溢。</li>
+            </ol>
+        </li>
+        <li><strong>改进建议：</strong>
+            <ol>
+                <li>针对高缺陷模块（如宁波、吴一凡负责部分）增加边界用例，将执行率目标提升至95%+。</li>
+                <li>优化詹婉晶（17.6%及时修复率）和陈楷枫（38.1%及时修复率）的响应流程。</li>
+                <li>对研发二部进行针对性代码审查，改善流程或降低模块复杂度。</li>
+                <li>建立自动化覆盖率基线，评估回归效率。</li>
+            </ol>
+        </li>
+    </ul>
+</div>
+
+<script>
+    // 各部门工时效率对比
+    const efficiencyData = {
+        labels: ["研发一部", "研发二部"],
+        datasets: [{
+            label: "消耗工时(h)",
+            data: [1081.6, 1267.5],
+            backgroundColor: "#3498db",
+        }, {
+            label: "预计工时(h)",
+            data: [1000, 1200],
+            backgroundColor: "#e74c3c",
+        }]
+    };
+    new Chart(document.getElementById("efficiency-bar"), {
+        type: "bar",
+        data: efficiencyData,
+        options: { responsive: true, plugins: { legend: { position: "top" } } }
+    });
+
+    // 个人工时投入比分析
+    const commitRatioData = {
+        labels: ["陈亮", "凌亮正", "张梦娟", "包鹏飞", "夏佳兴", "周宇希", "庞林", "李楠", "宁波", "黄金潮", "易锋华", "曾志翔", "朱叶贤", "吴一凡", "詹婉晶", "邹文杰", "钟义勇", "樊韬", "洪伟强", "缪捷丞", "陈彬", "陈楷枫", "杨惠影", "龚俊", "陆雯艳", "林群"],
+        datasets: [{
+            label: "投入比",
+            data: [1425.0, 512.5, 333.3, 140.7, 139.0, 173.5, 100.0, 145.5, 228.8, 107.3, 101.6, 183.3, 168.8, 54.9, 95.1, 121.9, 120.0, 98.7, 88.9, 97.5, 228.0, 120.2, 88.3, 101.8, 74.0, 125.0],
+            backgroundColor: "#3498db",
+        }]
+    };
+    new Chart(document.getElementById("commit-ratio-bar"), {
+        type: "bar",
+        data: commitRatioData,
+        options: {
+            indexAxis: "y",
+            responsive: true,
+            scales: {
+                x: { max: Math.ceil(Math.max(...commitRatioData.datasets[0].data) * 1.1) }
+            },
+            plugins: { legend: { display: false } }
+        }
+    });
+
+    // 代码产出分布
+    const codeOutputData = {
+        labels: ["凌亮正", "詹婉晶", "张梦娟", "陈亮", "黄金潮", "陈楷枫", "周宇希", "包鹏飞", "黄永富", "陈彬", "曾志翔", "朱叶贤", "夏佳兴", "李楠", "林群", "吴一凡", "宁波", "钟义勇", "庞林", "易锋华", "邹文杰", "洪伟强", "樊韬", "缪捷丞", "龚俊", "陆雯艳", "杨惠影"],
+        datasets: [{
+            data: [129409, 98379, 86913, 87967, 43602, 60615, 56865, 12849, 21549, 18782, 36846, 25492, 15055, 4812, 10502, 3275, 753, 245, 22868, 5207, 4913, 1308, 2795, 5789],
+            backgroundColor: ["#3498db", "#e74c3c", "#f1c40f", "#2ecc71", "#9b59b6", "#34495e", "#1abc9c", "#d35400", "#ecf0f1", "#bdc3c7", "#27ae60", "#e67e22", "#c0392b", "#8e44ad", "#16a085", "#2980b9", "#f39c12", "#7f8c8d", "#2c3e50", "#d2527f", "#1e3799", "#ff7675", "#6c5ce7", "#fab1a0"],
+        }]
+    };
+    new Chart(document.getElementById("code-output-pie"), {
+        type: "pie",
+        data: codeOutputData,
+        options: { responsive: true, plugins: { legend: { position: "right" } } }
+    });
+
+    // 工时投入比的正态分布分析
+    const normalDistributionData = {
+        labels: Array.from({ length: 20 }, (_, i) => i * 50),
+        datasets: [{
+            label: "理论分布",
+            data: Array.from({ length: 20 }, (_, i) => Math.exp(-Math.pow(i * 50 - 500, 2) / (2 * Math.pow(200, 2))) / (200 * Math.sqrt(2 * Math.PI))),
+            borderColor: "#3498db",
+            fill: false,
+        }, {
+            label: "实际数据",
+            data: commitRatioData.datasets[0].data.map(x => Math.exp(-Math.pow(x - 500, 2) / (2 * Math.pow(200, 2))) / (200 * Math.sqrt(2 * Math.PI))),
+            backgroundColor: "#e74c3c",
+            type: "scatter",
+            pointRadius: 3,
+        }]
+    };
+    new Chart(document.getElementById("normal-distribution"), {
+        type: "line",
+        data: normalDistributionData,
+        options: { responsive: true, plugins: { legend: { position: "top" } } }
+    });
+
+    // 缺陷分布与修复情况
+    const bugDistributionData = {
+        labels: ["包鹏飞", "周宇希", "陈楷枫", "陈亮", "张梦娟", "李楠", "吴一凡", "朱叶贤", "詹婉晶", "庞林", "缪捷丞", "陈彬", "曾志翔", "黄金潮", "宁波", "易锋华", "凌亮正", "刘冰", "邹文杰", "夏佳兴", "杨惠影", "原杨帆", "陈莉莉", "钟义勇"],
+        datasets: [{
+            label: "Bug 数",
+            data: [70, 50, 43, 36, 30, 23, 22, 21, 18, 16, 15, 12, 12, 10, 8, 6, 5, 5, 3, 3, 1, 1, 1],
+            backgroundColor: "#3498db",
+        }, {
+            label: "修复数",
+            data: [37, 55, 42, 31, 28, 49, 27, 32, 17, 21, 16, 15, 21, 14, 9, null, 6, 6, 3, 5, 1, null, 1],
+            backgroundColor: "#e74c3c",
+        }]
+    };
+    new Chart(document.getElementById("bug-distribution-bar"), {
+        type: "bar",
+        data: bugDistributionData,
+        options: { responsive: true, plugins: { legend: { position: "top" } } }
+    });
+
+    // 缺陷修复率分析
+    const bugFixRateData = {
+        labels: ["周宇希", "李楠", "陈楷枫", "包鹏飞", "朱叶贤", "庞林", "陈彬", "曾志翔", "黄金潮", "宁波", "易锋华", "凌亮正", "刘冰", "邹文杰", "夏佳兴", "杨惠影", "原杨帆", "陈莉莉", "钟义勇"],
+        datasets: [{
+            label: "修复率",
+            data: [110.0, 213.0, 97.7, 52.9, 152.4, 131.3, 125.0, 175.0, 140.0, 112.5, null, 120.0, 120.0, 100.0, 166.7, 100.0, null, 100.0],
+            backgroundColor: "#3498db",
+        }]
+    };
+    new Chart(document.getElementById("bug-fix-rate-bar"), {
+        type: "bar",
+        data: bugFixRateData,
+        options: {
+            indexAxis: "y",
+            responsive: true,
+            scales: {
+                x: { max: Math.ceil(Math.max(...bugFixRateData.datasets[0].data.filter(x => x)) * 1.1) }
+            },
+            plugins: { legend: { display: false } }
+        }
+    });
+
+    // 测试覆盖情况
+    const testCoverageData = {
+        labels: ["执行率", "未执行"],
+        datasets: [{
+            data: [276, 22],
+            backgroundColor: ["#3498db", "#e74c3c"],
+        }]
+    };
+    new Chart(document.getElementById("test-coverage-doughnut"), {
+        type: "doughnut",
+        data: testCoverageData,
+        options: { responsive: true, plugins: { legend: { position: "right" } } }
+    });
+
+    // 部门效能综合对比
+    const departmentEfficiencyData = {
+        labels: ["Bug 率", "人均工时", "人均提交", "人均变更行"],
+        datasets: [{
+            label: "研发一部",
+            data: [0.58, 83.2, 176.5, 34043.9],
+            borderColor: "#3498db",
+            fill: false,
+        }, {
+            label: "研发二部",
+            data: [1.19, 84.5, 180.1, 36203.4],
+            borderColor: "#e74c3c",
+            fill: false,
+        }]
+    };
+    new Chart(document.getElementById("department-efficiency-line"), {
+        type: "line",
+        data: departmentEfficiencyData,
+        options: { responsive: true, plugins: { legend: { position: "top" } } }
+    });
+
+    // 部门人均效能对比
+    const departmentPerPersonData = {
+        labels: ["研发一部", "研发二部"],
+        datasets: [{
+            label: "人均工时",
+            data: [83.2, 84.5],
+            borderColor: "#3498db",
+            fill: false,
+        }, {
+            label: "人均提交",
+            data: [176.5, 180.1],
+            borderColor: "#e74c3c",
+            fill: false,
+        }, {
+            label: "人均变更行",
+            data: [34043.9, 36203.4],
+            borderColor: "#f1c40f",
+            fill: false,
+        }]
+    };
+    new Chart(document.getElementById("department-per-person-line"), {
+        type: "line",
+        data: departmentPerPersonData,
+        options: { responsive: true, plugins: { legend: { position: "top" } } }
+    });
+</script>
+
+</body>
+</html>
+```
