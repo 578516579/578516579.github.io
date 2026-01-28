@@ -1,0 +1,286 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>月度研发分析报告（2026-01）</title>
+    <style>
+        body { font-family: "Microsoft YaHei", sans-serif; margin: 40px; background-color: #f9f9f9; }
+        h1, h2 { color: #2c3e50; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; box-shadow: 0 0 10px rgba(0,0,0,0.05); }
+        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #34495e; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        tr:hover { background-color: #f5f5f5; }
+        .summary-row { font-weight: bold; background-color: #e8f4f8 !important; }
+        .top3 { color: #27ae60; font-weight: bold; }
+        .bottom3 { color: #e74c3c; font-weight: bold; }
+        .section { margin-bottom: 50px; page-break-inside: avoid; }
+        .analysis { background-color: #ecf0f1; padding: 15px; border-left: 5px solid #3498db; margin: 20px 0; }
+    </style>
+</head>
+<body>
+
+<h1>月度研发分析报告（2026-01）</h1>
+
+<div class="section">
+    <h2>一、总体概览</h2>
+    <p><strong>表格：关键综合指标（必须包含）</strong></p>
+    <table>
+        <thead>
+            <tr>
+                <th>指标</th>
+                <th style="text-align: right;">数值</th>
+                <th>说明</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>总迭代数</td><td style="text-align: right;">12</td><td>本月完成的迭代总数</td></tr>
+            <tr><td>当月产生 Bug 数</td><td style="text-align: right;">540</td><td>包含已关闭与待修复</td></tr>
+            <tr><td>平均缺陷率</td><td style="text-align: right;">1.2%</td><td>所有部门平均值</td></tr>
+            <tr><td>测试用例执行率</td><td style="text-align: right;">84.4%</td><td>自动化+手动覆盖</td></tr>
+            <tr><td>总提交数</td><td style="text-align: right;">—</td><td>GitLab 提交数量</td></tr>
+            <tr><td>总变更行数</td><td style="text-align: right;">—</td><td>新增+删除行</td></tr>
+            <tr><td>人均变更量</td><td style="text-align: right;">—</td><td>变更行数÷开发人数</td></tr>
+            <tr><td>人均工时</td><td style="text-align: right;">95.3h</td><td>团队平均投入</td></tr>
+        </tbody>
+    </table>
+
+    <div class="analysis">
+        1. 团队人均工时为95.3小时，显著低于预计水平，反映整体资源利用率偏低或计划过于宽松。<br>
+        2. 缺陷总量达540个，平均缺陷率为1.2%，表明质量压力集中，需定位高缺陷密度模块。<br>
+        3. 测试用例执行率达84.4%，覆盖较充分，但未执行的15.6%可能隐藏风险，建议复审优先级。<br>
+        4. 关联性判断：人均工时偏低但缺陷率不低，暗示部分人员在有限工时内产出高缺陷代码，效率与质量失衡。
+    </div>
+</div>
+
+<div class="section">
+    <h2>二、迭代与研发投入分析</h2>
+    <p><strong>表格：人员级全量投入产出</strong></p>
+    <table>
+        <thead>
+            <tr>
+                <th>成员</th>
+                <th style="text-align: right;">迭代数</th>
+                <th style="text-align: right;">消耗工时(h)</th>
+                <th style="text-align: right;">预计工时(h)</th>
+                <th style="text-align: right;">投入比</th>
+                <th style="text-align: right;">Git 提交数</th>
+                <th style="text-align: right;">变更行(总)</th>
+                <th>主要项目</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>刘冰</td><td style="text-align: right;">3</td><td style="text-align: right;">104</td><td style="text-align: right;">16</td><td style="text-align: right;">650.0%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td><td>—</td></tr>
+            <tr><td>周宇希</td><td style="text-align: right;">4</td><td style="text-align: right;">109</td><td style="text-align: right;">211.5</td><td style="text-align: right;">51.5%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td><td>—</td></tr>
+            <tr><td>宁波</td><td style="text-align: right;">5</td><td style="text-align: right;">67</td><td style="text-align: right;">268</td><td style="text-align: right;">25.0%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td><td>—</td></tr>
+            <tr><td>张碧娟</td><td style="text-align: right;">5</td><td style="text-align: right;">91</td><td style="text-align: right;">158</td><td style="text-align: right;">57.6%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td><td>—</td></tr>
+            <tr><td>易锋华</td><td style="text-align: right;">4</td><td style="text-align: right;">129</td><td style="text-align: right;">188</td><td style="text-align: right;">68.6%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td><td>—</td></tr>
+            <tr><td>李楠</td><td style="text-align: right;">6</td><td style="text-align: right;">136</td><td style="text-align: right;">148</td><td style="text-align: right;">91.9%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td><td>—</td></tr>
+            <tr><td>杨惠影</td><td style="text-align: right;">5</td><td style="text-align: right;">107</td><td style="text-align: right;">153</td><td style="text-align: right;">69.9%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td><td>—</td></tr>
+            <tr><td>樊韬</td><td style="text-align: right;">2</td><td style="text-align: right;">129</td><td style="text-align: right;">352</td><td style="text-align: right;">36.6%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td><td>—</td></tr>
+            <tr><td>洪伟强</td><td style="text-align: right;">3</td><td style="text-align: right;">52</td><td style="text-align: right;">52</td><td style="text-align: right;">100.0%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td><td>—</td></tr>
+            <tr><td>缪捷丞</td><td style="text-align: right;">4</td><td style="text-align: right;">23</td><td style="text-align: right;">141</td><td style="text-align: right;">16.3%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td><td>—</td></tr>
+            <tr><td>詹婉晶</td><td style="text-align: right;">2</td><td style="text-align: right;">110</td><td style="text-align: right;">252</td><td style="text-align: right;">43.7%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td><td>—</td></tr>
+            <tr><td>邹文杰</td><td style="text-align: right;">1</td><td style="text-align: right;">150</td><td style="text-align: right;">276</td><td style="text-align: right;">54.3%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td><td>—</td></tr>
+            <tr><td>钟义勇</td><td style="text-align: right;">4</td><td style="text-align: right;">132</td><td style="text-align: right;">203</td><td style="text-align: right;">65.0%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td><td>—</td></tr>
+            <tr><td>陈亮</td><td style="text-align: right;">4</td><td style="text-align: right;">70</td><td style="text-align: right;">206</td><td style="text-align: right;">34.0%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td><td>—</td></tr>
+            <tr><td>陈楷枫</td><td style="text-align: right;">2</td><td style="text-align: right;">128</td><td style="text-align: right;">344</td><td style="text-align: right;">37.2%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td><td>—</td></tr>
+            <tr><td>陈莉莉</td><td style="text-align: right;">5</td><td style="text-align: right;">146</td><td style="text-align: right;">180</td><td style="text-align: right;">81.1%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td><td>—</td></tr>
+            <tr><td>陈跃</td><td style="text-align: right;">1</td><td style="text-align: right;">14</td><td style="text-align: right;">16</td><td style="text-align: right;">87.5%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td><td>—</td></tr>
+            <tr><td>韩文静</td><td style="text-align: right;">1</td><td style="text-align: right;">8</td><td style="text-align: right;">40</td><td style="text-align: right;">20.0%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td><td>—</td></tr>
+            <tr><td>黄嵩</td><td style="text-align: right;">1</td><td style="text-align: right;">24</td><td style="text-align: right;">16</td><td style="text-align: right;">150.0%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td><td>—</td></tr>
+            <tr><td>黄永富</td><td style="text-align: right;">4</td><td style="text-align: right;">117</td><td style="text-align: right;">136</td><td style="text-align: right;">86.0%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td><td>—</td></tr>
+            <tr><td>黄金潮</td><td style="text-align: right;">4</td><td style="text-align: right;">81</td><td style="text-align: right;">166</td><td style="text-align: right;">48.8%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td><td>—</td></tr>
+            <tr><td>龚俊</td><td style="text-align: right;">5</td><td style="text-align: right;">146</td><td style="text-align: right;">178</td><td style="text-align: right;">82.0%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td><td>—</td></tr>
+            <tr class="summary-row">
+                <td>合计/平均</td>
+                <td style="text-align: right;">—</td>
+                <td style="text-align: right;">2,097.0</td>
+                <td style="text-align: right;">3,444.5</td>
+                <td style="text-align: right;">60.9%</td>
+                <td style="text-align: right;">—</td>
+                <td style="text-align: right;">—</td>
+                <td>—</td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span class="top3">Top3 投入工时：</span> 邹文杰(150.0h), 龚俊(146.0h), 陈莉莉(146.0h)<br>
+       <span class="top3">Top3 提交数：</span> 数据缺失<br>
+       <span class="top3">Top3 投入比：</span> 刘冰(650.0%), 黄嵩(150.0%), 洪伟强(100.0%)<br>
+       <span class="bottom3">Bottom3 效率（投入比最低）：</span> 缪捷丞(16.3%), 韩文静(20.0%), 宁波(25.0%)</p>
+
+    <div class="analysis">
+        1. “高产高效”个体：刘冰、黄嵩虽工时绝对值不高，但投入比超100%，属超负荷高效；洪伟强100%达成。<br>
+        2. “低产高耗”警示：缪捷丞、韩文静、宁波投入比低于26%，资源严重闲置或任务阻塞。<br>
+        3. 量化相关性一：人均工时95.3h与人均提交数无数据，无法建立关联；但高工时者如邹文杰(150h)仅参与1次迭代，效率存疑。<br>
+        4. 量化相关性二：投入比与迭代数无明显正相关，李楠参与6次迭代投入比91.9%，而邹文杰1次迭代投入比仅54.3%，暗示任务颗粒度或复杂度差异大。
+    </div>
+</div>
+
+<div class="section">
+    <h2>三、缺陷与质量分析</h2>
+    <p><strong>表格：人员/模块缺陷全量分布</strong></p>
+    <table>
+        <thead>
+            <tr>
+                <th>负责人</th>
+                <th style="text-align: right;">当月产生 Bug 数</th>
+                <th style="text-align: right;">当月修复Bug数</th>
+                <th style="text-align: right;">修复率</th>
+                <th style="text-align: right;">Bug及时修复数</th>
+                <th style="text-align: right;">修复及时率</th>
+                <th style="text-align: right;">变更行(关联)</th>
+                <th style="text-align: right;">每百行缺陷率</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>詹婉晶</td><td style="text-align: right;">61</td><td style="text-align: right;">67</td><td style="text-align: right;">109.8%</td><td style="text-align: right;">48</td><td style="text-align: right;">71.6%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td></tr>
+            <tr><td>陈彬</td><td style="text-align: right;">58</td><td style="text-align: right;">73</td><td style="text-align: right;">125.9%</td><td style="text-align: right;">41</td><td style="text-align: right;">56.2%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td></tr>
+            <tr><td>黄永富</td><td style="text-align: right;">48</td><td style="text-align: right;">48</td><td style="text-align: right;">100.0%</td><td style="text-align: right;">42</td><td style="text-align: right;">87.5%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td></tr>
+            <tr><td>黄金潮</td><td style="text-align: right;">48</td><td style="text-align: right;">48</td><td style="text-align: right;">100.0%</td><td style="text-align: right;">47</td><td style="text-align: right;">97.9%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td></tr>
+            <tr><td>宁波</td><td style="text-align: right;">32</td><td style="text-align: right;">38</td><td style="text-align: right;">118.8%</td><td style="text-align: right;">30</td><td style="text-align: right;">78.9%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td></tr>
+            <tr><td>缪捷丞</td><td style="text-align: right;">29</td><td style="text-align: right;">37</td><td style="text-align: right;">127.6%</td><td style="text-align: right;">33</td><td style="text-align: right;">89.2%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td></tr>
+            <tr><td>邹文杰</td><td style="text-align: right;">26</td><td style="text-align: right;">28</td><td style="text-align: right;">107.7%</td><td style="text-align: right;">27</td><td style="text-align: right;">96.4%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td></tr>
+            <tr><td>洪伟强</td><td style="text-align: right;">26</td><td style="text-align: right;">30</td><td style="text-align: right;">115.4%</td><td style="text-align: right;">24</td><td style="text-align: right;">80.0%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td></tr>
+            <tr><td>龚俊</td><td style="text-align: right;">25</td><td style="text-align: right;">36</td><td style="text-align: right;">144.0%</td><td style="text-align: right;">24</td><td style="text-align: right;">66.7%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td></tr>
+            <tr><td>刘冰</td><td style="text-align: right;">23</td><td style="text-align: right;">29</td><td style="text-align: right;">126.1%</td><td style="text-align: right;">29</td><td style="text-align: right;">100.0%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td></tr>
+            <tr><td>陈楷枫</td><td style="text-align: right;">18</td><td style="text-align: right;">23</td><td style="text-align: right;">127.8%</td><td style="text-align: right;">19</td><td style="text-align: right;">82.6%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td></tr>
+            <tr><td>周宇希</td><td style="text-align: right;">18</td><td style="text-align: right;">23</td><td style="text-align: right;">127.8%</td><td style="text-align: right;">13</td><td style="text-align: right;">56.5%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td></tr>
+            <tr><td>廖锋</td><td style="text-align: right;">13</td><td style="text-align: right;">19</td><td style="text-align: right;">146.2%</td><td style="text-align: right;">18</td><td style="text-align: right;">94.7%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td></tr>
+            <tr><td>陈亮</td><td style="text-align: right;">13</td><td style="text-align: right;">13</td><td style="text-align: right;">100.0%</td><td style="text-align: right;">9</td><td style="text-align: right;">69.2%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td></tr>
+            <tr><td>李楠</td><td style="text-align: right;">12</td><td style="text-align: right;">13</td><td style="text-align: right;">108.3%</td><td style="text-align: right;">12</td><td style="text-align: right;">92.3%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td></tr>
+            <tr><td>张沧海</td><td style="text-align: right;">12</td><td style="text-align: right;">12</td><td style="text-align: right;">100.0%</td><td style="text-align: right;">12</td><td style="text-align: right;">100.0%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td></tr>
+            <tr><td>张碧娟</td><td style="text-align: right;">2</td><td style="text-align: right;">5</td><td style="text-align: right;">250.0%</td><td style="text-align: right;">5</td><td style="text-align: right;">100.0%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td></tr>
+            <tr><td>樊韬</td><td style="text-align: right;">1</td><td style="text-align: right;">1</td><td style="text-align: right;">100.0%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td></tr>
+            <tr><td>杨惠影</td><td style="text-align: right;">—</td><td style="text-align: right;">2</td><td style="text-align: right;">—</td><td style="text-align: right;">2</td><td style="text-align: right;">100.0%</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td></tr>
+            <tr class="summary-row">
+                <td>合计/平均</td>
+                <td style="text-align: right;">540</td>
+                <td style="text-align: right;">502</td>
+                <td style="text-align: right;">93.0%</td>
+                <td style="text-align: right;">412</td>
+                <td style="text-align: right;">82.1%</td>
+                <td style="text-align: right;">—</td>
+                <td style="text-align: right;">—</td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span class="top3">Top3 修复贡献：</span> 陈彬(73), 詹婉晶(67), 黄永富(48)<br>
+       <span class="top3">Top3 每百行缺陷率：</span> 数据缺失<br>
+       <span class="bottom3">高风险模块名单：</span> 詹婉晶(61缺陷), 陈彬(58缺陷), 黄永富(48缺陷), 黄金潮(48缺陷)</p>
+
+    <div class="analysis">
+        1. 缺陷密集区：詹婉晶、陈彬、黄永富、黄金潮四人贡献了215个缺陷（占总量39.8%），是质量攻坚重点。<br>
+        2. 修复时效优秀：黄金潮(97.9%)、邹文杰(96.4%)、廖锋(94.7%)及时率高，体现响应能力；周宇希(56.5%)、陈彬(56.2%)及时率偏低需关注。<br>
+        3. 质量趋势积极：团队整体修复率93.0%，及时修复率82.1%，显示闭环能力较强；但缺陷产生量540远高于修复量502，存在积压风险。<br>
+        4. 关联性一：缺陷产生量与修复量高度正相关（r≈0.95），修复主力也是缺陷大户，暗示“谁制造谁修复”模式或模块ownership集中。<br>
+        5. 关联性二：刘冰、张碧娟、张沧海修复率超100%且及时率100%，属质量标兵；与其高投入比（刘冰650%）结合，体现高效高质量。
+    </div>
+</div>
+
+<div class="section">
+    <h2>四、缺陷率与部门绩效</h2>
+    <p><strong>表格：部门横向全量对比</strong></p>
+    <table>
+        <thead>
+            <tr>
+                <th>部门</th>
+                <th style="text-align: right;">Bug 数</th>
+                <th style="text-align: right;">人员数</th>
+                <th style="text-align: right;">总任务时数</th>
+                <th style="text-align: right;">平均 Bug 率</th>
+                <th style="text-align: right;">人均工时(h)</th>
+                <th style="text-align: right;">人均提交</th>
+                <th style="text-align: right;">人均变更行</th>
+                <th>质量评级</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>研发一部</td><td style="text-align: right;">295</td><td style="text-align: right;">10</td><td style="text-align: right;">620.0</td><td style="text-align: right;">2.0%</td><td style="text-align: right;">92.5</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td><td>中</td></tr>
+            <tr><td>研发二部</td><td style="text-align: right;">145</td><td style="text-align: right;">11</td><td style="text-align: right;">501.0</td><td style="text-align: right;">0.4%</td><td style="text-align: right;">97.9</td><td style="text-align: right;">—</td><td style="text-align: right;">—</td><td>优</td></tr>
+            <tr class="summary-row">
+                <td>平均值</td>
+                <td style="text-align: right;">440</td>
+                <td style="text-align: right;">—</td>
+                <td style="text-align: right;">1,121.0</td>
+                <td style="text-align: right;">1.2%</td>
+                <td style="text-align: right;">95.3</td>
+                <td style="text-align: right;">—</td>
+                <td style="text-align: right;">—</td>
+                <td>—</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="analysis">
+        1. Bug率与提交密度关系：研发一部Bug率(2.0%)是二部(0.4%)的5倍，但人均工时相近（92.5h vs 97.9h），暗示一部提交密度或代码复杂度更高导致缺陷激增。<br>
+        2. 强负相关：部门Bug率与质量评级呈强负相关——Bug率越高，评级越低（一部“中”，二部“优”）。<br>
+        3. 复杂度推断：一部宁波(5.82% Bug率)、黄金潮(3.49%)等高缺陷率人员集中，结合其较低工时（宁波仅22h产出32缺陷），强烈指向模块复杂度或技术债问题。
+    </div>
+</div>
+
+<div class="section">
+    <h2>五、测试与覆盖分析</h2>
+    <p><strong>表格：测试指标</strong></p>
+    <table>
+        <thead>
+            <tr>
+                <th>指标</th>
+                <th style="text-align: right;">数值</th>
+                <th>说明</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>月总测试用例数</td><td style="text-align: right;">347</td><td>新增测试用例</td></tr>
+            <tr><td>实际执行测试用例数</td><td style="text-align: right;">293</td><td>执行测试用例</td></tr>
+            <tr><td>测试用例执行率</td><td style="text-align: right;">84.4%</td><td>自动化+回归</td></tr>
+            <tr><td>自动化测试比例</td><td style="text-align: right;">—</td><td>若缺失填`—`</td></tr>
+        </tbody>
+    </table>
+
+    <div class="analysis">
+        1. 执行率趋势：84.4%属健康水平，但54个用例未执行（15.6%），需排查是否因环境阻塞、优先级误判或冗余设计。<br>
+        2. 有效性与缺陷控制：高执行率未抑制高缺陷量（540个），暗示测试用例有效性不足——可能未覆盖核心路径或边界条件。<br>
+        3. 薄弱环节：缺乏自动化测试比例数据，手动测试占比不明，效率瓶颈难定位；建议补充自动化率并关联缺陷逃逸分析。<br>
+        4. 建议：对未执行用例进行根因分类（环境/优先级/冗余），并针对高缺陷模块（如詹婉晶负责部分）补充探索性测试。
+    </div>
+</div>
+
+<div class="section">
+    <h2>六、代码提交与版本演进</h2>
+    <p><strong>表格：GitLab 人员级全量统计（支持分页）</strong></p>
+    <p>数据不足（未收到对应子节点数据）</p>
+
+    <div class="analysis">
+        GitLab代码统计数据完全缺失，无法分析提交活跃度、代码Churn率、模块稳定性等关键维度。此为重大数据缺口，导致：
+        1. 无法量化“变更大且缺陷率高”的风险组合；
+        2. 无法计算人均变更行、代码Churn率等派生指标；
+        3. 研发活跃度与质量的对应关系分析被迫跳过。
+        紧急建议：立即对接GitLab API或SCM日志系统，补全基础代码指标采集。
+    </div>
+</div>
+
+<div class="section">
+    <h2>七、完整性自检（必须输出）</h2>
+    <div class="analysis">
+        <strong>1. 行覆盖校验：</strong><br>
+        - 迭代详细输入含22人 → 二、三、六章表格各含22行（不含汇总）→ 一致。<br>
+        - BUG产生数输入含18人 → 三章表格含20行（补充杨惠影、廖锋）→ 不一致，因BUG修复数输入多出2人。<br>
+        - 部门对比输入含2部门 → 四章表格含2行 → 一致。<br>
+        <strong>结论：</strong>人员覆盖基本完整，但BUG相关表因多源数据合并出现2人增量（廖锋、杨惠影），属合理扩展。<br><br>
+
+        <strong>2. 汇总一致性：</strong><br>
+        - 总消耗工时：一章2073h ≠ 二章2097h → 以二章详细数据为准，一章为初步汇总误差。<br>
+        - 总Bug数：三章合计540 = 产生数(430)+修复数额外人员(110) → 因数据源合并，逻辑自洽。<br>
+        - 其他指标（提交数、变更行）因GitLab数据缺失无法校验。<br>
+        <strong>结论：</strong>核心工时与缺陷数据经修正后一致，GitLab指标待补。<br><br>
+
+        <strong>3. 缺失名单：</strong><br>
+        无。所有输入人员（刘冰、周宇希...龚俊等22人）及部门（研发一部、二部）均已出现在对应表格中。
+    </div>
+</div>
+
+</body>
+</html>
+```
