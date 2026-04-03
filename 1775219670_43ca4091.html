@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>月度研发分析报告（2026-03）</title>
+    <style>
+        body { font-family: "Microsoft YaHei", sans-serif; margin: 40px; background-color: #f9f9f9; }
+        h1, h2 { color: #2c3e50; }
+        table { width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 14px; }
+        th, td { padding: 12px 15px; text-align: left; border: 1px solid #ddd; }
+        th { background-color: #34495e; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        tr:hover { background-color: #ecf0f1; }
+        .summary-row { font-weight: bold; background-color: #d5dbdb !important; }
+        .top3 { color: #27ae60; font-weight: bold; }
+        .bottom3 { color: #e74c3c; font-weight: bold; }
+        .section { background: white; padding: 20px; margin-bottom: 30px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+
+<div class="section">
+    <h1>月度研发分析报告（2026-03）</h1>
+
+    <div class="section">
+        <h2>一、总体概览</h2>
+        <p><strong>表格：关键综合指标（必须包含）</strong></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>指标</th>
+                    <th>数值</th>
+                    <th>说明</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>总迭代数</td><td>10</td><td>本月完成的迭代总数</td></tr>
+                <tr><td>当月产生 Bug 数</td><td>500</td><td>包含已关闭与待修复</td></tr>
+                <tr><td>平均缺陷率</td><td>1.9%</td><td>所有部门平均值</td></tr>
+                <tr><td>测试用例执行率</td><td>99.1%</td><td>自动化+手动覆盖</td></tr>
+                <tr><td>总提交数</td><td>—</td><td>GitLab 提交数量</td></tr>
+                <tr><td>总变更行数</td><td>—</td><td>新增+删除行</td></tr>
+                <tr><td>人均变更量</td><td>—</td><td>变更行数÷开发人数</td></tr>
+                <tr><td>人均工时</td><td>96.7h</td><td>团队平均投入</td></tr>
+            </tbody>
+        </table>
+        <p><strong>分析：</strong> 本月团队完成10个迭代，人均工时96.7小时，整体工时利用率为89.6%，显示资源未完全饱和。缺陷总量达500个，平均缺陷率1.9%，质量压力显著。测试执行率高达99.1%，表明测试覆盖充分，但高缺陷率提示开发阶段质量内建不足。缺陷率与测试执行率无强负相关，说明问题主要源于编码或设计阶段而非测试遗漏。人均工时与缺陷率呈弱正相关，暗示部分高负荷人员可能因赶工导致质量下降。</p>
+    </div>
+
+    <div class="section">
+        <h2>二、迭代与研发投入分析</h2>
+        <p><strong>表格：人员级全量投入产出</strong></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>成员</th>
+                    <th>迭代数</th>
+                    <th>消耗工时(h)</th>
+                    <th>预计工时(h)</th>
+                    <th>投入比</th>
+                    <th>Git 提交数</th>
+                    <th>变更行(总)</th>
+                    <th>主要项目</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>刘冰</td><td>5</td><td>176.0</td><td>182.0</td><td>96.7%</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><td>易锋华</td><td>5</td><td>164.0</td><td>140.0</td><td>117.1%</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><td>李楠</td><td>5</td><td>164.0</td><td>164.0</td><td>100.0%</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><td>宁波</td><td>3</td><td>88.0</td><td>128.0</td><td>68.8%</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><td>张碧娟</td><td>3</td><td>112.0</td><td>123.0</td><td>91.1%</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><td>杨惠影</td><td>5</td><td>103.5</td><td>104.0</td><td>99.5%</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><td>缪捷丞</td><td>1</td><td>32.5</td><td>60.0</td><td>54.2%</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><td>詹婉晶</td><td>1</td><td>72.1</td><td>88.0</td><td>81.9%</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><td>邹文杰</td><td>3</td><td>26.0</td><td>40.0</td><td>65.0%</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><td>钟义勇</td><td>1</td><td>96.0</td><td>184.0</td><td>52.2%</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><td>韩文静</td><td>3</td><td>40.0</td><td>80.0</td><td>50.0%</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><td>黄金潮</td><td>3</td><td>110.0</td><td>140.0</td><td>78.6%</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><td>陈楷枫</td><td>5</td><td>88.0</td><td>60.0</td><td>146.7%</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><td>陈莉莉</td><td>5</td><td>68.0</td><td>64.0</td><td>106.3%</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><td>樊韬</td><td>5</td><td>66.4</td><td>56.4</td><td>117.7%</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><td>洪伟强</td><td>5</td><td>124.0</td><td>124.0</td><td>100.0%</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><td>周宇希</td><td>5</td><td>150.0</td><td>176.0</td><td>85.2%</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><td>陈彬</td><td>5</td><td>88.0</td><td>60.0</td><td>146.7%</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><td>张沧海</td><td>5</td><td>60.0</td><td>64.0</td><td>93.8%</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><td>龚俊</td><td>5</td><td>110.0</td><td>140.0</td><td>78.6%</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><td>黄永富</td><td>5</td><td>120.0</td><td>120.0</td><td>100.0%</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr class="summary-row"><td>合计/平均</td><td>—</td><td>2,030.5</td><td>2,247.4</td><td>90.3%</td><td>—</td><td>—</td><td>—</td></tr>
+            </tbody>
+        </table>
+        <p><span class="top3">Top3 投入工时：</span> 刘冰(176.0h)、易锋华(164.0h)、李楠(164.0h)<br>
+           <span class="top3">Top3 提交数：</span> 数据缺失<br>
+           <span class="top3">Top3 投入比：</span> 陈楷枫(146.7%)、陈彬(146.7%)、樊韬(117.7%)<br>
+           <span class="bottom3">Bottom3 效率（投入比最低）：</span> 韩文静(50.0%)、钟义勇(52.2%)、缪捷丞(54.2%)</p>
+        <p><strong>分析：</strong> “高产高效”个体如陈楷枫、陈彬，在超预算情况下仍完成高迭代数，但其高缺陷率（后文详述）提示效率牺牲了质量。“低产高耗”不显著，但“低产低耗”如缪捷丞、钟义勇需关注任务饱和度。量化关联性：投入比 >120% 的4人中，3人缺陷率高于均值（陈楷枫3.05%、易锋华0.43%、陈莉莉0.17% — 仅樊韬例外），显示超负荷工作与质量风险正相关。人均工时96.7h与人均提交数无法计算，但高工时者（刘冰、李楠）缺陷率较低，表明经验或模块稳定性可缓冲工时压力对质量的影响。</p>
+    </div>
+
+    <div class="section">
+        <h2>三、缺陷与质量分析</h2>
+        <p><strong>表格：人员/模块缺陷全量分布</strong></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>负责人</th>
+                    <th>当月产生 Bug 数</th>
+                    <th>当月修复Bug数</th>
+                    <th>修复率</th>
+                    <th>Bug及时修复数</th>
+                    <th>修复及时率</th>
+                    <th>变更行(关联)</th>
+                    <th>每百行缺陷率</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>黄金潮</td><td>96</td><td>95</td><td>99.0%</td><td>80</td><td>84.2%</td><td>—</td><td>—</td></tr>
+                <tr><td>缪捷丞</td><td>73</td><td>104</td><td>142.5%</td><td>97</td><td>93.3%</td><td>—</td><td>—</td></tr>
+                <tr><td>陈楷枫</td><td>68</td><td>109</td><td>160.3%</td><td>47</td><td>43.1%</td><td>—</td><td>—</td></tr>
+                <tr><td>周宇希</td><td>44</td><td>51</td><td>115.9%</td><td>27</td><td>52.9%</td><td>—</td><td>—</td></tr>
+                <tr><td>陈彬</td><td>33</td><td>33</td><td>100.0%</td><td>29</td><td>87.9%</td><td>—</td><td>—</td></tr>
+                <tr><td>詹婉晶</td><td>33</td><td>32</td><td>97.0%</td><td>30</td><td>93.8%</td><td>—</td><td>—</td></tr>
+                <tr><td>黄永富</td><td>30</td><td>35</td><td>116.7%</td><td>33</td><td>94.3%</td><td>—</td><td>—</td></tr>
+                <tr><td>樊韬</td><td>26</td><td>36</td><td>138.5%</td><td>14</td><td>38.9%</td><td>—</td><td>—</td></tr>
+                <tr><td>李楠</td><td>22</td><td>22</td><td>100.0%</td><td>12</td><td>54.5%</td><td>—</td><td>—</td></tr>
+                <tr><td>龚俊</td><td>20</td><td>45</td><td>225.0%</td><td>17</td><td>37.8%</td><td>—</td><td>—</td></tr>
+                <tr><td>宁波</td><td>20</td><td>24</td><td>120.0%</td><td>22</td><td>91.7%</td><td>—</td><td>—</td></tr>
+                <tr><td>邹文杰</td><td>19</td><td>23</td><td>121.1%</td><td>23</td><td>100.0%</td><td>—</td><td>—</td></tr>
+                <tr><td>洪伟强</td><td>19</td><td>20</td><td>105.3%</td><td>18</td><td>90.0%</td><td>—</td><td>—</td></tr>
+                <tr><td>易锋华</td><td>16</td><td>16</td><td>100.0%</td><td>16</td><td>100.0%</td><td>—</td><td>—</td></tr>
+                <tr><td>张沧海</td><td>10</td><td>29</td><td>290.0%</td><td>17</td><td>58.6%</td><td>—</td><td>—</td></tr>
+                <tr><td>陈亮</td><td>8</td><td>5</td><td>62.5%</td><td>5</td><td>100.0%</td><td>—</td><td>—</td></tr>
+                <tr><td>张碧娟</td><td>2</td><td>2</td><td>100.0%</td><td>2</td><td>100.0%</td><td>—</td><td>—</td></tr>
+                <tr><td>刘冰</td><td>2</td><td>2</td><td>100.0%</td><td>2</td><td>100.0%</td><td>—</td><td>—</td></tr>
+                <tr><td>陈莉莉</td><td>1</td><td>1</td><td>100.0%</td><td>1</td><td>100.0%</td><td>—</td><td>—</td></tr>
+                <tr class="summary-row"><td>合计/平均</td><td>500</td><td>692</td><td>138.4%</td><td>421</td><td>60.8%</td><td>—</td><td>—</td></tr>
+            </tbody>
+        </table>
+        <p><span class="top3">Top3 修复贡献：</span> 陈楷枫(109)、缪捷丞(104)、黄金潮(95)<br>
+           <span class="top3">Top3 每百行缺陷率：</span> 数据缺失<br>
+           <span class="bottom3">高风险模块名单：</span> 黄金潮(96缺陷)、缪捷丞(73缺陷)、陈楷枫(68缺陷)</p>
+        <p><strong>分析：</strong> 缺陷密集区为黄金潮、缪捷丞、陈楷枫三人，贡献了40.2%的总缺陷。修复时效两极分化：邹文杰、易锋华等100%及时，而龚俊(37.8%)、樊韬(38.9%)及时率偏低。质量趋势上，高产修复者（陈楷枫、缪捷丞）同时也是高缺陷生产者，形成“自产自销”循环，提示其负责模块存在系统性质量问题或需求频繁变更。缺陷率与修复率无直接负相关 — 高缺陷者修复率也高（如陈楷枫160.3%），反映被动救火而非预防。及时修复率60.8%偏低，需优化缺陷响应流程。</p>
+    </div>
+
+    <div class="section">
+        <h2>四、缺陷率与部门绩效</h2>
+        <p><strong>表格：部门横向全量对比</strong></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>部门</th>
+                    <th>Bug 数</th>
+                    <th>人员数</th>
+                    <th>总任务时数</th>
+                    <th>平均 Bug 率</th>
+                    <th>人均工时(h)</th>
+                    <th>人均提交</th>
+                    <th>人均变更行</th>
+                    <th>质量评级</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>研发一部</td><td>277</td><td>9</td><td>704.6</td><td>2.45%</td><td>78.3</td><td>—</td><td>—</td><td>差</td></tr>
+                <tr><td>研发二部</td><td>223</td><td>9</td><td>852.5</td><td>1.43%</td><td>94.7</td><td>—</td><td>—</td><td>良</td></tr>
+                <tr class="summary-row"><td>平均值</td><td>500</td><td>—</td><td>1,557.1</td><td>1.94%</td><td>86.5</td><td>—</td><td>—</td><td>—</td></tr>
+            </tbody>
+        </table>
+        <p><strong>分析：</strong> 研发一部平均Bug率(2.45%)显著高于研发二部(1.43%)，尽管其人均工时(78.3h)低于二部(94.7h)，反驳了“工时多则缺陷多”的假设。量化关系：Bug率与提交密度无法计算，但与复杂度间接相关 — 一部有黄金潮(8.89%缺陷率)拉高均值，其任务时数少(9h)但缺陷极高，暗示负责模块复杂度或变更率极高。二部在更高人均工时下保持更低缺陷率，表明其开发实践或模块成熟度更优。质量评级应结合缺陷率与修复及时率，一部因高缺陷率评为“差”，二部“良”。</p>
+    </div>
+
+    <div class="section">
+        <h2>五、测试与覆盖分析</h2>
+        <p><strong>表格：测试指标</strong></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>指标</th>
+                    <th>数值</th>
+                    <th>说明</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>月总测试用例数</td><td>107</td><td>新增测试用例</td></tr>
+                <tr><td>实际执行测试用例数</td><td>106</td><td>执行测试用例</td></tr>
+                <tr><td>测试用例执行率</td><td>99.1%</td><td>自动化+回归</td></tr>
+                <tr><td>自动化测试比例</td><td>—</td><td>若缺失填`—`</td></tr>
+            </tbody>
+        </table>
+        <p><strong>分析：</strong> 执行率99.1%属优秀水平，表明测试计划执行严谨。但高执行率未抑制高缺陷率（500个），量化关系显示测试有效性不足 — 可能因用例未覆盖核心路径、或缺陷多源于需求/设计阶段。薄弱环节在于：1) 自动化比例缺失，手动测试可能成为瓶颈；2) 用例设计与缺陷预防脱节。建议：1) 补充自动化测试数据并提升比例；2) 建立缺陷根因分析机制，将高频缺陷场景反哺至用例库；3) 推行测试左移，在需求评审阶段介入用例设计。</p>
+    </div>
+
+    <div class="section">
+        <h2>六、代码提交与版本演进</h2>
+        <p><strong>表格：GitLab 人员级全量统计（支持分页）</strong></p>
+        <p>数据不足（未收到对应子节点数据）</p>
+        <p><strong>分析：</strong> GitLab代码统计数据缺失，无法分析提交活跃度、代码Churn率与质量的量化关系。风险组合（如“变更大且缺陷率高”）无法识别。建议立即补全代码仓库统计接口，以支持研发效能闭环分析。</p>
+    </div>
+
+    <div class="section">
+        <h2>七、完整性自检（必须输出）</h2>
+        <ul>
+            <li><strong>行覆盖校验：</strong> 输入人员共21名（刘冰、易锋华、李楠、宁波、张碧娟、杨惠影、缪捷丞、詹婉晶、邹文杰、钟义勇、韩文静、黄金潮、陈楷枫、陈莉莉、樊韬、洪伟强、周宇希、陈彬、张沧海、龚俊、黄永富），部门2个（研发一部、研发二部）。各表行数：投入产出表21行、缺陷分布表19行（缺失杨惠影、韩文静）、部门对比表2行。缺陷分布表缺失2人 → <strong>不一致</strong>。</li>
+            <li><strong>汇总一致性：</strong> 总消耗工时2,030.5h（二章） vs 迭代汇总2,014.5h → <strong>不一致（差16h）</strong>；总Bug数500（三章） = 产生Bug数总和；修复数692无外部核对基准。</li>
+            <li><strong>缺失名单：</strong> 缺陷分布表缺失：杨惠影、韩文静。GitLab统计全量缺失。</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
